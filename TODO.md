@@ -11,6 +11,7 @@
 - connect fron-end and back-end
 - add dates to concert and article tiles (date when written and when event takes place)
 - fixe sideLinks
+- make youtube videos responsive
 - dev UI to manage datas
 
 ### after deploy
