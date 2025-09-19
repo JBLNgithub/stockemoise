@@ -1,5 +1,7 @@
 # ! Currently in developpement !
 
+[preview App](https://jblngithub.github.io/stockemoise/)
+
 version : 0.1
 
 ### Frontend
@@ -12,7 +14,7 @@ Currently saved in json file
 
 # La Stockemoise
 
-La stockemoise is a Belgian amateur wind orchestra. The current site is available [here](https://stockemoise.be/)
+La [Stockemoise](https://stockemoise.be/) stockemoise is a Belgian amateur wind orchestra.
 
 ## models
 

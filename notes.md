@@ -1,3 +1,11 @@
+## to deploy
+
+```
+git add dist -f
+git commit -m "msg"
+git subtree push --prefix dist origin gh-pages
+```
+
 [React Doc](https://react.dev/)
 
 [Tailwind Doc](https://tailwindcss.com/docs/installation/using-vite)

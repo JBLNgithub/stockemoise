@@ -43,13 +43,7 @@ const ContactPage = () => {
       <div className='my-12'>
         <h3 className='text-2xl font-bold mb-4'>Stock'Up Orchestra - Cours de musique</h3>
         <p className='my-2'>
-          Pierre Goffinet : 
-          <span className='mx-3'>063/22 25 39</span>
-        </p>
-
-        <p className='my-2'>
-          Martine Everling : 
-          <span className='mx-3'>063/22 07 28</span>
+          Laura Gosselin : 
           <span className='mx-3'>0494/49 76 94</span>
         </p>
       </div>
