@@ -1,5 +1,5 @@
 import React from 'react'
-import {Route, createBrowserRouter, createRoutesFromElements, RouterProvider} from 'react-router-dom'
+import {Route, createBrowserRouter, createRoutesFromElements, RouterProvider, Navigate} from 'react-router-dom'
 import MainLayout from './Layouts/MainLayout'
 import HomePage from './pages/HomePage'
 import ActualitesPage from './pages/ActualitesPage'
@@ -30,6 +30,10 @@ const App = () => {
     <Route path='/planning' element={<PlanningPage />} />
     <Route path='/contact' element={<ContactPage />} />
     <Route path='/article/:id' element={<ArticlePage />} />
+
+    {/*this is specifically for gh-pages*/}
+    <Route path='/stockemoise' element={<Navigate to='/' replace />} />
+
     <Route path='/*' element={<NotFoundPage />} />
   </Route>)
 )

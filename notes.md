@@ -4,6 +4,8 @@
 git add dist -f
 git commit -m "msg"
 git subtree push --prefix dist origin gh-pages
+
+there possibly is a way to update the deployment
 ```
 
 [React Doc](https://react.dev/)
