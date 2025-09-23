@@ -1,21 +1,30 @@
-# ! NOT UP TO DATE !
+# ER diag scheduled for the back-end
 
 ```mermaid
 erDiagram
 
-        Article {
+        Concert {
             int id "pk"
+        }
+
+        News {
+            int id "pk"
+        }
+
+        Article {
             string title
             string content
             date dateRedaction
-            date dateTakesPlace "optional"
-            time timeTakesPlace "optional"
-            bool isConcert
+            string cover "optional"
+        }
+        
+        Event {
+            date dateStart
+            time timeStart "optional"
             bool isCanceled
-            string cover "optional, it's the top picture"
         }
 
-        Place {
+        Location {
             string name "pk"
             string rue
             int number
@@ -25,5 +34,10 @@ erDiagram
             string country
         }
 
-        Article |o--o{ Place : location
+        Concert }o..|| Article : is-A
+        News }o..|| Article : is-A
+        Concert }o..|| Event : is-A
+        News }o..o| Event : canBe-A
+        Event }o--|| Location : locate
+
 ```
