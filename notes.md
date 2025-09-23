@@ -12,37 +12,42 @@ there possibly is a way to update the deployment
 
 [Tailwind Doc](https://tailwindcss.com/docs/installation/using-vite)
 
-## Template database.json
+## Template json (temporary until back-end)
+
+### concert
+
 ```json
 "id": 0,
 "title": "",
 "content": "",
-"dateRedaction": {
-    "day": 0,
-    "month": 0,
-    "year": 0
-},
-"dateTakesPlace": {
-    "day": 0,
-    "month": 0,
-    "year": 0
-},
-"timeTakesPlace": {
-    "hour": 0,
-    "minute": 0
-},
-"isConcert": 0,
-"isCanceled": 0,
-"cover": "",
-"place": {
-    "name": "",
-    "street": "",
-    "number": 0,
-    "additionalAdress": "",
-    "codePostal": 0,
-    "city": "",
-    "contry": ""
+"dayRedaction" : 0,
+"monthRedaction" : 0,
+"yearRedaction" : 0,
+"cover" : "",
+"dayStart" :0,
+"monthStart" :0,
+"yearStart" :0,
+"hourStart" :0,
+"minuteStart" :0,
+"location" : {
+    "name" : "",
+    "rue" : "",
+    "number" : 0,
+    "code postal" : 0,
+    "city" : ""
 }
+```
+
+### news (no location for the time Being)
+
+```json
+"id": 0,
+"title": "",
+"content": "",
+"dayRedaction" : 0,
+"monthRedaction" : 0,
+"yearRedaction" : 0,
+"cover" : ""
 ```
 
 ```
