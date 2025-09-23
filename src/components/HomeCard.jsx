@@ -7,7 +7,7 @@ const HomeCard = ({children, title='Title is Undifined', description1='descripti
   return (
     <section className='bg-blue-600 mb-20 rounded-2xl'>
         <div className='grid grid-cols-3 gap-0'>
-            <article className='col-span-3 md:col-span-1 p-2 text-neutral-200 text-center'>
+            <article className='col-span-3 md:col-span-1 p-5 text-neutral-200 text-center'>
                 <h2 className="text-xl font-bold mb-4">{title}</h2>
                 <p className='text-sm'>
                     {description1}

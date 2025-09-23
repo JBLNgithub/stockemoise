@@ -2,43 +2,37 @@ import React from 'react'
 import SideCard from './SideCard'
 import articles from '../datas/database.json'
 import SideLink from './SideLink'
+import getAllConcerts from '../controller/getAllConcertsC'
+import getAllNews from '../controller/getAllNewsC'
 
 const Sidebar = () => {
-  let news = [];
-  let concerts = [];
-  let nbNews = 0;
-  let nbConcerts = 0;
-
-  articles.map((article, index) => {
-    if(article.isConcert && nbConcerts < 3) {
-      concerts.push(article)
-      nbConcerts++
-    }
-    else if(!article.isConcert && nbNews < 2) {
-      news.push(article)
-      nbNews++
-    }
-  })
+  let nextConcerts = getAllConcerts().slice(0,3)
+  const nextNews = getAllNews().slice(0,2)
 
   return (
     <>
-      <SideCard title='Prochaines dates' buttonLabel='plus de dates' path='/planning'>
-        {concerts.map((concert) => 
+      <SideCard title='Prochains concerts' buttonLabel='plus de dates' path='/planning'>
+        {nextConcerts.map((c) => 
           <SideLink 
-            key={concert.id} 
-            id={concert.id}
-            title={concert.title} 
-            location={concert.place.name}
-            day={concert.dateTakesPlace.day} 
-            month={concert.dateTakesPlace.month} 
-            year={concert.dateTakesPlace.year}
+            type='0'
+            key={c.id} 
+            id={c.id}
+            title={c.title} 
+            location={c.location.name}
+            day={c.dayStart} 
+            month={c.monthStart} 
+            year={c.yearStart}
           />
         )}
       </SideCard>
 
       <SideCard title='Actualités' buttonLabel="plus d'actus" path='/actualites'>
-        {news.map((singleNews) => 
-          <SideLink key={singleNews.id} id={singleNews.id} title={singleNews.title} />
+        {nextNews.map((n) => 
+          <SideLink
+            type='1' 
+            key={n.id} 
+            id={n.id} 
+            title={n.title} />
         )}
       </SideCard>
     </>

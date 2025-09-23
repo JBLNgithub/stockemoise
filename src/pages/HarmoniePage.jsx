@@ -15,8 +15,8 @@ const HarmoniePage = () => {
       </div>
 
       <section className='my-10'>
-        <h1 className='text-5xl font-bold mb-10'>Royale Harmonie la Stockemoise d'Arlon</h1>
-        <p>L'Harmonie Royale la Stockemoise est un rassemblement de musiciens amateurs de tous âges dans le village de Stockem. Constiuée d'instruments à vent et de percussions, l'harmonie aborde un répertoire vaste allant de la musique classique jusqu'à la musique populaire en passant par le jazz et autres joyeusetés. Des concerts sont organisé régulièrement.<br className='mb-5' /> Les répétitions ont lieu chaque vendredi à Stockem. Pour rejoindre l'harmonie, il faut savoir jouer d'un instrument. N'hésitez pas à prendre contact pour plus d'informations !
+        <h1 className='text-5xl font-bold mb-10'>Harmonie Royale la Stockemoise d'Arlon</h1>
+        <p>L'Harmonie Royale la Stockemoise d'Arlon est un rassemblement de musiciens amateurs de tous âges dans le village de Stockem. Constiuée d'instruments à vent et de percussions, l'harmonie aborde un répertoire vaste allant de la musique classique jusqu'à la musique populaire en passant par le jazz et autres joyeusetés. Des concerts sont organisé régulièrement.<br className='mb-5' /> Les répétitions ont lieu chaque vendredi à Stockem. Pour rejoindre l'harmonie, il faut savoir jouer d'un instrument. N'hésitez pas à prendre contact pour plus d'informations !
         </p>
       </section>
 

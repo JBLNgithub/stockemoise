@@ -31,14 +31,14 @@ there possibly is a way to update the deployment
 "minuteStart" :0,
 "location" : {
     "name" : "",
-    "rue" : "",
+    "street" : "",
     "number" : 0,
-    "code postal" : 0,
+    "codePostal" : 0,
     "city" : ""
 }
 ```
 
-### news (no location for the time Being)
+### news
 
 ```json
 "id": 0,

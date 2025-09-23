@@ -1,0 +1,86 @@
+[
+    {
+        "id": 4,
+        "title": "Concert FMLB",
+        "content": "Concert de cloture des cours de direction organisé par la FMLB.",
+        "dayRedaction" : 18,
+        "monthRedaction" : 9,
+        "yearRedaction" : 2025,
+        "cover" : "concertFMLB.jpg",
+        "dayStart" :12,
+        "monthStart" :10,
+        "yearStart" :2025,
+        "hourStart" : 0,
+        "minuteStart" :0,
+        "location" : {
+            "name" : "Salle de l'Harmonie la Stockemoise",
+            "street" : "rue de l'Harmonie",
+            "number" : 36,
+            "codePostal" : 6700,
+            "city" : "Arlon"
+        }
+    },
+    {
+        "id": 3,
+        "title": "Sainte Cécile",
+        "content": "Fête des musiciens, la Stockemoise jouera la messe à la chapelle St-Bernard, puis la soirée continuera à la salle de l'Harmonie.",
+        "dayRedaction" : 18,
+        "monthRedaction" : 9,
+        "yearRedaction" : 2025,
+        "cover" : "",
+        "dayStart" :22,
+        "monthStart" : 11,
+        "yearStart" :2025,
+        "hourStart" :0,
+        "minuteStart" :0,
+        "location" : {
+            "name" : "Chapelle St-Bernard à Arlon",
+            "street" : "rue des Buissons",
+            "number" : 3,
+            "codePostal" : 6700,
+            "city" : "Arlon"
+        }
+    },
+    {
+        "id": 2,
+        "title": "Concert de Noël",
+        "content": "TODO",
+        "dayRedaction" : 18,
+        "monthRedaction" : 9,
+        "yearRedaction" : 2025,
+        "cover" : "",
+        "dayStart" :6,
+        "monthStart" :12,
+        "yearStart" :2025,
+        "hourStart" :0,
+        "minuteStart" :0,
+        "location" : {
+            "name" : "Eglise du Sacré-Coeur Arlon",
+            "street" : "rue des Déportés",
+            "number" : 99999999,
+            "codePostal" : 6700,
+            "city" : "Arlon"
+        }
+    },
+    {
+        "id": 1,
+        "title": "Concert avec le Big Band de Differdange",
+        "content": "TODO",
+        "dayRedaction" : 18,
+        "monthRedaction" : 9,
+        "yearRedaction" : 2025,
+        "cover" : "",
+        "dayStart" :9,
+        "monthStart" :5,
+        "yearStart" :2026,
+        "hourStart" :0,
+        "minuteStart" :0,
+        "location" : {
+            "name" : "Eglise du Sacré-Coeur Arlon",
+            "street" : "rue des Déportés",
+            "number" : 99999999,
+            "codePostal" : 6700,
+            "city" : "Arlon"
+        }
+    }
+]

@@ -1,0 +1,38 @@
+[
+    {
+        "id": 5,
+        "title": "Stage d'éveil musical",
+        "content": "Cette année, le stage d’éveil musical de notre harmonie aura lieu du 21 au 25 juillet. Hé oui ! le 21 juillet également…Cela permet aux parents frontaliers d’avoir une solution pour leurs loulous.Où ? local de la Stockemoise (rue de l’harmonie à Stockem) Pour qui ? enfants de 4 à 12 ans. Tarif ? 120 euros la semaine (105 euros par enfant si plusieurs issus du même domicile). La collation du matin et le goûter sont compris dans le prix. Les journées commencent à 8h30 mais l’accueil se fait à partir de 8h. La journée se termine à 16h30 mais les enfants peuvent rester jusque 17h. Il n’y a pas de garderie prévue. Le repas de midi est à fournir. Un moment de relaxation (et sieste pour les plus petits) étant prévu, nous demandons d’apporter un coussin et un plaid. Pour les inscriptions, cliquez sur le lien suivant: https://forms.gle/yxnS3meABMwfGAWu8 Besoin de plus d’informations ? Vous pouvez contacter Laura Gosselin – 0494/620125 ou par mail: lauragosselin@hotmail.com",
+        "dayRedaction" : 7,
+        "monthRedaction" : 5,
+        "yearRedaction" : 2025,
+        "cover" : "stageEveilMusical2025.png"
+    },
+    {
+        "id": 3,
+        "title": "Brocante 2025 : les inscriptions sont ouvertes",
+        "content": "La Stockemoise est ravie de vous inviter à réserver votre emplacement pour notre brocante annuelle, ce dimanche 17 août 2025.Nous nous réjouissons de vous retrouver pour une belle journée de brocante ! Le public est bienvenu entre 8h et 18h. Les brocanteurs sont accueillis entre 5h et 7h30.Vous retrouverez à cette occasion la bonne ambiance qui a fait la réputation de la brocante de Stockem lors de ses 27 dernières éditions: ambiance familiale, animations musicales, coin traiteur, belle brocante et vide-grenier dans le joli village de Stockem.Les dimensions des emplacements retrouvent leurs tailles habituelles: tous les multiples de 4m, au prix inchangé de 2,5€/m. Retour de l’assiette de jambon grillé et salades (généreusement) garnie, disponible au prix de 15€, et un acompte de 10€ doit étre payé (par virement bancaire) pour confirmer votre réservation d’emplacement.",
+        "dayRedaction" : 11,
+        "monthRedaction" : 4,
+        "yearRedaction" : 2025,
+        "cover" : "brocante2025.jpg"
+    },
+    {
+        "id": 2,
+        "title": "Notre nouveau directeur musical",
+        "content": "C’est avec grand plaisir que nous vous présentons notre nouveau directeur musical, monsieur Jean-Bernard Leheureux.Trompettiste diplômé des conservatoires de Bruxelles, Liège et Valenciennes, il a ensuite joué à la Musique Royale des Guides, ainsi qu’au Théâtre de la Monnaie. Il a également été professeur de trompette dans différentes académies ainsi qu’assistant dans les conservatoires royaux de Mons et Bruxelles.C’est un peu par hasard qu’il est tombé sur notre annonce de recrutement, et le hasard fait bien les choses !",
+        "dayRedaction" : 14,
+        "monthRedaction" : 9,
+        "yearRedaction" : 2023,
+        "cover" : "jbDirecteurMusical.jpg"
+    },
+    {
+        "id": 1,
+        "title": "Situation Géographique",
+        "content": "Notre harmonie se situe à Stockem dans la commune d´Arlon (24 418 habitants, superficie 12.029 ha). Arlon, le chef lieu de la province de Luxembourg, se situe en Lorraine belge, à cheval sur les bassins de la Meuse et du Rhin, aux confins de la latinité et de la Germanie. La ville s´étage sur une butte témoin « la Knipchen ». Le « Hitzenberg », autre butte témoin, est avec ses 465m, le point culminant de la Lorraine belge.Où nous trouver : sur la RN 83 Arlon-Bouillon, à 4 km du centre d´Arlon, sur la Place de l´Harmonie derrière l´église de Stockem.",
+        "dayRedaction" : 7,
+        "monthRedaction" : 9,
+        "yearRedaction" : 2009,
+        "cover" : "plan-stockemoise.png"
+    }
+]

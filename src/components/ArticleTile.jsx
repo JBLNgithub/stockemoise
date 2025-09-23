@@ -3,11 +3,25 @@ import { Link } from 'react-router-dom'
 import getImageURL from '../utils/getImageURL'
 import topThePage from '../utils/topThePage'
 
-const ArticleTile = ({id, title, cover='placeHolder.png', imageAlt}) => {
+const ArticleTile = ({id, title, cover, imageAlt, type}) => {
+  let link
+  
+  switch (type) {
+    case '0':
+      link = `/concerts/${id}`
+      break
+    case '1':
+      link = `/actualites/${id}`
+      break
+    default:
+      console.log('something went wrong with article tile')
+      break
+  }
+
   return (
     <>
         <Link
-            to={`/article/${id}`}
+            to={link}
             onClick={topThePage}
             className='bg-blue-600 mb-20 rounded-2xl hover:bg-blue-400'
         >

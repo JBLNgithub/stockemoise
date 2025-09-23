@@ -5,8 +5,11 @@ import HomeCard from '../components/HomeCard'
 const HomePage = () => {
   return (
       <>
+        <div className='text-center mx-6 mb-14'>
+          <h1 className='text-7xl font-bold font-serif'>Harmonie Royale la Stockemoise d'Arlon</h1>
+        </div>
         <HomeCard
-          title='Harmonie Royale la Stockemoise'
+          title="Harmonie Royale la Stockemoise d'Arlon"
           description1='Orchestre composé d&apos;instruments à vents et de percussions, l&apos;Harmonie Royale la Stockemoise rassemble des musiciens amateurs de tous horizons dans un projet musical marquant.' 
           description2='L&apos;harmonie est ouverte à tous musiciens de vent ou de percussion maitrisant relativement aisément son instrument ! Les répétitions se déroule chaque vendredi à Stockem.'
           image='harmonie.jpg'
