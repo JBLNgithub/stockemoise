@@ -4,7 +4,7 @@
 
 You can find more informations about this project [HERE](https://jblngithub.github.io/portfolio/) then in the "Stockemoise" tab.
 
-version : 0.1
+version : 0.2
 
 ### Frontend
 
@@ -13,7 +13,3 @@ React + Tailwind
 ### Backend
 
 Currently saved in json file
-
-# La Stockemoise
-
-La [Stockemoise](https://stockemoise.be/) stockemoise is a Belgian amateur wind orchestra.
