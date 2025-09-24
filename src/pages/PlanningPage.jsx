@@ -11,7 +11,16 @@ const PlanningPage = () => {
 
       <section className='grid grid-cols-2 gap-5'>
 
-        {allConcerts.map((c) => <ArticleTile type='0' key={c.id} id={c.id} title={c.title} cover={c.cover} />)}
+        {allConcerts.map((c) => <ArticleTile 
+          type='0' 
+          key={c.id} 
+          id={c.id} 
+          title={c.title} 
+          cover={c.cover}
+          day={c.dayStart}
+          month={c.monthStart}
+          year={c.yearStart}
+        />)}
       </section>
     </>
   )

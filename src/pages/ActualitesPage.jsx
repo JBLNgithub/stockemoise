@@ -11,7 +11,16 @@ const ActualitesPage = () => {
 
       <section className='grid grid-cols-2 gap-5'>
 
-        {allNews.map((n) => <ArticleTile type='1' key={n.id} id={n.id} title={n.title} cover={n.cover} />)}
+        {allNews.map((n) => <ArticleTile 
+          type='1' 
+          key={n.id} 
+          id={n.id} 
+          title={n.title} 
+          cover={n.cover} 
+          day={n.dayRedaction} 
+          month={n.monthRedaction} 
+          year={n.yearRedaction} 
+        />)}
       </section>
     </>
   )
