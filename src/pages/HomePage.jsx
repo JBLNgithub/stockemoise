@@ -6,7 +6,7 @@ const HomePage = () => {
   return (
       <>
         <div className='text-center mx-6 mb-14'>
-          <h1 className='text-7xl font-bold font-serif'>Harmonie Royale la Stockemoise d'Arlon</h1>
+          <h1 className='text-5xl md:text-7xl font-bold font-serif'>Harmonie Royale la Stockemoise d'Arlon</h1>
         </div>
         <HomeCard
           title="Harmonie Royale la Stockemoise d'Arlon"

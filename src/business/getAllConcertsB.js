@@ -7,7 +7,6 @@ function getAllConcertsB(){
     console.log(allConcerts)
 
     allConcerts.forEach((c) => {
-        console.log(c.id)
         if(c.cover == '') c.cover = "placeHolder.png"
     })
 

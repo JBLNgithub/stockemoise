@@ -26,7 +26,7 @@ const ArticleTile = ({id, title, cover, imageAlt, type, day, month, year}) => {
         <Link
             to={link}
             onClick={topThePage}
-            className='bg-blue-600 mb-20 rounded-2xl text-neutral-200 hover:bg-blue-400 hover:text-neutral-800'
+            className='bg-blue-600 mb-6 md:mb-20 rounded-2xl text-neutral-200 hover:bg-blue-400 hover:text-neutral-800 col-span-2 md:col-span-1'
         >
             <img className='rounded-t-2xl' src={getImageURL(cover)} alt={imageAlt}  />
             <div className='m-3'>

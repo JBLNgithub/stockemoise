@@ -11,6 +11,7 @@
 
 ### after deploy
 
+- make contact number not break
 - manage date syntaxe ("oct" for tile, "october" for article page)
 - make a footer
 - make 1st article larger on list pages
