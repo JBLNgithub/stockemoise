@@ -1,20 +1,15 @@
 import React from 'react'
 import cover from '../assets/images/stockemoiseCoursMusique.jpg'
 import RedirectButton from '../components/RedirectButton'
+import CommonPageHeader from '../components/CommonPageHeader'
 
 const CoursDeMusiquePage = () => {
   return (
-    <>
-      <div>
-        <img
-          className='size-full object-cover rounded-2xl mb-20'
-          src={cover}
-          alt="photo de l"
-          />
-      </div>
-
+    <CommonPageHeader
+      title='Cours de musique'
+      cover={cover}
+    >
       <section className='my-10'>
-        <h1 className='text-5xl font-bold mb-10'>Cours de musique</h1>
         <p>Parce que jouer nécessite au préalable d'apprendre un instrument, la stockemoise propose divers cours de musique pour permettre à toutes et tous d'apprendre. Aucun prérequis pour commencer, les cours de solfège sont inclus en parrallèle des cours d'instrument.</p>
 
         <div className='my-10'>
@@ -36,11 +31,7 @@ const CoursDeMusiquePage = () => {
         coûts : 300 €/an (réduction si plusieurs inscriptions)<br className='mb-5' />N'hésitez pas à prendre contact pour plus d'informations !
         </p>
       </section>
-
-      <div className='md:px-40'>
-        <RedirectButton className='px-100' label='Contact' path='/contact' />
-      </div>
-    </>
+    </CommonPageHeader>
   )
 }
 

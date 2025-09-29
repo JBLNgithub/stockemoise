@@ -1,28 +1,21 @@
 import React from 'react'
 import cover from '../assets/images/harmonie.jpg'
 import RedirectButton from '../components/RedirectButton'
+import CommonPageHeader from '../components/CommonPageHeader'
 
 
 const HarmoniePage = () => {
   return (
     <>
-      <div>
-        <img
-          className='size-full object-cover rounded-2xl mb-20'
-          src={cover}
-          alt="photo de l"
-          />
-      </div>
-
-      <section className='my-10'>
-        <h1 className='text-5xl font-bold mb-10'>Harmonie Royale la Stockemoise d'Arlon</h1>
-        <p>L'Harmonie Royale la Stockemoise d'Arlon est un rassemblement de musiciens amateurs de tous âges dans le village de Stockem. Constiuée d'instruments à vent et de percussions, l'harmonie aborde un répertoire vaste allant de la musique classique jusqu'à la musique populaire en passant par le jazz et autres joyeusetés. Des concerts sont organisé régulièrement.<br className='mb-5' /> Les répétitions ont lieu chaque vendredi à Stockem. Pour rejoindre l'harmonie, il faut savoir jouer d'un instrument. N'hésitez pas à prendre contact pour plus d'informations !
-        </p>
-      </section>
-
-      <div className='md:px-40'>
-        <RedirectButton className='px-100' label='Contact' path='/contact' />
-      </div>
+      <CommonPageHeader
+        title="Harmonie Royale la Stockemoise d'Arlon"
+        cover={cover}
+      >
+        <section className='my-10'>
+          <p>L'Harmonie Royale la Stockemoise d'Arlon est un rassemblement de musiciens amateurs de tous âges dans le village de Stockem. Constiuée d'instruments à vent et de percussions, l'harmonie aborde un répertoire vaste allant de la musique classique jusqu'à la musique populaire en passant par le jazz et autres joyeusetés. Des concerts sont organisé régulièrement.<br className='mb-5' /> Les répétitions ont lieu chaque vendredi à Stockem. Pour rejoindre l'harmonie, il faut savoir jouer d'un instrument. N'hésitez pas à prendre contact pour plus d'informations !
+          </p>
+        </section>
+      </CommonPageHeader>
 
       <section className='text-center my-20'>
         <div>
