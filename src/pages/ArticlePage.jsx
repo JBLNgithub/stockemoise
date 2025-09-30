@@ -5,6 +5,7 @@ import getNews from '../controller/getNewsC'
 import getConcert from '../controller/getConcertC'
 import { TbWriting } from 'react-icons/tb'
 import { FaCalendar } from 'react-icons/fa'
+import monthNames from '../utils/monthNames'
 
 
 const ArticlePage = ({id, type}) => {
@@ -39,7 +40,7 @@ const ArticlePage = ({id, type}) => {
                         <h1 className='text-5xl font-bold mb-2'>{article.title}</h1>
                         <h5 className='text-base ml-3'>
                             <TbWriting className='inline mr-1' />
-                            {article.dayRedaction}.{article.monthRedaction}.{article.yearRedaction}
+                            {article.dayRedaction} {monthNames[article.monthRedaction].full} {article.yearRedaction}
                         </h5>
                     </div>
                     <p>{article.content}</p>
@@ -52,7 +53,7 @@ const ArticlePage = ({id, type}) => {
                             <FaCalendar className='inline mr-1 mb-2' />
                             Informations :
                         </h3>
-                        <p>Le concert aura lieu le {article.dayStart}.{article.monthStart}.{article.yearStart} à {article.location.name} ({article.location.street}, {article.location.number} - {article.location.codePostal} {article.location.city})</p>
+                        <p>Le concert aura lieu le {article.dayStart} {monthNames[article.monthStart].full} {article.yearStart} à {article.location.name} ({article.location.street}, {article.location.number} - {article.location.codePostal} {article.location.city})</p>
                     </div> : ''
                 }
         </>} 

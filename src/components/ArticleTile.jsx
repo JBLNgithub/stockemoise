@@ -4,6 +4,7 @@ import getImageURL from '../utils/getImageURL'
 import topThePage from '../utils/topThePage'
 import { TbWriting } from 'react-icons/tb'
 import { FaCalendar } from 'react-icons/fa'
+import monthNames from '../utils/monthNames'
 
 
 const ArticleTile = ({id, title, cover, imageAlt, type, day, month, year}) => {
@@ -34,7 +35,7 @@ const ArticleTile = ({id, title, cover, imageAlt, type, day, month, year}) => {
               <h5 className='text-base ml-3'>
                 {type == '1' ? <TbWriting className='inline mr-1' /> : ''}
                 {type == '0' ? <FaCalendar className='inline mr-1 mb-1' /> : ''}
-                {day}.{month}.{year}
+                {day} {monthNames[month].short} {year}
               </h5>
             </div>
         </Link>
