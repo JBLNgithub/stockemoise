@@ -6,6 +6,7 @@ import getConcert from '../controller/getConcertC'
 import { TbWriting } from 'react-icons/tb'
 import { FaCalendar } from 'react-icons/fa'
 import monthNames from '../utils/monthNames'
+import EventTile from '../components/EventTile'
 
 
 const ArticlePage = ({id, type}) => {
@@ -47,14 +48,19 @@ const ArticlePage = ({id, type}) => {
                 </section>
                 
                 {/*if it's an event */}
-                {type == '0' ?
+                {type == '1' ? '' : 
                     <div>
-                        <h3 className='text-3xl font-bold mb-6'>
-                            <FaCalendar className='inline mr-1 mb-2' />
-                            Informations :
-                        </h3>
-                        <p>Le concert aura lieu le {article.dayStart} {monthNames[article.monthStart].full} {article.yearStart} à {article.location.name} ({article.location.street}, {article.location.number} - {article.location.codePostal} {article.location.city})</p>
-                    </div> : ''
+                        <EventTile
+                            day={article.dayStart}
+                            month={article.monthStart}
+                            year={article.yearStart}
+                            name={article.location.name}
+                            street={article.location.street}
+                            number={article.location.number}
+                            codePostal={article.location.codePostal}
+                            city={article.location.city}
+                        />
+                    </div>
                 }
         </>} 
     </>

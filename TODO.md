@@ -13,6 +13,9 @@
 - default picture
   - news
   - concert
+- affichage addresse additionel ??
+  - dans sideLink
+  - dans EventTile
 
 ### before deploy
 
