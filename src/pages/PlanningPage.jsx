@@ -1,6 +1,6 @@
 import React from 'react'
 import ArticleTile from '../components/ArticleTile'
-import getAllConcerts from '../controller/getAllConcertsC'
+import getAllConcerts from '../controllers/getAllConcertsC'
 
 const PlanningPage = () => {
   const allConcerts = getAllConcerts()
