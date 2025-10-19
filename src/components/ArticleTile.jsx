@@ -11,10 +11,13 @@ const ArticleTile = ({id, title, cover, type, date}) => {
   let link
   
   switch (type) {
-    case '0':
+    case 'concert':
       link = `/concerts/${id}`
       break
-    case '1':
+    case 'news':
+      link = `/actualites/${id}`
+      break
+    case 'eventNews':
       link = `/actualites/${id}`
       break
     default:
@@ -33,8 +36,8 @@ const ArticleTile = ({id, title, cover, type, date}) => {
             <div className='m-3'>
               <h2 className='text-3xl font-bold'>{title}</h2>
               <h5 className='text-base ml-3'>
-                {type == '1' ? <TbWriting className='inline mr-1' /> : ''}
-                {type == '0' ? <FaCalendar className='inline mr-1 mb-1' /> : ''}
+                {type === 'news' ? <TbWriting className='inline mr-1' /> : ''}
+                {type === 'concert' || type === 'eventNews' ? <FaCalendar className='inline mr-1 mb-1' /> : ''}
                 {date}
               </h5>
             </div>

@@ -19,7 +19,7 @@ const PlanningPage = () => {
       <section className='grid grid-cols-2 gap-5'>
 
         {planning.map((p) => <ArticleTile 
-          type='0' 
+          type={p.type}
           key={`${p.id}${p.type}`} 
           id={p.id} 
           title={p.title} 
