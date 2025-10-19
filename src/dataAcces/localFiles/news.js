@@ -1,4 +1,4 @@
-import allNews from '../datas/news.json'
+import allNews from '../../datas/news.json'
 
 export const getAllNews = () => {
     return allNews

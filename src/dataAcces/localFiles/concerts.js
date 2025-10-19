@@ -1,4 +1,4 @@
-import allConcerts from '../datas/concerts.json'
+import allConcerts from '../../datas/concerts.json'
 
 export const getAllConcerts = () => {
         let i = 0

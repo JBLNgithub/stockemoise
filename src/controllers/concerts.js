@@ -1,7 +1,7 @@
 import {
     getAllConcerts as getAllC,
     getConcert as getC
-} from "../dataAcces/concerts";
+} from "../dataAcces/localFiles/concerts";
 
 
 function getAllConcerts() {
