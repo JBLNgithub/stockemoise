@@ -1,25 +1,30 @@
-import React from 'react'
+import {useState, useEffect} from 'react'
 import ArticleTile from '../components/ArticleTile'
-import getAllConcerts from '../controllers/concerts'
+import {getPlanning} from '../controllers/planning'
 
 const PlanningPage = () => {
-  const allConcerts = getAllConcerts()
+  const [planning, setPlanning] = useState([])
+
+  useEffect(() => {
+    const fetchPlanning = async() => {
+      setPlanning(await getPlanning())
+    }
+    fetchPlanning()
+  }, [])
 
   return (
     <>
-      <h1 className='text-5xl font-bold mb-10'>Actualités</h1>
+      <h1 className='text-5xl font-bold mb-10'>Planning</h1>
 
       <section className='grid grid-cols-2 gap-5'>
 
-        {allConcerts.map((c) => <ArticleTile 
+        {planning.map((p) => <ArticleTile 
           type='0' 
-          key={c.id} 
-          id={c.id} 
-          title={c.title} 
-          cover={c.cover}
-          day={c.dayStart}
-          month={c.monthStart}
-          year={c.yearStart}
+          key={`${p.id}${p.type}`} 
+          id={p.id} 
+          title={p.title} 
+          cover={p.cover}
+          date={p.dateEvent}
         />)}
       </section>
     </>
