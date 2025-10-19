@@ -1,9 +1,16 @@
-import React from 'react'
+import {useState, useEffect} from 'react'
 import ArticleTile from '../components/ArticleTile'
-import getAllNews from '../controllers/news'
+import {getAllNews} from '../controllers/news'
 
 const ActualitesPage = () => {
-  const allNews = getAllNews()
+  const [allNews, setAllNews] = useState([])
+
+  useEffect(() => {
+    const fetchAllNews = async() => {
+      setAllNews(await getAllNews())
+    }
+    fetchAllNews()
+  }, [])
 
   return (
     <>
@@ -17,9 +24,7 @@ const ActualitesPage = () => {
           id={n.id} 
           title={n.title} 
           cover={n.cover} 
-          day={n.dayRedaction} 
-          month={n.monthRedaction} 
-          year={n.yearRedaction} 
+          date={n.dateRedaction}
         />)}
       </section>
     </>

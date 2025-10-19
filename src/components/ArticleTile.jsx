@@ -7,7 +7,7 @@ import { FaCalendar } from 'react-icons/fa'
 import monthNames from '../utils/monthNames'
 
 
-const ArticleTile = ({id, title, cover, imageAlt, type, day, month, year}) => {
+const ArticleTile = ({id, title, cover, type, date}) => {
   let link
   
   switch (type) {
@@ -29,13 +29,13 @@ const ArticleTile = ({id, title, cover, imageAlt, type, day, month, year}) => {
             onClick={topThePage}
             className='bg-blue-600 mb-6 md:mb-20 rounded-2xl text-neutral-200 hover:bg-blue-400 hover:text-neutral-800 col-span-2 md:col-span-1'
         >
-            <img className='rounded-t-2xl' src={getImageURL(cover)} alt={imageAlt}  />
+            <img className='rounded-t-2xl' src={getImageURL(cover)} alt={'cover image'}  />
             <div className='m-3'>
               <h2 className='text-3xl font-bold'>{title}</h2>
               <h5 className='text-base ml-3'>
                 {type == '1' ? <TbWriting className='inline mr-1' /> : ''}
                 {type == '0' ? <FaCalendar className='inline mr-1 mb-1' /> : ''}
-                {day} {monthNames[month].short} {year}
+                {date}
               </h5>
             </div>
         </Link>
