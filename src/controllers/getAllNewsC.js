@@ -1,4 +1,4 @@
-import getAllNews from "../dataAcces/getAllNewsDA";
+import getAllNews from "../dataAcces/news";
 
 function getAllNewsC() {
     return getAllNews()
