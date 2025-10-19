@@ -35,8 +35,9 @@
 - limit homeCards scaling
 - manage images
 - make youtube videos responsive
-- allow concert to be visible 1 hour after start and write "started 1 hour ago" in red
 - UI isCanceled
+- allow concert to be visible 1 hour after start and write "started 1 hour ago" in red
+- hide sidebar element if empty
 - make contact number not break
   - group tiles with person tiles in it
 - allow admin to see as visitor

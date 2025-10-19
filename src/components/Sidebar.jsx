@@ -1,13 +1,25 @@
-import React from 'react'
+import {useState, useEffect} from 'react'
 import SideCard from './SideCard'
 import articles from '../datas/database.json'
 import SideLink from './SideLink'
-import getAllConcerts from '../controllers/concerts'
-import getAllNews from '../controllers/news'
+import {getNextConcerts} from '../controllers/concerts'
+import {getRecentNews} from '../controllers/news'
 
 const Sidebar = () => {
-  let nextConcerts = getAllConcerts().slice(0,3)
-  const nextNews = getAllNews().slice(0,2)
+  const [nextConcerts, setNextConcerts] = useState([])
+  const [nextNews, setNextNews] = useState([])
+  const [recentNews, setRecentNews] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const fetchSidebar = async() => {
+      setRecentNews(await getRecentNews())
+      setNextConcerts(await getNextConcerts())
+    }
+
+    fetchSidebar()
+  }, [])
+
 
   return (
     <>
@@ -18,16 +30,14 @@ const Sidebar = () => {
             key={c.id} 
             id={c.id}
             title={c.title} 
-            location={c.location.name}
-            day={c.dayStart} 
-            month={c.monthStart} 
-            year={c.yearStart}
+            location={c.locationName}
+            dateEvent={c.dateEvent}
           />
         )}
       </SideCard>
 
       <SideCard title='Actualités' buttonLabel="plus d'actus" path='/actualites'>
-        {nextNews.map((n) => 
+        {recentNews.map((n) => 
           <SideLink
             type='1' 
             key={n.id} 

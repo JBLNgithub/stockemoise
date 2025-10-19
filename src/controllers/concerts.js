@@ -3,6 +3,12 @@ import {
     getConcert as getC
 } from "../dataAcces/localFiles/concerts";
 
+import {getNextConcerts as getNextC} from '../dataAcces/fetch/concerts'
+
+export const getNextConcerts = async() => {
+    console.log('controller : ', await getNextC())
+    return await getNextC()
+}
 
 function getAllConcerts() {
     const allConcerts = getAllC()

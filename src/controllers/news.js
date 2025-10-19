@@ -3,7 +3,13 @@ import {
     getNews as getN
 } from "../dataAcces/localFiles/news";
 
-export const getAllNews =() => {
+import {getAllNews} from '../dataAcces/fetch/news'
+
+export const getRecentNews = async() => {
+    return await getAllNews()
+}
+
+export const getAllNewsDeprecated =() => {
     return getAllN()
 }
 
@@ -11,4 +17,4 @@ export const getNews = (id) => {
     return getN(id)
 }
 
-export default getAllNews
+export default getAllNewsDeprecated
