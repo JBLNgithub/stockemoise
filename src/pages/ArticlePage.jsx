@@ -1,7 +1,7 @@
 import React from 'react'
 import NotFoundPage from '../pages/NotFoundPage'
 import getImageURL from '../utils/getImageURL'
-import getNews from '../controllers/getNewsC'
+import {getNews} from '../controllers/news'
 import {getConcert} from '../controllers/concerts'
 import { TbWriting } from 'react-icons/tb'
 import { FaCalendar } from 'react-icons/fa'

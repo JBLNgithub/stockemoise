@@ -1,6 +1,6 @@
 import React from 'react'
 import ArticleTile from '../components/ArticleTile'
-import getAllNews from '../controllers/getAllNewsC'
+import getAllNews from '../controllers/news'
 
 const ActualitesPage = () => {
   const allNews = getAllNews()

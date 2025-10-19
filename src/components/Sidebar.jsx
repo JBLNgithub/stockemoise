@@ -3,7 +3,7 @@ import SideCard from './SideCard'
 import articles from '../datas/database.json'
 import SideLink from './SideLink'
 import getAllConcerts from '../controllers/concerts'
-import getAllNews from '../controllers/getAllNewsC'
+import getAllNews from '../controllers/news'
 
 const Sidebar = () => {
   let nextConcerts = getAllConcerts().slice(0,3)
