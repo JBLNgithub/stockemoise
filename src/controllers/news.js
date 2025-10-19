@@ -1,9 +1,4 @@
-import {
-    getAllNews as getAllNDep,
-    getNews as getN
-} from "../dataAcces/localFiles/news";
-
-import {getAllNews as getAllN, getNextNews as getNextN} from '../dataAcces/fetch/news'
+import {getAllNews as getAllN, getNextNews as getNextN, getNews as getN} from '../dataAcces/fetch/news'
 
 
 export const getAllNews = async() => {
@@ -18,12 +13,12 @@ export const getNextNews = async() => {
     return await getNextN()
 }
 
-export const getAllNewsDeprecated =() => {
-    return getAllNDep()
+export const getNews = async(id) => {
+    try {
+        return await getN(id)
+    }
+    catch (err) {
+        console.error("TODO : controller.getNews")
+        return null
+    }
 }
-
-export const getNews = (id) => {
-    return getN(id)
-}
-
-export default getAllNewsDeprecated

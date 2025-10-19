@@ -9,23 +9,10 @@ import monthNames from '../utils/monthNames'
 import EventTile from '../components/EventTile'
 
 
-const ArticlePage = ({id, type}) => {
-    let article
-
-    switch(type){
-        case '0':
-            article = getConcert(id)
-            break
-        case '1':
-            article = getNews(id)
-            break
-        default:
-            console.log('something went wrong with ArticlePage')
-    }
-
+const ArticlePage = ({article}) => {
   return (
     <>
-        {article === undefined ? 
+        {!article ? 
         <NotFoundPage /> : 
         <>
             <div>
@@ -41,25 +28,16 @@ const ArticlePage = ({id, type}) => {
                         <h1 className='text-5xl font-bold mb-2'>{article.title}</h1>
                         <h5 className='text-base ml-3'>
                             <TbWriting className='inline mr-1' />
-                            {article.dayRedaction} {monthNames[article.monthRedaction].full} {article.yearRedaction}
+                            {article.dateRedaction}
                         </h5>
                     </div>
                     <p>{article.content}</p>
                 </section>
                 
                 {/*if it's an event */}
-                {type == '1' ? '' : 
+                {!article.event ? '' : 
                     <div>
-                        <EventTile
-                            day={article.dayStart}
-                            month={article.monthStart}
-                            year={article.yearStart}
-                            name={article.location.name}
-                            street={article.location.street}
-                            number={article.location.number}
-                            codePostal={article.location.codePostal}
-                            city={article.location.city}
-                        />
+                        <EventTile event={article.event} />
                     </div>
                 }
         </>} 
