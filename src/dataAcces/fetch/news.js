@@ -1,5 +1,7 @@
-export const getAllNews = async() => {
-    const res = await fetch('http://localhost:3000/api/news?limit=2')
+export const getAllNews = async(limit) => {
+    const url = 'http://localhost:3000/api/news' + (limit ? `?limit=${limit}` : '')
+
+    const res = await fetch(url)
     return await res.json()
 }
 

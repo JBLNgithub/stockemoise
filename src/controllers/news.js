@@ -1,12 +1,17 @@
 import {
-    getAllNews as getAllN,
+    getAllNews as getAllNDep,
     getNews as getN
 } from "../dataAcces/localFiles/news";
 
-import {getAllNews, getNextNews as getNextN} from '../dataAcces/fetch/news'
+import {getAllNews as getAllN, getNextNews as getNextN} from '../dataAcces/fetch/news'
+
+
+export const getAllNews = async() => {
+    return await getAllN()
+}
 
 export const getRecentNews = async() => {
-    return await getAllNews()
+    return await getAllN(2)
 }
 
 export const getNextNews = async() => {
@@ -14,7 +19,7 @@ export const getNextNews = async() => {
 }
 
 export const getAllNewsDeprecated =() => {
-    return getAllN()
+    return getAllNDep()
 }
 
 export const getNews = (id) => {
