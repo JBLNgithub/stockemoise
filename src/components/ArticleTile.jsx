@@ -7,7 +7,14 @@ import { FaCalendar } from 'react-icons/fa'
 import monthNames from '../utils/monthNames'
 
 
+
 const ArticleTile = ({id, title, cover, type, date}) => {
+  const getTileClass = () => {
+    const tileClass = 'mb-6 md:mb-20 rounded-2xl text-neutral-200 hover:text-neutral-800 col-span-2 md:col-span-1'
+    const add = /* type !== 'eventNews' */ true ? ' bg-blue-600 hover:bg-blue-400' : ' bg-indigo-500 hover:bg-indigo-300'   // evaluate for color diff
+    return tileClass + add
+  }
+  
   let link
   
   switch (type) {
@@ -30,7 +37,7 @@ const ArticleTile = ({id, title, cover, type, date}) => {
         <Link
             to={link}
             onClick={topThePage}
-            className='bg-blue-600 mb-6 md:mb-20 rounded-2xl text-neutral-200 hover:bg-blue-400 hover:text-neutral-800 col-span-2 md:col-span-1'
+            className={getTileClass()}
         >
             <img className='rounded-t-2xl' src={getImageURL(cover)} alt={'cover image'}  />
             <div className='m-3'>
