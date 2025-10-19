@@ -16,7 +16,11 @@ const EventTile = ({event}) => {
         <p className='my-2'>et se déroulera à :</p>
         <p className='bg-indigo-50 text-neutral-800 rounded-2xl py-1 font-bold'>
             <FaMapMarker className='inline mr-1 mb-1' />
-            {'event.location'} ({'street'}, {'number'} - {'codePostal'} {'city'})
+            {event.locationName} (
+              {event.locationStreet}, {event.locationNumber}
+              {event.locationAdditionalAddress ? ` ${event.locationAdditionalAddress} ` : ' - '}
+              {event.locationCodePostal} {event.locationCity}
+              )
         </p>
     </section>
   )

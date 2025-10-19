@@ -5,7 +5,6 @@ import {getNews} from '../controllers/news'
 
 const NewsPage = () => {
     const {id} = useParams()
-
     const [news, setNews] = useState({})
 
     useEffect(() => {
