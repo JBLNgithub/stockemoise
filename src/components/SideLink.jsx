@@ -5,20 +5,16 @@ import getBaseLinkType from '../utils/getBaseLinkType'
 import monthNames from '../utils/monthNames'
 
 
-const SideLink = ({type, id, title, location, dateEvent}) => {
-
+const SideLink = ({baselink, id, title, location, dateEvent}) => {
   return (
     <div className='mb-1'>
       <Link
-        to={`${getBaseLinkType(type)}${id}`}
+        to={`${baselink}${id}`}
         className='hover:bg-blue-400 text-neutral-200 hover:text-neutral-800 block rounded-xl px-2 py-1'
       >
-        {type == '1' ? '' : `${dateEvent}`}
-        {type == '1' ? '' : <br/>}
+        {dateEvent ? <>{dateEvent}<br/></> : null}
         {title}
-        {type == '1' ? '' : <br/>}
-        {type == '1' ? '' :<FaMapMarker className='inline mr-1 mb-1' />}
-        {type == '1' ? '' : location}
+        {location ? <><br/><FaMapMarker className='inline mr-1 mb-1' />{location}</> : null}
       </Link>
     </div>
   )

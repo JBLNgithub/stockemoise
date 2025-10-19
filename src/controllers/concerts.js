@@ -6,7 +6,6 @@ import {
 import {getNextConcerts as getNextC} from '../dataAcces/fetch/concerts'
 
 export const getNextConcerts = async() => {
-    console.log('controller : ', await getNextC())
     return await getNextC()
 }
 

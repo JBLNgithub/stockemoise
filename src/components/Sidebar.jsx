@@ -3,7 +3,7 @@ import SideCard from './SideCard'
 import articles from '../datas/database.json'
 import SideLink from './SideLink'
 import {getNextConcerts} from '../controllers/concerts'
-import {getRecentNews} from '../controllers/news'
+import {getRecentNews, getNextNews} from '../controllers/news'
 
 const Sidebar = () => {
   const [nextConcerts, setNextConcerts] = useState([])
@@ -13,8 +13,9 @@ const Sidebar = () => {
 
   useEffect(() => {
     const fetchSidebar = async() => {
-      setRecentNews(await getRecentNews())
       setNextConcerts(await getNextConcerts())
+      setNextNews(await getNextNews())
+      setRecentNews(await getRecentNews())
     }
 
     fetchSidebar()
@@ -23,10 +24,10 @@ const Sidebar = () => {
 
   return (
     <>
-      <SideCard title='Prochains concerts' buttonLabel='plus de dates' path='/planning'>
+      <SideCard title='Prochains concerts' buttonLabel='planning' path='/planning'>
         {nextConcerts.map((c) => 
           <SideLink 
-            type='0'
+            baselink='/concerts/'
             key={c.id} 
             id={c.id}
             title={c.title} 
@@ -36,10 +37,21 @@ const Sidebar = () => {
         )}
       </SideCard>
 
+      <SideCard title='Autres dates' buttonLabel='planning' path='/planning'>
+        {nextNews.map(c => <SideLink
+          baselink='/actualites/'
+          key={c.id}
+          id={c.id}
+          title={c.title}
+          location={c.locationName}
+          dateEvent={c.dateEvent}
+        />)}
+      </SideCard>
+
       <SideCard title='Actualités' buttonLabel="plus d'actus" path='/actualites'>
         {recentNews.map((n) => 
           <SideLink
-            type='1' 
+            baselink='/actualites/'
             key={n.id} 
             id={n.id} 
             title={n.title} />
