@@ -4,7 +4,7 @@
 
 You can find more informations about this project [HERE](https://jblngithub.github.io/portfolio/) then in the "Stockemoise" tab.
 
-version : 0.3
+version : 0.3 // dev branch
 
 ### Frontend
 
