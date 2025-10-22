@@ -2,6 +2,7 @@ import React from 'react'
 import { Outlet } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import TemplatePage from '../pages/TemplatePage'
+import Footer from '../components/Footer'
 
 const MainLayout = () => {
   return (
@@ -10,6 +11,7 @@ const MainLayout = () => {
         <TemplatePage>
             <Outlet />
         </TemplatePage>
+        <Footer />
     </>
   )
 }

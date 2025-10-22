@@ -14,6 +14,7 @@ import NotFoundPage from './pages/NotFoundPage'
 import ArticlePage from './pages/ArticlePage'
 import NewsPage from './pages/NewsPage'
 import ConcertPage from './pages/ConcertPage'
+import LoginPage from './pages/LoginPage'
 
 
 const App = () => {
@@ -32,6 +33,7 @@ const App = () => {
     <Route path='/concerts/:id' element={<ConcertPage />} />
     <Route path='/contact' element={<ContactPage />} />
     <Route path='/article/:id' element={<ArticlePage />} />
+    <Route path='/connexion' element={<LoginPage />} />
 
     {/*this is specifically for gh-pages*/}
     <Route path='/stockemoise' element={<Navigate to='/' replace />} />
