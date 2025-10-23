@@ -4,8 +4,8 @@ import {login as loginDataAccess, isLoggedIn as isLoggedInDataAccess, logout as 
 export const login = async(email, password) => {
     try {
         const res = await loginDataAccess(email, password)
-        console.log('succed loggin')
-        console.log(res)
+        console.log('succed loggin', res)
+        return res
     }
     catch(err) {
         console.log('error loggin', err)
@@ -15,8 +15,8 @@ export const login = async(email, password) => {
 export const isLoggedIn = async() => {
     try {
         const res = await isLoggedInDataAccess()
-        console.log('succed isLoggedIn')
-        console.log(res)
+        console.log("isLoggedIn Controller")
+        return res.success
     }
     catch(err) {
         console.log('error isLoggedIn', err)

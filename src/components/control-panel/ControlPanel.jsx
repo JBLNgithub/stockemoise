@@ -5,6 +5,7 @@ import SingleNewsControlPanel from "./SingleNewsControlPanel"
 import RedirectButton from "../RedirectButton"
 
 
+
 const ControlPanel = () => {
   return (
     <div className="bg-neutral-800 text-neutral-200 mb-10 p-5 rounded-2xl">

@@ -1,10 +1,12 @@
 import {useState, useEffect} from 'react'
 import SideCard from './SideCard'
-import articles from '../datas/database.json'
 import SideLink from './SideLink'
 import {getNextConcerts} from '../controllers/concerts'
 import {getRecentNews, getNextNews} from '../controllers/news'
+import { isLoggedIn } from '../controllers/users'
 import ControlPanel from './control-panel/ControlPanel'
+import { useContext } from "react"
+import { IsLoggedInContext } from "../contexts/controlPanelContexts"
 
 
 const Sidebar = () => {
@@ -12,12 +14,14 @@ const Sidebar = () => {
   const [nextNews, setNextNews] = useState([])
   const [recentNews, setRecentNews] = useState([])
   const [loading, setLoading] = useState(true)
+  const [isLog, setIsLog] = useContext(IsLoggedInContext)
 
   useEffect(() => {
     const fetchSidebar = async() => {
       setNextConcerts(await getNextConcerts())
       setNextNews(await getNextNews())
       setRecentNews(await getRecentNews())
+      setIsLog(await isLoggedIn())
     }
 
     fetchSidebar()
@@ -26,7 +30,7 @@ const Sidebar = () => {
 
   return (
     <>
-      <ControlPanel />
+      {isLog && <ControlPanel />}
 
       <SideCard title='Prochains concerts' buttonLabel='planning' path='/planning'>
         {nextConcerts.map((c) => 
