@@ -26,8 +26,7 @@ export const isLoggedIn = async() => {
 export const logout = async() => {
     try {
         const res = await logoutDataAccess()
-        console.log('succed logout')
-        console.log(res)
+        return res
     }
     catch(err) {
         console.log('error logout', err)
