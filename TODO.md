@@ -43,8 +43,9 @@
 - make css in css file
 - make contact number not break
   - group tiles with person tiles in it
-- merge templatepage into mainlayout
+- merge templatePage into mainlayout
 - UI/UX control panel
+- simplify router by using BrowserRouter
 - allow admin to see as visitor
 - make contact manageable by admin
 - allow filter event being concert or not

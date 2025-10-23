@@ -1,15 +1,25 @@
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useContext} from 'react'
 import ArticleTile from '../components/ArticleTile'
 import {getAllNews} from '../controllers/news'
+import { OnAllNews } from '../contexts/controlPanelContexts'
+
 
 const ActualitesPage = () => {
   const [allNews, setAllNews] = useState([])
+  const [onAllnews, setOnAllNews] = useContext(OnAllNews)
+
+  const unmountCleanup = () => {
+    setOnAllNews(false)
+  }
 
   useEffect(() => {
     const fetchAllNews = async() => {
       setAllNews(await getAllNews())
     }
+    
+    setOnAllNews(true)
     fetchAllNews()
+    return unmountCleanup
   }, [])
 
   return (
