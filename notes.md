@@ -53,3 +53,20 @@ there possibly is a way to update the deployment
 ```
 window.scrollTo(0, 0)
 ```
+
+## Control panel
+
+- all pages
+    - se deconnecter
+- all news page
+    - new news
+    - new eventNews
+- single news
+    - modify
+    - delete
+- all concerts page
+    - new concert
+    - new eventNews
+- single concert
+    - modify
+    - delete

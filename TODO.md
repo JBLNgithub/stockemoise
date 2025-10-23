@@ -37,7 +37,10 @@
 - make youtube videos responsive
 - UI isCanceled
 - allow concert to be visible 1 hour after start and write "started 1 hour ago" in red
-- hide sidebar element if empty
+- sidebar
+  - put sidelink into sidebar
+  - hide sidebar element if empty
+- make css in css file
 - make contact number not break
   - group tiles with person tiles in it
 - allow admin to see as visitor

@@ -4,6 +4,8 @@ import articles from '../datas/database.json'
 import SideLink from './SideLink'
 import {getNextConcerts} from '../controllers/concerts'
 import {getRecentNews, getNextNews} from '../controllers/news'
+import ControlPanel from './control-panel/ControlPanel'
+
 
 const Sidebar = () => {
   const [nextConcerts, setNextConcerts] = useState([])
@@ -24,6 +26,8 @@ const Sidebar = () => {
 
   return (
     <>
+      <ControlPanel />
+
       <SideCard title='Prochains concerts' buttonLabel='planning' path='/planning'>
         {nextConcerts.map((c) => 
           <SideLink 
