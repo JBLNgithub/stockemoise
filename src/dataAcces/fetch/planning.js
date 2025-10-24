@@ -1,4 +1,4 @@
 export const getPlanning = async() => {
-    const res = await fetch('http://localhost:3000/api/planning')
+    const res = await fetch('/api/planning')
     return await res.json()
 }

@@ -45,7 +45,9 @@
   - group tiles with person tiles in it
 - merge templatePage into mainlayout
 - UI/UX control panel
+- make fetch await once in data Access, so controller can have logic with status code and return await json
 - simplify router by using BrowserRouter
+- make proxy logic if dev or prod (and why is '/api' still in url when it should be replace...)
 - allow admin to see as visitor
 - make contact manageable by admin
 - allow filter event being concert or not

@@ -8,7 +8,7 @@ export const login = async(email, password) => {
         }
     }
     
-    const res = await fetch('http://localhost:3000/api/users/login', requestOptions)
+    const res = await fetch('/api/users/login', requestOptions)
     return await res.json()
 }
 
@@ -18,7 +18,7 @@ export const isLoggedIn = async() => {
         credentials: 'include'
     }
 
-    const res = await fetch('http://localhost:3000/api/users/isLoggedIn', requestOptions)
+    const res = await fetch('/api/users/isLoggedIn', requestOptions)
     return await res.json()
 }
 
@@ -28,6 +28,6 @@ export const logout = async() => {
         credentials: 'include'
     }
 
-    const res = await fetch('http://localhost:3000/api/users/logout', requestOptions)
+    const res = await fetch('/api/users/logout', requestOptions)
     return await res.json()
 }
