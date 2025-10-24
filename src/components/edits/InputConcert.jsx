@@ -21,7 +21,7 @@ const InputConcert = ({concert}) => {
     <div className="bg-blue-600 text-neutral-200 rounded-2xl p-5">
       <h2 className="text-center font-bold text-3xl mb-8">{concert ? 'Modifier le concert' : 'Ajouter un concert'}</h2>
 
-      <form onSubmit={addConcert}>
+      <form onSubmit={concert ? updateConcert : addConcert}>
         <h4 className='text-center mb-4'>L'ajout de l'image d'en-tête arrivera prochainement</h4>
 
         <label htmlFor='title'>Titre</label>
