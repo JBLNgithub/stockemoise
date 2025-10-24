@@ -35,7 +35,7 @@
 - limit homeCards scaling
 - manage images
 - make youtube videos responsive
-- UI isCanceled
+- make protection for concert and news that does not exist outside of articlePage (articlePage should not have the logic for the not found page in it)
 - allow concert to be visible 1 hour after start and write "started 1 hour ago" in red
 - sidebar
   - put sidelink into sidebar
@@ -47,6 +47,7 @@
 - UI/UX control panel
 - make fetch await once in data Access, so controller can have logic with status code and return await json
 - simplify router by using BrowserRouter
+- UI isCanceled
 - make proxy logic if dev or prod (and why is '/api' still in url when it should be replace...)
 - allow admin to see as visitor
 - make contact manageable by admin
