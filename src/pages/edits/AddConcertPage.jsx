@@ -3,7 +3,7 @@ import InputConcert from "../../components/edits/InputConcert"
 
 const AddConcertPage = () => {
   return (
-    <InputConcert />
+    <InputConcert concert={null} />
   )
 }
 
