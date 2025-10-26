@@ -46,6 +46,7 @@
   - group tiles with person tiles in it
 - UI/UX control panel
 - simplify router by using BrowserRouter
+- formate concertEvent in backend instead of frontend
 - make fetch await once in data Access, so controller can have logic with status code and return await json
 - responsive login page and CRUD pages
 - merge templatePage into mainlayout
@@ -62,4 +63,5 @@
 
 ### going futher ?
 
-- members capabilities ?
+- make sidebar scrolling
+- members capabilities 

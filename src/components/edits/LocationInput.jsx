@@ -4,15 +4,16 @@ import {getLocations} from '../../controllers/locations'
 
 const LocationInput = ({location, setLocation, style}) => {
     const [locations, setLocations] = useState([])
-
-    useEffect(() => {
-          const fetchLocations = async() => {
-            setLocations(await getLocations())
-          }
     
-          fetchLocations()
-        }, [])
-
+    useEffect(() => {
+      const fetchLocations = async() => {
+        const res = await getLocations()
+        setLocations(res)
+        setLocation(res[0].id)
+      }
+      
+      fetchLocations()
+    }, [])
 
     return (
         <>

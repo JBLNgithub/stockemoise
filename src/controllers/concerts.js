@@ -1,4 +1,9 @@
-import {getNextConcerts as getNextC, getConcert as getC} from '../dataAcces/fetch/concerts'
+import {
+    getNextConcerts as getNextC, 
+    getConcert as getC,
+    postConcert,
+    deleteConcert as deleteC
+} from '../dataAcces/fetch/concerts'
 
 
 export const getNextConcerts = async() => {
@@ -25,5 +30,27 @@ export const getConcert = async(id) => {
     catch(err) {
         console.error("TODO : controller.getConcert")
         return null
+    }
+}
+
+export const addConcert = async(concert) => {
+    try {
+        const res = await postConcert(concert)
+        return res
+    }
+    catch(err) {
+        console.error(err)
+        return false
+    }
+}
+
+export const deleteConcert = async(id) => {
+    try {
+        await deleteC(id)
+        return true
+    }
+    catch(err) {
+        console.error(err)
+        return false
     }
 }

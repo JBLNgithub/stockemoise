@@ -1,23 +1,33 @@
-import {useState, useEffect} from 'react'
-import {getLocations} from '../../controllers/locations'
+import {useState} from 'react'
+import { useNavigate } from 'react-router-dom'
+import { addConcert } from '../../controllers/concerts'
 import TitleInput from './TitleInput'
 import ContentInput from './ContentInput'
 import DatetimeInput from './DatetimeInput'
 import LocationInput from './LocationInput'
 
 
-const InputConcert = ({concert}) => {    
-    const addConcert = (e) => {
+const InputConcert = ({concert}) => { 
+  const navigate = useNavigate()
+  
+    const addHandler = async(e) => {
       e.preventDefault()
       
       const newConcert = {
         title,
         content,
+        cover: null,
         datetimeEvent,
-        location
+        location : parseInt(location)
       }
 
       console.log('newConcert :', newConcert )
+
+      const res = await addConcert(newConcert)
+
+      if(res.success) {
+        navigate(`/concerts/${res.id}`)
+      }
     }
 
     const updateConcert = (e) => {
@@ -36,7 +46,7 @@ const InputConcert = ({concert}) => {
     <div className="bg-neutral-800 text-neutral-200 rounded-2xl p-5">
       <h2 className="text-center font-bold text-3xl mb-8">{concert ? 'Modifier le concert' : 'Ajouter un concert'}</h2>
 
-      <form onSubmit={concert ? updateConcert : addConcert}>
+      <form onSubmit={concert ? updateConcert : addHandler}>
         <h4 className='text-center mb-4'>L'ajout de l'image d'en-tête arrivera prochainement</h4>
 
         <TitleInput title={title} setTitle={setTitle} style={inputClass} />
