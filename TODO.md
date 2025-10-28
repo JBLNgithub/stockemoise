@@ -41,8 +41,8 @@
 - change password
 - update location & locality
   - update from article
-- make sideLink reload if same type of article (cause it's not accuratly loading when staying on the same type, possibly because article page is not unmounting, better fix may even be change state value without unmounting and remounting)
-- responsive UI for every pages
+- make sideLink reload if same type of article (cause it's not accuratly loading when staying on the same type, possibly because article page is not unmounting, better fix may even be change state value without unmounting and remounting, wait isn't state remounting anyway ?)
+- responsive UI for every pages (except user UIs)
 
 ### after deploy
 
