@@ -5,7 +5,7 @@
     - photos ?
   - location salle ?
   - stock up ?
-    - phots ?
+    - photo ?
   - cours de musique ?
   - location instrument ?
   - Homecards
@@ -29,6 +29,8 @@
 ### before deploy
 
 - implements image upload
+- track author of articles
+- complete initDatas
 - make a footer
   - links to youtube, facebook
   - connection for members
@@ -37,8 +39,10 @@
 - make youtube videos responsive
 - limit homeCards scaling
 - change password
-- crud location & locality
-- track author of articles
+- update location & locality
+  - update from article
+- make sideLink reload if same type of article (cause it's not accuratly loading when staying on the same type, possibly because article page is not unmounting, better fix may even be change state value without unmounting and remounting)
+- responsive UI for every pages
 
 ### after deploy
 
@@ -64,19 +68,27 @@
 - indicate when a concert is coming very soon in sidebar
 - allow concert to be visible 1 hour after start and write "started 1 hour ago" in red
 - make init news accurate dateRedaction
+- delete location and delete locality features
 - isCanceled feature
 - implements auth (refresh/access token)
 - manage CORS (don't allow all..)
+- use correctly the business layer (mainly for transaction stuff)
 - implements transactions when location and locality are created aswell
 - make contact manageable by admin
 - feed facebook ?
-- allow filter event being concert or not
-- pasts concerts page
 - make country a separate table
+- write tests (no pain no gain)
 - allow admin to see as visitor
 - make sidebar scrolling
 - make read event return locations row in an object ????????? (forgot why i wrote that)
 
-### more feature that i'll most likely never do
+### more features that i'll most likely never do
 
+- allow filter event being concert or not
+- pasts concerts page
 - custom form (inscription for new students or for the traditional flea market)
+- moderator features
+  - crud operator
+- admin features
+  - crud moderator
+- email features (reset password, validate email, forgot password)

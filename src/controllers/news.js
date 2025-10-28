@@ -1,4 +1,9 @@
-import {getAllNews as getAllN, getNextNews as getNextN, getNews as getN} from '../dataAcces/fetch/news'
+import {
+    getAllNews as getAllN, 
+    getNextNews as getNextN, 
+    getNews as getN,
+    deleteNews as deleteN
+} from '../dataAcces/fetch/news'
 
 
 export const getAllNews = async() => {
@@ -20,5 +25,16 @@ export const getNews = async(id) => {
     catch (err) {
         console.error("TODO : controller.getNews")
         return null
+    }
+}
+
+export const deleteNews = async(id) => {
+    try {
+        await deleteN(id)
+        return true
+    }
+    catch (err) {
+        console.error(err)
+        return false
     }
 }

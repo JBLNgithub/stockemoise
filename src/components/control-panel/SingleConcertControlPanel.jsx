@@ -2,6 +2,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import RedirectButton from '../RedirectButton'
 import ActionButton from '../ActionButton'
 import { deleteConcert } from '../../controllers/concerts'
+import topThePage from '../../utils/topThePage'
 
 
 const SingleConcertControlPanel = () => {
@@ -14,7 +15,8 @@ const SingleConcertControlPanel = () => {
     const res = deleteConcert(id)
     
     if (res) {
-      navigate('planning')
+      topThePage()
+      navigate('/planning')
     }
   }
 
