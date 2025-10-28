@@ -17,21 +17,28 @@
   - dans sideLink
   - dans EventTile
 
+## before demo
+
+- crud
+  - new event/concert with location
+  - new event/concert with location and locality
+- update concert/news
+- protect routes
+- datetimes to string
+
 ### before deploy
 
-- CRUD
-- protect routes
-- manage date syntaxe ("oct" for tile, "october" for article page)
+- implements image upload
 - make a footer
   - links to youtube, facebook
   - connection for members
   - links to contact
-- implements image upload
 - manage images
 - make youtube videos responsive
 - limit homeCards scaling
-- track author of articles
 - change password
+- crud location & locality
+- track author of articles
 
 ### after deploy
 
@@ -48,20 +55,28 @@
 - simplify router by using BrowserRouter
 - formate concertEvent in backend instead of frontend
 - make fetch await once in data Access, so controller can have logic with status code and return await json
-- responsive login page and CRUD pages
+- responsive login page and CRUD pages (UI/UX)
 - merge templatePage into mainlayout
 - make proxy logic if dev or prod (and why is '/api' still in url when it should be replace...)
+- validate date : after 'now' (when inserting in db)
+  - dynamic date can be compute (see doc)
 - make 1st article larger on list pages
 - indicate when a concert is coming very soon in sidebar
 - allow concert to be visible 1 hour after start and write "started 1 hour ago" in red
-- UI isCanceled
-- allow admin to see as visitor
+- make init news accurate dateRedaction
+- isCanceled feature
+- implements auth (refresh/access token)
+- manage CORS (don't allow all..)
+- implements transactions when location and locality are created aswell
 - make contact manageable by admin
 - feed facebook ?
 - allow filter event being concert or not
 - pasts concerts page
-
-### going futher ?
-
+- make country a separate table
+- allow admin to see as visitor
 - make sidebar scrolling
-- members capabilities 
+- make read event return locations row in an object ????????? (forgot why i wrote that)
+
+### more feature that i'll most likely never do
+
+- custom form (inscription for new students or for the traditional flea market)
