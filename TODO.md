@@ -25,6 +25,7 @@
 - update concert/news
 - protect routes
 - datetimes to string
+- setup a few cover to show
 
 ### before deploy
 
@@ -84,6 +85,7 @@
 
 ### more features that i'll most likely never do
 
+- content support markdown syntaxe
 - allow filter event being concert or not
 - pasts concerts page
 - custom form (inscription for new students or for the traditional flea market)

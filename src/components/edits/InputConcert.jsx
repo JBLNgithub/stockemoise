@@ -8,56 +8,60 @@ import LocationInput from './LocationInput'
 
 
 const InputConcert = ({concert}) => { 
+  const addHandler = async(e) => {
+    e.preventDefault()
+    
+    const newConcert = {
+      title,
+      content,
+      cover: null,
+      datetimeEvent,
+      location : parseInt(locationState[0])
+    }
+  
+    console.log('newConcert :', newConcert )
+  
+    const res = await addConcert(newConcert)
+  
+    if(res.success) {
+      navigate(`/concerts/${res.id}`)
+    }
+  }
+  
+  const setHandler = (e) => {
+      e.preventDefault()
+      console.log("TODO : modify concert submited")
+  }
+
   const navigate = useNavigate()
   
-    const addHandler = async(e) => {
-      e.preventDefault()
-      
-      const newConcert = {
-        title,
-        content,
-        cover: null,
-        datetimeEvent,
-        location : parseInt(location)
-      }
+  // cover
+  const [title, setTitle] = useState('')
+  const [content, setContent] = useState('')
+  const [datetimeEvent, setDatetimeEvent] = useState('')
+  const isNewLocationState = useState(false)
+  const locationState = useState(null)
+  const isNewLocalityState = useState(false)
+  const localityState = useState(null)
 
-      console.log('newConcert :', newConcert )
-
-      const res = await addConcert(newConcert)
-
-      if(res.success) {
-        navigate(`/concerts/${res.id}`)
-      }
-    }
-
-    const updateConcert = (e) => {
-        e.preventDefault()
-        console.log("TODO : modify concert submited")
-    }
-
-    // cover
-    const [title, setTitle] = useState('')
-    const [content, setContent] = useState('')
-    const [datetimeEvent, setDatetimeEvent] = useState('')
-    const [location, setLocation] = useState(null)
-    const inputClass = 'bg-blue-400 rounded-sm text-neutral-800 px-2'
-
+  const inputClass = 'bg-blue-400 rounded-sm text-neutral-800 px-2'
+    
   return (
     <div className="bg-neutral-800 text-neutral-200 rounded-2xl p-5">
       <h2 className="text-center font-bold text-3xl mb-8">{concert ? 'Modifier le concert' : 'Ajouter un concert'}</h2>
 
-      <form onSubmit={concert ? updateConcert : addHandler}>
+      <form onSubmit={concert ? setHandler : addHandler}>
         <h4 className='text-center mb-4'>L'ajout de l'image d'en-tête arrivera prochainement</h4>
 
         <TitleInput title={title} setTitle={setTitle} style={inputClass} />
         <ContentInput content={content} setContent={setContent} style={inputClass} />
         <DatetimeInput datetimeEvent={datetimeEvent} setDatetimeEvent={setDatetimeEvent} style={inputClass} />
-        <LocationInput location={location} setLocation={setLocation} style={inputClass} />
+        <LocationInput locationState={locationState} isNewLocationState={isNewLocationState} isNewLocalityState={isNewLocalityState} style={inputClass} />
 
         <input type="submit" className="bg-blue-800 hover:bg-blue-400 hover:text-neutral-800 py-2 px-4 rounded-full" value={concert ? 'Modifier' : 'Ajouter'} />
       </form>
-      
-    </div>
+    
+  </div>
   )
 }
 
