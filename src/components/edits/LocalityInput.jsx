@@ -3,15 +3,15 @@ import NewLocalityInput from './NewLocalityInput'
 import KnownLocalityInput from './KnownLocalityInput'
 
 
-const LocalityInput = ({isNewLocalityState}) => {
+const LocalityInput = ({knownLocalityState, isNewLocalityState, newLocalityStates, style}) => {
   const [isNewLocality, setIsNewLocality] = isNewLocalityState
 
     return (
         <>
           <IsNewLocalityInput isNewLocalityState={isNewLocalityState} />
           {isNewLocality
-            ? <NewLocalityInput />
-            : <KnownLocalityInput />
+            ? <NewLocalityInput newLocalityStates={newLocalityStates} style={style} />
+            : <KnownLocalityInput knownLocalityState={knownLocalityState} />
           }
         </>
     )

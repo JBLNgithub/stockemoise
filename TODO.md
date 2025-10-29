@@ -21,6 +21,9 @@
 
 - crud
   - new event/concert with location
+    - known locality
+    - newConcert format
+    - request to backend
   - new event/concert with location and locality
 - update concert/news
 - protect routes
@@ -42,6 +45,8 @@
 - change password
 - update location & locality
   - update from article
+    - may not be possible if no concert has a desired location (think about it)
+    - and allow delete for wrong entries
 - make sideLink reload if same type of article (cause it's not accuratly loading when staying on the same type, possibly because article page is not unmounting, better fix may even be change state value without unmounting and remounting, wait isn't state remounting anyway ?)
 - responsive UI for every pages (except user UIs)
 
@@ -56,6 +61,7 @@
   - remove bg-color from index.html
 - make contact number not break
   - group tiles with person tiles in it
+- wrong password hard to read (change color)
 - UI/UX control panel
 - simplify router by using BrowserRouter
 - formate concertEvent in backend instead of frontend
@@ -79,6 +85,7 @@
 - feed facebook ?
 - make country a separate table
 - write tests (no pain no gain)
+- make planning page and actualités page show only 10, a navigate throw every 10
 - allow admin to see as visitor
 - make sidebar scrolling
 - make read event return locations row in an object ????????? (forgot why i wrote that)

@@ -1,4 +1,5 @@
-const KnownLocalityInput = () => {
+const KnownLocalityInput = ({knownLocalityState}) => {
+  const [locality, setLocality] = knownLocalityState
   return (
     <div>KnownLocalityInput</div>
   )

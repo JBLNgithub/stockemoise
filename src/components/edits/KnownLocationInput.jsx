@@ -2,15 +2,15 @@ import {useState, useEffect} from 'react'
 import {getLocations} from '../../controllers/locations'
 
 
-const KnownLocationInput = ({style, locationState}) => {
-  const [location, setLocation] = locationState
+const KnownLocationInput = ({style, knownLocationState}) => {
+  const [knowLocation, setKnownLocation] = knownLocationState
   const [locations, setLocations] = useState([])
       
       useEffect(() => {
         const fetchLocations = async() => {
           const res = await getLocations()
           setLocations(res)
-          setLocation(res[0].id)
+          setKnownLocation(res[0].id)
         }
         
         fetchLocations()
@@ -20,7 +20,7 @@ const KnownLocationInput = ({style, locationState}) => {
     <>
         <label htmlFor='location'>Lieu*</label>
         <br />
-        <select className={style} name='location' required onChange={(e) => setLocation(e.target.value)}>
+        <select className={style} name='location' required onChange={(e) => setKnownLocation(e.target.value)}>
         {locations.map((l) => <option value={l.id} key={l.id}>{l.name}</option>)}
         </select>
         <br className='mb-4' />

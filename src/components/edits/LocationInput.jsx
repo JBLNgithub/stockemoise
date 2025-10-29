@@ -5,7 +5,7 @@ import KnownLocationInput from "./knownLocationInput"
 import NewLocationInput from './NewLocationInput'
 
 
-const LocationInput = ({style, locationState, isNewLocationState, isNewLocalityState}) => {
+const LocationInput = ({style, knownLocationState, knownLocalityState, isNewLocationState, newLocationStates, isNewLocalityState, newLocalityStates}) => {
   const [isNewLocation, setIsNewLocation] = isNewLocationState
 
 
@@ -13,8 +13,8 @@ const LocationInput = ({style, locationState, isNewLocationState, isNewLocalityS
         <>
           <IsNewLocationInput isNewLocationState={isNewLocationState} />
           {isNewLocation
-            ? <NewLocationInput isNewLocalityState={isNewLocalityState} />
-            : <KnownLocationInput style={style} locationState={locationState} />
+            ? <NewLocationInput newLocationStates={newLocationStates} knownLocalityState={knownLocalityState} isNewLocalityState={isNewLocalityState} newLocalityStates={newLocalityStates} style={style} />
+            : <KnownLocationInput style={style} knownLocationState={knownLocationState} />
           }
         </>
     )
