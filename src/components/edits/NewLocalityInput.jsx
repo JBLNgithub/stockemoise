@@ -12,12 +12,12 @@ const NewLocalityInput = ({newLocalityStates, style}) => {
 
       <label htmlFor='city'>Ville*</label>
       <br />
-      <input className={style} type='text' name='city' required value={codePostal} onChange={(e) => setCodePostal(e.target.value)} />
+      <input className={style} type='text' name='city' required value={city} onChange={(e) => setCity(e.target.value)} />
       <br className='mb-4' />
 
       <label htmlFor='country'>Pays*</label>
       <br />
-      <input className={style} type='text' name='country' required value={codePostal} onChange={(e) => setCodePostal(e.target.value)} />
+      <input className={style} type='text' name='country' required value={country} onChange={(e) => setCountry(e.target.value)} />
       <br className='mb-4' />
     </>
   )

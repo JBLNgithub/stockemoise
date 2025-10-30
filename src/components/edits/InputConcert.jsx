@@ -5,18 +5,29 @@ import TitleInput from './TitleInput'
 import ContentInput from './ContentInput'
 import DatetimeInput from './DatetimeInput'
 import LocationInput from './LocationInput'
+import formatNewConcert from '../../utils/formatNewConcert'
 
 
 const InputConcert = ({concert}) => {
   const addHandler = async(e) => {
     e.preventDefault()
-    
-    const newConcert = {
-      // cover,
-      title,
-      content,
-      datetimeEvent
-    }
+
+    const newConcert = formatNewConcert(
+      title, 
+      content, 
+      datetimeEvent, 
+      isNewLocationState[0],
+      knownLocationState[0],
+      newLocationStates[0][0],
+      newLocationStates[1][0],
+      newLocationStates[2][0],
+      newLocationStates[3][0],
+      isNewLocalityState[0],
+      knownLocalityState[0],
+      newLocalityStates[0][0],
+      newLocalityStates[1][0],
+      newLocalityStates[2][0],
+    )
   
     console.log('newConcert :', newConcert )
   
@@ -41,13 +52,13 @@ const InputConcert = ({concert}) => {
   const isNewLocationState = useState(false)
   const isNewLocalityState = useState(false)
   // known location
-  const knownLocationState = useState(null)
+  const knownLocationState = useState('')
   // new location : {name :string, street: string, number: integer, additionalAddress: string}
-  const newLocationStates = [useState(''), useState(''), useState(null), useState('')]
+  const newLocationStates = [useState(''), useState(''), useState(''), useState('')]
   // known locality
-  const knownLocalityState = useState(null)
+  const knownLocalityState = useState('')
   // new locality : {code postal : number, city : string, country : string}
-  const newLocalityStates = [useState(null), useState(''), useState('')]
+  const newLocalityStates = [useState(''), useState(''), useState('')]
 
   const inputClass = 'bg-blue-400 rounded-sm text-neutral-800 px-2'
     

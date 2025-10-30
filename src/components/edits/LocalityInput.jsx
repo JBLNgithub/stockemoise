@@ -11,7 +11,7 @@ const LocalityInput = ({knownLocalityState, isNewLocalityState, newLocalityState
           <IsNewLocalityInput isNewLocalityState={isNewLocalityState} />
           {isNewLocality
             ? <NewLocalityInput newLocalityStates={newLocalityStates} style={style} />
-            : <KnownLocalityInput knownLocalityState={knownLocalityState} />
+            : <KnownLocalityInput knownLocalityState={knownLocalityState} style={style} />
           }
         </>
     )

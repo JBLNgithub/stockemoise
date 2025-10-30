@@ -47,6 +47,7 @@
   - update from article
     - may not be possible if no concert has a desired location (think about it)
     - and allow delete for wrong entries
+      - but then deleting already linked location would cause some event without location which should not be permited
 - make sideLink reload if same type of article (cause it's not accuratly loading when staying on the same type, possibly because article page is not unmounting, better fix may even be change state value without unmounting and remounting, wait isn't state remounting anyway ?)
 - responsive UI for every pages (except user UIs)
 
@@ -64,6 +65,7 @@
 - wrong password hard to read (change color)
 - UI/UX control panel
 - simplify router by using BrowserRouter
+- rename "locality" files to "localities"
 - formate concertEvent in backend instead of frontend
 - make fetch await once in data Access, so controller can have logic with status code and return await json
 - responsive login page and CRUD pages (UI/UX)
