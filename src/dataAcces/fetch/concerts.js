@@ -23,6 +23,36 @@ export const postConcert = async(concert) => {
     return await res.json()
 }
 
+export const postConcertAndLocation = async(concert) => {
+    const requestOptions = {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        method: 'POST',
+        credentials: 'include',
+        body: JSON.stringify(concert)
+    }
+    
+    const res = await fetch(`/api/concerts/with-location`, requestOptions)
+    return await res.json()
+}
+
+export const postConcertAndLocationAndLocality = async(concert) => {
+    const requestOptions = {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        method: 'POST',
+        credentials: 'include',
+        body: JSON.stringify(concert)
+    }
+    
+    const res = await fetch(`/api/concerts/with-location&locality`, requestOptions)
+    return await res.json()
+}
+
 export const deleteConcert = async(id) => {
     const requestOptions = {
         method: 'DELETE',

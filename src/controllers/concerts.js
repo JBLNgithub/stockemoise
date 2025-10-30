@@ -2,6 +2,8 @@ import {
     getNextConcerts as getNextC, 
     getConcert as getC,
     postConcert,
+    postConcertAndLocation,
+    postConcertAndLocationAndLocality,
     deleteConcert as deleteC
 } from '../dataAcces/fetch/concerts'
 
@@ -36,6 +38,28 @@ export const getConcert = async(id) => {
 export const addConcert = async(concert) => {
     try {
         const res = await postConcert(concert)
+        return res
+    }
+    catch(err) {
+        console.error(err)
+        return false
+    }
+}
+
+export const addConcertAndLocation = async(concert) => {
+    try {
+        const res = await postConcertAndLocation(concert)
+        return res
+    }
+    catch(err) {
+        console.error(err)
+        return false
+    }
+}
+
+export const addConcertAndLocationAndLocality = async(concert) => {
+    try {
+        const res = await postConcertAndLocationAndLocality(concert)
         return res
     }
     catch(err) {

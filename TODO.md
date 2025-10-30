@@ -20,7 +20,7 @@
 ## before demo
 
 - crud
-  - new event/concert with location
+  - new event
     - known locality
     - newConcert format
     - request to backend
@@ -28,6 +28,7 @@
 - update concert/news
 - protect routes
 - datetimes to string
+- content formating (replace \n by br/ ??)
 - setup a few cover to show
 
 ### before deploy
@@ -64,6 +65,7 @@
   - group tiles with person tiles in it
 - wrong password hard to read (change color)
 - UI/UX control panel
+- hover action : mouse not changing to the hand (which means it's a link)
 - simplify router by using BrowserRouter
 - rename "locality" files to "localities"
 - formate concertEvent in backend instead of frontend

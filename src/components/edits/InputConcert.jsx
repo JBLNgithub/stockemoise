@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import { useNavigate } from 'react-router-dom'
-import { addConcert } from '../../controllers/concerts'
+import { addConcert, addConcertAndLocation, addConcertAndLocationAndLocality } from '../../controllers/concerts'
 import TitleInput from './TitleInput'
 import ContentInput from './ContentInput'
 import DatetimeInput from './DatetimeInput'
@@ -30,12 +30,26 @@ const InputConcert = ({concert}) => {
     )
   
     console.log('newConcert :', newConcert )
-  
-    /* const res = await addConcert(newConcert)
-  
+
+    let res
+
+    if(!isNewLocationState[0]) {
+      res = await addConcert(newConcert)
+    }
+    else if(!isNewLocalityState[0]) {
+      res = await addConcertAndLocation(newConcert)
+    }
+    else {
+      res = await addConcertAndLocationAndLocality(newConcert)
+    }
+
     if(res.success) {
+      console.log('successfully added')
       navigate(`/concerts/${res.id}`)
-    } */
+    }
+    else {
+      console.log('add request failed')
+    }
   }
   
   const setHandler = (e) => {

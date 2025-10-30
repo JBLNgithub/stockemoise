@@ -1,5 +1,11 @@
+import { useEffect } from "react"
+
 const IsNewLocalityInput = ({isNewLocalityState}) => {
   const [isNewLocality, setIsNewLocality] = isNewLocalityState
+
+  useEffect(() => {
+    setIsNewLocality(false)
+  }, [])
 
   return (
     <>
