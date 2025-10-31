@@ -22,7 +22,7 @@ const SingleConcertControlPanel = () => {
 
   return (
     <>
-      <RedirectButton label='modifier le concert' />
+      <RedirectButton label='modifier le concert' path={`/concerts/modifier/${id}`} />
       <ActionButton label='supprimer le concert' action={deleteHandler} />
     </>
   )

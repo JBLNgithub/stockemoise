@@ -90,6 +90,7 @@
 - make country a separate table
 - write tests (no pain no gain)
 - make planning page and actualités page show only 10, a navigate throw every 10
+- add concert form and add news form has an hard coded value for location, if the hard coded location is not in locatios anymore, then it desync (fixe it by fetching the default value if it's an new concert while allowing a setter for modify concert)
 - allow admin to see as visitor
 - make sidebar scrolling
 - make read event return locations row in an object ????????? (forgot why i wrote that)

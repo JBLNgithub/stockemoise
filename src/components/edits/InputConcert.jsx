@@ -1,6 +1,6 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
-import { addConcert, addConcertAndLocation, addConcertAndLocationAndLocality } from '../../controllers/concerts'
+import { addConcert, addConcertAndLocation, addConcertAndLocationAndLocality, getConcert } from '../../controllers/concerts'
 import TitleInput from './TitleInput'
 import ContentInput from './ContentInput'
 import DatetimeInput from './DatetimeInput'
@@ -8,8 +8,8 @@ import LocationInput from './LocationInput'
 import formatNewConcert from '../../utils/formatNewConcert'
 
 
-const InputConcert = ({concert}) => {
-  const addHandler = async(e) => {
+const InputConcert = ({concertId}) => {
+  const submitHandler = async(e) => {
     e.preventDefault()
 
     const newConcert = formatNewConcert(
@@ -31,7 +31,7 @@ const InputConcert = ({concert}) => {
   
     console.log('newConcert :', newConcert )
 
-    let res
+    /* let res
 
     if(!isNewLocationState[0]) {
       res = await addConcert(newConcert)
@@ -49,12 +49,7 @@ const InputConcert = ({concert}) => {
     }
     else {
       console.log('add request failed')
-    }
-  }
-  
-  const setHandler = (e) => {
-      e.preventDefault()
-      console.log("TODO : modify concert submited")
+    } */
   }
 
   const navigate = useNavigate()
@@ -75,12 +70,30 @@ const InputConcert = ({concert}) => {
   const newLocalityStates = [useState(''), useState(''), useState('')]
 
   const inputClass = 'bg-blue-400 rounded-sm text-neutral-800 px-2'
+
+  useEffect(() => {
+    const fetchConcert = async() => {
+      const concert = await getConcert(concertId)
+
+      setTitle(concert.title)
+      setContent(concert.content)
+      setDatetimeEvent(concert.dateEvent)
+      knownLocationState[1](concert.location)
+    }
+    
+    if(concertId) {
+      fetchConcert()
+    }
+    else {
+      knownLocationState[1](1)
+    }     // this might fail one day cause it's an hard coded value, if ever the id is not in locations (for exemple the location is deleted) then a desync occurs
+  }, [])
     
   return (
     <div className="bg-neutral-800 text-neutral-200 rounded-2xl p-5">
-      <h2 className="text-center font-bold text-3xl mb-8">{concert ? 'Modifier le concert' : 'Ajouter un concert'}</h2>
+      <h2 className="text-center font-bold text-3xl mb-8">{concertId ? 'Modifier le concert' : 'Ajouter un concert'}</h2>
 
-      <form onSubmit={concert ? setHandler : addHandler}>
+      <form onSubmit={submitHandler}>
         <h4 className='text-center mb-4'>L'ajout de l'image d'en-tête arrivera prochainement</h4>
 
         <TitleInput title={title} setTitle={setTitle} style={inputClass} />
@@ -88,7 +101,7 @@ const InputConcert = ({concert}) => {
         <DatetimeInput datetimeEvent={datetimeEvent} setDatetimeEvent={setDatetimeEvent} style={inputClass} />
         <LocationInput knownLocationState={knownLocationState} isNewLocationState={isNewLocationState} newLocationStates={newLocationStates} knownLocalityState={knownLocalityState} isNewLocalityState={isNewLocalityState} newLocalityStates={newLocalityStates} style={inputClass} />
 
-        <input type="submit" className="bg-blue-800 hover:bg-blue-400 hover:text-neutral-800 py-2 px-4 rounded-full" value={concert ? 'Modifier' : 'Ajouter'} />
+        <input type="submit" className="bg-blue-800 hover:bg-blue-400 hover:text-neutral-800 py-2 px-4 rounded-full" value={concertId ? 'Modifier' : 'Ajouter'} />
       </form>
     
   </div>
