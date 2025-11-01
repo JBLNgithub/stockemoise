@@ -6,12 +6,25 @@ import ContentInput from './ContentInput'
 import DatetimeInput from './DatetimeInput'
 import LocationInput from './LocationInput'
 import formatNewConcert from '../../utils/formatNewConcert'
+import formatUpdatedConcert from '../../utils/formatUpdatedConcert'
 
 
 const InputConcert = ({concertId}) => {
   const submitHandler = async(e) => {
     e.preventDefault()
 
+    const res = concertId ? await sendUpdatedConcert(concertId) : await sendNewConcert()
+
+    if(res.success) {
+      console.log('successfully added')
+      navigate(`/concerts/${res.id}`)
+    }
+    else {
+      console.log('add request failed')
+    }
+  }
+  
+  const sendNewConcert = async() => {
     const newConcert = formatNewConcert(
       title, 
       content, 
@@ -28,28 +41,59 @@ const InputConcert = ({concertId}) => {
       newLocalityStates[1][0],
       newLocalityStates[2][0],
     )
-  
+
     console.log('newConcert :', newConcert )
 
-    /* let res
-
     if(!isNewLocationState[0]) {
-      res = await addConcert(newConcert)
+      return await addConcert(newConcert)
     }
     else if(!isNewLocalityState[0]) {
-      res = await addConcertAndLocation(newConcert)
+      return await addConcertAndLocation(newConcert)
     }
     else {
-      res = await addConcertAndLocationAndLocality(newConcert)
+      return await addConcertAndLocationAndLocality(newConcert)
+    }
+  }
+
+  const sendUpdatedConcert = async(concertId) => {
+    const updatedConcert = await formatUpdatedConcert(
+      concertId,
+      title, 
+      content, 
+      datetimeEvent, 
+      isNewLocationState[0],
+      knownLocationState[0],
+      newLocationStates[0][0],
+      newLocationStates[1][0],
+      newLocationStates[2][0],
+      newLocationStates[3][0],
+      isNewLocalityState[0],
+      knownLocalityState[0],
+      newLocalityStates[0][0],
+      newLocalityStates[1][0],
+      newLocalityStates[2][0],
+    )
+
+    console.log('updatedConcert :', updatedConcert )
+
+    if(!isNewLocationState[0]) {
+      // TODO
+      // return await setConcert(newConcert)
+      return {success: false}
+    }
+    else if(!isNewLocalityState[0]) {
+      // TODO
+      // return await setConcertAddLocation(newConcert)
+      alert("il n'est pas possible pour le moment d'ajouter un nouveau lieu en même temps que la modification d'un concert")
+      return {success: false}
+    }
+    else {
+      // TODO
+      // return await setConcertAddLocationAndLocality(newConcert)
+      alert("il n'est pas possible pour le moment d'ajouter un nouveau lieu en même temps que la modification d'un concert")
+      return {success: false}
     }
 
-    if(res.success) {
-      console.log('successfully added')
-      navigate(`/concerts/${res.id}`)
-    }
-    else {
-      console.log('add request failed')
-    } */
   }
 
   const navigate = useNavigate()
