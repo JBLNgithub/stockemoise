@@ -94,6 +94,7 @@
 
 ### more features that i'll most likely never do
 
+- make article.content support markdown syntax
 - allow admin to see as visitor
 - content support markdown syntaxe
 - allow filter event being concert or not

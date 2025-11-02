@@ -13,8 +13,6 @@ const datetimeToString = (datetime, format='full') => {
         [date, time] = dt.split(' ')
     }
 
-    console.log('date :', date)
-
     const [year, month, day] = date.split('-')          // WHY ITS WORKING ??? LIKE I NEED TO STRING TIME BUT NOT DATE ????? WHYYYYYY ??????
     const [hour, minute] = String(time).split(':')
 

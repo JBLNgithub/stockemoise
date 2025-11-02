@@ -6,6 +6,7 @@ import datetimeToString from '../utils/datetimeToString'
 
 
 const ArticlePage = ({article}) => {
+
     return (
         <>
             {!article ? 
@@ -27,7 +28,8 @@ const ArticlePage = ({article}) => {
                                 {article.dateRedaction && datetimeToString(article.dateRedaction)}
                             </h5>
                         </div>
-                        <p>{article.content}</p>
+                        {/* TODO : compute content properly one day, and make it support markdown syntax */}
+                        {article.content && String(article.content).split('\n').map((c, i) => <p key={i} className='mb-4'>{c}</p>)}
                     </section>
                     
                     {/*if it's an event */}
