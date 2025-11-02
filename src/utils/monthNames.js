@@ -7,7 +7,8 @@ const monthNames = {
         short: 'fev.',
         full: 'février'
     },
-    3: {short: 'mars',
+    3: {
+        short: 'mars',
         full: 'mars'
     },
     4: {
@@ -44,7 +45,7 @@ const monthNames = {
     },
     12: {
         short: 'dec.',
-        full: 'decembre'
+        full: 'décembre'
     }
 }
 

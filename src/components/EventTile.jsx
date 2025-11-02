@@ -2,6 +2,7 @@ import React from 'react'
 import monthNames from '../utils/monthNames'
 import { FaCalendar } from 'react-icons/fa'
 import {FaMapMarker} from 'react-icons/fa'
+import datetimeToString from '../utils/datetimeToString'
 
 
 const EventTile = ({event}) => {
@@ -12,7 +13,7 @@ const EventTile = ({event}) => {
             Informations
         </h3>
         <p className='my-2'>Le concert aura lieu le :</p>
-        <p className='bg-indigo-50 text-neutral-800 rounded-2xl py-1 font-bold'>{event.dateEvent}</p>
+        <p className='bg-indigo-50 text-neutral-800 rounded-2xl py-1 font-bold'>{datetimeToString(event.dateEvent)}</p>
         <p className='my-2'>et se déroulera à :</p>
         <p className='bg-indigo-50 text-neutral-800 rounded-2xl py-1 font-bold'>
             <FaMapMarker className='inline mr-1 mb-1' />

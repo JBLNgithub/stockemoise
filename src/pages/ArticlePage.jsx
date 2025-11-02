@@ -2,7 +2,7 @@ import NotFoundPage from '../pages/NotFoundPage'
 import getImageURL from '../utils/getImageURL'
 import { TbWriting } from 'react-icons/tb'
 import EventTile from '../components/EventTile'
-
+import datetimeToString from '../utils/datetimeToString'
 
 
 const ArticlePage = ({article}) => {
@@ -24,7 +24,7 @@ const ArticlePage = ({article}) => {
                             <h1 className='text-5xl font-bold mb-2'>{article.title}</h1>
                             <h5 className='text-base ml-3'>
                                 <TbWriting className='inline mr-1' />
-                                {article.dateRedaction}
+                                {article.dateRedaction && datetimeToString(article.dateRedaction)}
                             </h5>
                         </div>
                         <p>{article.content}</p>

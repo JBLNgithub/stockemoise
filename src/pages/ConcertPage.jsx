@@ -24,7 +24,8 @@ const ConcertPage = () => {
         }, [])
 
     return (
-        <ArticlePage article={concert} />
+        // TODO : make it returned only after it's loaded
+        <ArticlePage article={concert} />       
     )
 }
 
