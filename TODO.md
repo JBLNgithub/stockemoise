@@ -19,7 +19,6 @@
 
 ## before beta
 
-- datetimes to string
 - content formating (replace \n by br/ ??)
 - toastify
 - setup accounts for users (moi et laura en gros)
@@ -52,6 +51,7 @@
 ### after deploy
 
 - make protection for concert and news that does not exist outside of articlePage (articlePage should not have the logic for the not found page in it)
+- put loader animation instead of instantly returning components when fetching datas (smoother and prevent undefined calls)
 - sidebar
   - put sidelink into sidebar
     - transfer the list as props
