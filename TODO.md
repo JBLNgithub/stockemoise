@@ -17,22 +17,20 @@
   - dans sideLink
   - dans EventTile
 
-## before demo
+## before beta
 
-- crud
-  - new event
-    - known locality
-    - newConcert format
-    - request to backend
-  - new event/concert with location and locality
-- update news
 - protect routes
 - datetimes to string
 - content formating (replace \n by br/ ??)
+- toastify
+- setup accounts for users (moi et laura en gros)
 - setup a few cover to show
+
+=> BETA
 
 ### before deploy
 
+- update news
 - implements image upload
 - track author of articles
 - complete initDatas
