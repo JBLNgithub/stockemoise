@@ -19,7 +19,6 @@
 
 ## before beta
 
-- content formating (replace \n by br/ ??)
 - toastify
 - setup accounts for users (moi et laura en gros)
 - setup a few cover to show
