@@ -2,6 +2,10 @@ import {
     getAllNews as getAllN, 
     getNextNews as getNextN, 
     getNews as getN,
+    postNews,
+    postNewsAndEvent,
+    postNewsAndEventAndLocation,
+    postNewsAndEventAndLocationAndLocality,
     deleteNews as deleteN
 } from '../dataAcces/fetch/news'
 
@@ -25,6 +29,50 @@ export const getNews = async(id) => {
     catch (err) {
         console.error("TODO : controller.getNews")
         return null
+    }
+}
+
+export const addNews = async(news) => {
+    try {
+        const res = await postNews(news)
+        return res
+    }
+    catch(err) {
+        console.error(err)
+        return {success:false}
+    }
+}
+
+export const addNewsAndEvent = async(news) => {
+    try {
+        const res = await postNewsAndEvent(news)
+        return res
+    }
+    catch(err) {
+        console.error(err)
+        return {success:false}
+    }
+}
+
+export const addNewsAndEventtAndLocation = async(news) => {
+    try {
+        const res = await postNewsAndEventAndLocation(news)
+        return res
+    }
+    catch(err) {
+        console.error(err)
+        return false
+    }
+}
+
+export const addNewsAndEventAndLocationAndLocality = async(news) => {
+    try {
+        const res = await postNewsAndEventAndLocationAndLocality(news)
+        return res
+    }
+    catch(err) {
+        console.error(err)
+        return false
     }
 }
 

@@ -1,11 +1,8 @@
 import {useState, useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
-import { addConcert, addConcertAndLocation, addConcertAndLocationAndLocality, getConcert, setConcert } from '../../controllers/concerts'
-import {getNews} from '../../controllers/news'
+import {getNews, addNews, addNewsAndEvent, addNewsAndEventtAndLocation, addNewsAndEventAndLocationAndLocality} from '../../controllers/news'
 import TitleInput from './TitleInput'
 import ContentInput from './ContentInput'
-import DatetimeInput from './DatetimeInput'
-import LocationInput from './LocationInput'
 import IsEventInput from './IsEventInput'
 import formatNewNews from '../../utils/formatNewNews'
 import formatUpdatedNews from '../../utils/formatUpdatedNews'
@@ -19,7 +16,7 @@ const InputConcert = ({newsId}) => {
 
     if(res.success) {
       console.log('successfully added')
-      navigate(`/concerts/${res.id || newsId}`)
+      navigate(`/actualites/${res.id || newsId}`)
     }
     else {
       console.log('add request failed')
@@ -48,16 +45,18 @@ const InputConcert = ({newsId}) => {
     // TODO : remove console log
     console.log('new news :', newNews )
 
-    /* if(!isNewLocationState[0]) {
-      return await addConcert(newConcert)
+    if(!isEventState[0]) {
+      return await addNews(newNews)
+    }
+    else if(!isNewLocationState[0]) {
+      return await addNewsAndEvent(newNews)
     }
     else if(!isNewLocalityState[0]) {
-      return await addConcertAndLocation(newConcert)
+      return await addNewsAndEventtAndLocation(newNews)
     }
     else {
-      return await addConcertAndLocationAndLocality(newConcert)
-    } */
-   return {success:false}
+      return await addNewsAndEventAndLocationAndLocality(newNews)
+    }
   }
 
   const sendUpdatedNews = async(newsId) => {

@@ -1,6 +1,7 @@
 const UpdateNewsPage = () => {
+    // TODO
     return (
-        <div>UpdateNewsPage</div>
+        <div>Arrivera prochainement</div>
     )
 }
 
