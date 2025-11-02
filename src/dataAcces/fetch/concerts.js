@@ -53,6 +53,21 @@ export const postConcertAndLocationAndLocality = async(concert) => {
     return await res.json()
 }
 
+export const patchConcert = async(id, concert) => {
+    const requestOptions = {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        method: 'PATCH',
+        credentials: 'include',
+        body: JSON.stringify(concert)
+    }
+    
+    const res = await fetch(`/api/concerts/${id}`, requestOptions)
+    return await res.json()
+}
+
 export const deleteConcert = async(id) => {
     const requestOptions = {
         method: 'DELETE',

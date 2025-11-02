@@ -17,6 +17,8 @@ import ConcertPage from './pages/ConcertPage'
 import LoginPage from './pages/LoginPage'
 import AddConcertPage from './pages/edits/AddConcertPage'
 import UpdateConcertPage from './pages/edits/UpdateConcertPage'
+import AddNewsPage from './pages/edits/AddNewsPage'
+import UpdateNewsPage from './pages/edits/UpdateNewsPage'
 
 
 const App = () => {
@@ -40,6 +42,8 @@ const App = () => {
     {/* TODO : protect routes => only for Logged In users */}
     <Route path='/concerts/ajouter' element={<AddConcertPage />} />
     <Route path='/concerts/modifier/:id' element={<UpdateConcertPage />} />
+    <Route path='/actualites/ajouter' element={<AddNewsPage />} />
+    <Route path='/actualites/modifier/:id' element={<UpdateNewsPage />} />
 
     {/*this is specifically for gh-pages*/}
     <Route path='/stockemoise' element={<Navigate to='/' replace />} />

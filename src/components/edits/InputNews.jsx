@@ -1,33 +1,36 @@
 import {useState, useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
 import { addConcert, addConcertAndLocation, addConcertAndLocationAndLocality, getConcert, setConcert } from '../../controllers/concerts'
+import {getNews} from '../../controllers/news'
 import TitleInput from './TitleInput'
 import ContentInput from './ContentInput'
 import DatetimeInput from './DatetimeInput'
 import LocationInput from './LocationInput'
-import formatNewConcert from '../../utils/formatNewConcert'
-import formatUpdatedConcert from '../../utils/formatUpdatedConcert'
+import IsEventInput from './IsEventInput'
+import formatNewNews from '../../utils/formatNewNews'
+import formatUpdatedNews from '../../utils/formatUpdatedNews'
 
 
-const InputConcert = ({concertId}) => {
+const InputConcert = ({newsId}) => {
   const submitHandler = async(e) => {
     e.preventDefault()
 
-    const res = concertId ? await sendUpdatedConcert(concertId) : await sendNewConcert()
+    const res = newsId ? await sendUpdatedNews(newsId) : await sendNewNews()
 
     if(res.success) {
       console.log('successfully added')
-      navigate(`/concerts/${res.id || concertId}`)
+      navigate(`/concerts/${res.id || newsId}`)
     }
     else {
       console.log('add request failed')
     }
   }
   
-  const sendNewConcert = async() => {
-    const newConcert = formatNewConcert(
+  const sendNewNews = async() => {
+    const newNews = formatNewNews(
       title, 
-      content, 
+      content,
+      isEventState[0],
       datetimeEvent, 
       isNewLocationState[0],
       knownLocationState[0],
@@ -43,9 +46,9 @@ const InputConcert = ({concertId}) => {
     )
 
     // TODO : remove console log
-    console.log('newConcert :', newConcert )
+    console.log('new news :', newNews )
 
-    if(!isNewLocationState[0]) {
+    /* if(!isNewLocationState[0]) {
       return await addConcert(newConcert)
     }
     else if(!isNewLocalityState[0]) {
@@ -53,14 +56,16 @@ const InputConcert = ({concertId}) => {
     }
     else {
       return await addConcertAndLocationAndLocality(newConcert)
-    }
+    } */
+   return {success:false}
   }
 
-  const sendUpdatedConcert = async(concertId) => {
-    const updatedConcert = await formatUpdatedConcert(
-      concertId,
+  const sendUpdatedNews = async(newsId) => {
+    const updatedNews = await formatUpdatedNews(
+      newsId,
       title, 
-      content, 
+      content,
+      isEventState[0],
       datetimeEvent, 
       isNewLocationState[0],
       knownLocationState[0],
@@ -76,10 +81,10 @@ const InputConcert = ({concertId}) => {
     )
 
     // TODO : remove console log
-    console.log('updatedConcert :', updatedConcert )
+    console.log('updated news :', updatedNews )
 
-    if(!isNewLocationState[0]) {
-      return await setConcert(concertId, updatedConcert)
+    /* if(!isNewLocationState[0]) {
+      return await setConcert(newsId, updatedConcert)
     }
     else if(!isNewLocalityState[0]) {
       // TODO
@@ -92,8 +97,8 @@ const InputConcert = ({concertId}) => {
       // return await setConcertAddLocationAndLocality(newConcert)
       alert("il n'est pas possible pour le moment d'ajouter un nouveau lieu en même temps que la modification d'un concert")
       return {success: false}
-    }
-
+    } */
+    return {success: false}
   }
 
   const navigate = useNavigate()
@@ -102,6 +107,7 @@ const InputConcert = ({concertId}) => {
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
   const [datetimeEvent, setDatetimeEvent] = useState('')
+  const isEventState = useState(false)
   const isNewLocationState = useState(false)
   const isNewLocalityState = useState(false)
   // known location
@@ -116,36 +122,35 @@ const InputConcert = ({concertId}) => {
   const inputClass = 'bg-blue-400 rounded-sm text-neutral-800 px-2'
 
   useEffect(() => {
-    const fetchConcert = async() => {
-      const concert = await getConcert(concertId)
+    const fetchNews = async() => {
+      const singleNews = await getNews(newsId)
 
-      setTitle(concert.title)
-      setContent(concert.content)
-      setDatetimeEvent(concert.dateEvent)
-      knownLocationState[1](concert.location)
+      setTitle(singleNews.title)
+      setContent(singleNews.content)
+      setDatetimeEvent(singleNews.dateEvent)
+      knownLocationState[1](singleNews.location)
     }
     
-    if(concertId) {
-      fetchConcert()
+    if(newsId) {
+      fetchNews()
     }
     else {
       knownLocationState[1](1)
-    }     // this might fail one day cause it's an hard coded value, if ever the id is not in locations (for exemple the location is deleted) then a desync occurs
+    }     // TODO : this might fail one day cause it's an hard coded value, if ever the id is not in locations (for exemple the location is deleted) then a desync occurs
   }, [])
     
   return (
     <div className="bg-neutral-800 text-neutral-200 rounded-2xl p-5">
-      <h2 className="text-center font-bold text-3xl mb-8">{concertId ? 'Modifier le concert' : 'Ajouter un concert'}</h2>
+      <h2 className="text-center font-bold text-3xl mb-8">{newsId ? "Modifier l'actualité" : "Ajouter une actualité"}</h2>
 
       <form onSubmit={submitHandler}>
         <h4 className='text-center mb-4'>L'ajout de l'image d'en-tête arrivera prochainement</h4>
 
         <TitleInput title={title} setTitle={setTitle} style={inputClass} />
         <ContentInput content={content} setContent={setContent} style={inputClass} />
-        <DatetimeInput datetimeEvent={datetimeEvent} setDatetimeEvent={setDatetimeEvent} style={inputClass} />
-        <LocationInput knownLocationState={knownLocationState} isNewLocationState={isNewLocationState} newLocationStates={newLocationStates} knownLocalityState={knownLocalityState} isNewLocalityState={isNewLocalityState} newLocalityStates={newLocalityStates} style={inputClass} />
+        <IsEventInput style={inputClass} isEventState={isEventState} datetimeEvent={datetimeEvent} setDatetimeEvent={setDatetimeEvent} knownLocationState={knownLocationState} isNewLocationState={isNewLocationState} newLocationStates={newLocationStates} knownLocalityState={knownLocalityState} isNewLocalityState={isNewLocalityState} newLocalityStates={newLocalityStates} />
 
-        <input type="submit" className="bg-blue-800 hover:bg-blue-400 hover:text-neutral-800 py-2 px-4 rounded-full" value={concertId ? 'Modifier' : 'Ajouter'} />
+        <input type="submit" className="bg-blue-800 hover:bg-blue-400 hover:text-neutral-800 py-2 px-4 rounded-full" value={newsId ? 'Modifier' : 'Ajouter'} />
       </form>
     
   </div>

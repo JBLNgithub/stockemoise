@@ -25,7 +25,7 @@
     - newConcert format
     - request to backend
   - new event/concert with location and locality
-- update concert/news
+- update news
 - protect routes
 - datetimes to string
 - content formating (replace \n by br/ ??)
