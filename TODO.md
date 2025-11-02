@@ -19,7 +19,6 @@
 
 ## before beta
 
-- protect routes
 - datetimes to string
 - content formating (replace \n by br/ ??)
 - toastify

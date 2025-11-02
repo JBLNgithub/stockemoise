@@ -1,6 +1,7 @@
 import React from 'react'
 import {Route, createBrowserRouter, createRoutesFromElements, RouterProvider, Navigate} from 'react-router-dom'
 import MainLayout from './Layouts/MainLayout'
+import MustBeEitherLoggedInOrNot from './Layouts/MustBeEitherLoggedInOrNot'
 import HomePage from './pages/HomePage'
 import ActualitesPage from './pages/ActualitesPage'
 import HarmoniePage from './pages/HarmoniePage'
@@ -37,13 +38,18 @@ const App = () => {
     <Route path='/concerts/:id' element={<ConcertPage />} />
     <Route path='/contact' element={<ContactPage />} />
     <Route path='/article/:id' element={<ArticlePage />} />
-    <Route path='/connexion' element={<LoginPage />} />
 
-    {/* TODO : protect routes => only for Logged In users */}
-    <Route path='/concerts/ajouter' element={<AddConcertPage />} />
-    <Route path='/concerts/modifier/:id' element={<UpdateConcertPage />} />
-    <Route path='/actualites/ajouter' element={<AddNewsPage />} />
-    <Route path='/actualites/modifier/:id' element={<UpdateNewsPage />} />
+    <Route element={<MustBeEitherLoggedInOrNot mustBeLoggedIn={false} />}>
+      <Route path='/connexion' element={<LoginPage />} />
+    </Route>
+
+    <Route element={<MustBeEitherLoggedInOrNot mustBeLoggedIn={true} />}>
+      {/* TODO : protect routes => only for Logged In users */}
+      <Route path='/concerts/ajouter' element={<AddConcertPage />} />
+      <Route path='/concerts/modifier/:id' element={<UpdateConcertPage />} />
+      <Route path='/actualites/ajouter' element={<AddNewsPage />} />
+      <Route path='/actualites/modifier/:id' element={<UpdateNewsPage />} />
+    </Route>
 
     {/*this is specifically for gh-pages*/}
     <Route path='/stockemoise' element={<Navigate to='/' replace />} />
