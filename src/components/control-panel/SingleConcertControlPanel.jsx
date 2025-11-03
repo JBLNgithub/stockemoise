@@ -11,8 +11,12 @@ const SingleConcertControlPanel = () => {
 
   const deleteHandler = (e) => {
     e.preventDefault()
+
+    const deleteConfirmation = window.confirm('Supprimer le concert définitivement ?')
     
-    const res = deleteConcert(id)
+    let res
+    
+    if(deleteConfirmation) res = deleteConcert(id)
     
     if (res) {
       topThePage()

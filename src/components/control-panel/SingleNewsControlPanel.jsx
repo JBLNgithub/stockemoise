@@ -11,8 +11,12 @@ const SingleNewsControlPanel = () => {
   
     const deleteHandler = (e) => {
       e.preventDefault()
+
+      const deleteConfirmation = window.confirm("Supprimer l'actualité définitivement ?")
+
+      let res
       
-      const res = deleteNews(id)
+      if(deleteConfirmation) res = deleteNews(id)
       
       if (res) {
         topThePage()
