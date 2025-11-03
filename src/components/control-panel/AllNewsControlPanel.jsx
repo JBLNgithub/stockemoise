@@ -5,7 +5,6 @@ const AllNewsControlPanel = () => {
   return (
     <>
       <RedirectButton label='Ajouter une actualité' path='/actualites/ajouter' />
-      <RedirectButton label='Ajouter un évènement' />
     </>
   )
 }

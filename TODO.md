@@ -19,10 +19,6 @@
 
 ## before beta
 
-- toastify
-- setup accounts for users (moi et laura en gros)
-- setup a few cover to show
-
 => BETA
 
 ### before deploy
