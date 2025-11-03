@@ -6,6 +6,7 @@ import ContentInput from './ContentInput'
 import IsEventInput from './IsEventInput'
 import formatNewNews from '../../utils/formatNewNews'
 import formatUpdatedNews from '../../utils/formatUpdatedNews'
+import { toast } from 'react-toastify'
 
 
 const InputConcert = ({newsId}) => {
@@ -15,11 +16,12 @@ const InputConcert = ({newsId}) => {
     const res = newsId ? await sendUpdatedNews(newsId) : await sendNewNews()
 
     if(res.success) {
-      console.log('successfully added')
+      toast.success(`Actualité ${newsId ? 'modifiée' : 'ajoutée'}`)
       navigate(`/actualites/${res.id || newsId}`)
     }
     else {
-      console.log('add request failed')
+      // TODO : error message
+      toast.error("TODO : error message")
     }
   }
   

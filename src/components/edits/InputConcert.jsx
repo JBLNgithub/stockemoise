@@ -7,6 +7,7 @@ import DatetimeInput from './DatetimeInput'
 import LocationInput from './LocationInput'
 import formatNewConcert from '../../utils/formatNewConcert'
 import formatUpdatedConcert from '../../utils/formatUpdatedConcert'
+import { toast } from 'react-toastify'
 
 
 const InputConcert = ({concertId}) => {
@@ -16,11 +17,12 @@ const InputConcert = ({concertId}) => {
     const res = concertId ? await sendUpdatedConcert(concertId) : await sendNewConcert()
 
     if(res.success) {
-      console.log('successfully added')
+      toast.success(`Concert ${concertId ? 'modifié' : 'ajouté'}`)
       navigate(`/concerts/${res.id || concertId}`)
     }
     else {
-      console.log('add request failed')
+      // TODO : error message
+      toast.error("TODO : error message")
     }
   }
   

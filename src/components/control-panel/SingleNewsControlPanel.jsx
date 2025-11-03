@@ -3,6 +3,7 @@ import ActionButton from '../ActionButton'
 import { useParams, useNavigate } from 'react-router-dom'
 import { deleteNews } from '../../controllers/news'
 import topThePage from '../../utils/topThePage'
+import { toast } from 'react-toastify'
 
 
 const SingleNewsControlPanel = () => {
@@ -20,6 +21,7 @@ const SingleNewsControlPanel = () => {
       
       if (res) {
         topThePage()
+        toast.success('Actualité supprimée')
         navigate('/actualites')
       }
     }

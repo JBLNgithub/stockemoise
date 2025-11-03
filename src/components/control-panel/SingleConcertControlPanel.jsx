@@ -3,6 +3,7 @@ import RedirectButton from '../RedirectButton'
 import ActionButton from '../ActionButton'
 import { deleteConcert } from '../../controllers/concerts'
 import topThePage from '../../utils/topThePage'
+import { toast } from 'react-toastify'
 
 
 const SingleConcertControlPanel = () => {
@@ -20,6 +21,7 @@ const SingleConcertControlPanel = () => {
     
     if (res) {
       topThePage()
+      toast.success('Concert supprimé')
       navigate('/planning')
     }
   }
