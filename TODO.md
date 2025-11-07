@@ -42,6 +42,8 @@
 
 ### after deploy
 
+- make route protection if logged compute after isLoggedIn is called to db (cos if you move to a protected route with link, even if logged in, it will navigate back coz, context is not loaded yet)
+  - maybe do it after refresh/access token
 - put loader animation instead of instantly returning components when fetching datas (smoother and prevent undefined calls)
 - for protected route, replace useNavigate by <Navigate />
 - make protection for concert and news that does not exist outside of articlePage (articlePage should not have the logic for the not found page in it)
@@ -95,6 +97,7 @@
 - custom form (inscription for new students or for the traditional flea market)
 - moderator features
   - crud operator
+    - set opterator to either active or inactive but dont delete operator
 - admin features
   - crud moderator
 - email features (reset password, validate email, forgot password)

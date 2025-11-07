@@ -1,7 +1,34 @@
+import { useState, useEffect } from "react"
+import { useParams } from "react-router-dom"
+import InputNews from '../../components/edits/InputNews'
+import { getNews } from "../../controllers/news"
+import NotFoundPage from "../NotFoundPage"
+
+
 const UpdateNewsPage = () => {
-    // TODO
+    const {id} = useParams()
+    const [news, setNews] = useState(null)
+    const [isLoading, setIsLoading] = useState(true)
+
+    useEffect(() => {
+        const fetchNews = async() => {
+            const res = await getNews(id)
+            if(res) setNews(res)
+            setIsLoading(false)
+        }
+
+        fetchNews()
+    }, [])
+
     return (
-        <div>Arrivera prochainement</div>
+        <>
+            {isLoading
+                ? <p>loading...</p>         /* TODO : loading spinner */
+                : news
+                    ? <InputNews />
+                    : <NotFoundPage />
+            }
+        </>
     )
 }
 
