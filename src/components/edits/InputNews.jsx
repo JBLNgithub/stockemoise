@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
-import {getNews, addNews, addNewsAndEvent, addNewsAndEventtAndLocation, addNewsAndEventAndLocationAndLocality} from '../../controllers/news'
+import {addNews, addNewsAndEvent, addNewsAndEventtAndLocation, addNewsAndEventAndLocationAndLocality, updateNews} from '../../controllers/news'
 import TitleInput from './TitleInput'
 import ContentInput from './ContentInput'
 import IsEventInput from './IsEventInput'
@@ -9,15 +9,15 @@ import formatUpdatedNews from '../../utils/formatUpdatedNews'
 import { toast } from 'react-toastify'
 
 
-const InputConcert = ({newsId}) => {
+const InputConcert = ({id, newsToUpdate}) => {
   const submitHandler = async(e) => {
     e.preventDefault()
 
-    const res = newsId ? await sendUpdatedNews(newsId) : await sendNewNews()
+    const res = newsToUpdate ? await sendUpdatedNews(newsToUpdate) : await sendNewNews()
 
     if(res.success) {
-      toast.success(`Actualité ${newsId ? 'modifiée' : 'ajoutée'}`)
-      navigate(`/actualites/${res.id || newsId}`)
+      toast.success(`Actualité ${newsToUpdate ? 'modifiée' : 'ajoutée'}`)
+      navigate(`/actualites/${id || res.id}`)
     }
     else {
       // TODO : error message
@@ -61,12 +61,17 @@ const InputConcert = ({newsId}) => {
     }
   }
 
-  const sendUpdatedNews = async(newsId) => {
+  const sendUpdatedNews = async(newsToUpdate) => {
+    if((newsToUpdate.event && !isEventState[0]) || (!newsToUpdate.event && isEventState)) {   // XOR
+      console.log("can't modify event (non-)existance")
+      // TODO : inform user of it
+      return {success: false}
+    }
+
     const updatedNews = await formatUpdatedNews(
-      newsId,
+      newsToUpdate,
       title, 
       content,
-      isEventState[0],
       datetimeEvent, 
       isNewLocationState[0],
       knownLocationState[0],
@@ -84,8 +89,8 @@ const InputConcert = ({newsId}) => {
     // TODO : remove console log
     console.log('updated news :', updatedNews )
 
-    /* if(!isNewLocationState[0]) {
-      return await setConcert(newsId, updatedConcert)
+    if(!isNewLocationState[0]) {
+      return await updateNews(id, updatedNews)
     }
     else if(!isNewLocalityState[0]) {
       // TODO
@@ -98,8 +103,7 @@ const InputConcert = ({newsId}) => {
       // return await setConcertAddLocationAndLocality(newConcert)
       alert("il n'est pas possible pour le moment d'ajouter un nouveau lieu en même temps que la modification d'un concert")
       return {success: false}
-    } */
-    return {success: false}
+    }
   }
 
   const navigate = useNavigate()
@@ -124,15 +128,20 @@ const InputConcert = ({newsId}) => {
 
   useEffect(() => {
     const fetchNews = async() => {
-      const singleNews = await getNews(newsId)
+      setTitle(newsToUpdate.title)
+      setContent(newsToUpdate.content)
+      if(newsToUpdate.event) {
+        isEventState[1](true)
+        setDatetimeEvent(newsToUpdate.event.dateEvent)    // TODO : make it states to pass as prop
+        // make checkbox checked
+        knownLocationState[1](newsToUpdate.event.locationId)
 
-      setTitle(singleNews.title)
-      setContent(singleNews.content)
-      setDatetimeEvent(singleNews.dateEvent)
-      knownLocationState[1](singleNews.location)
+      }
+      // setDatetimeEvent(singleNews.dateEvent)
+      // knownLocationState[1](singleNews.location)
     }
     
-    if(newsId) {
+    if(newsToUpdate) {
       fetchNews()
     }
     else {
@@ -142,7 +151,7 @@ const InputConcert = ({newsId}) => {
     
   return (
     <div className="bg-neutral-800 text-neutral-200 rounded-2xl p-5">
-      <h2 className="text-center font-bold text-3xl mb-8">{newsId ? "Modifier l'actualité" : "Ajouter une actualité"}</h2>
+      <h2 className="text-center font-bold text-3xl mb-8">{newsToUpdate ? "Modifier l'actualité" : "Ajouter une actualité"}</h2>
 
       <form onSubmit={submitHandler}>
         <h4 className='text-center mb-4'>L'ajout de l'image d'en-tête arrivera prochainement</h4>
@@ -151,7 +160,7 @@ const InputConcert = ({newsId}) => {
         <ContentInput content={content} setContent={setContent} style={inputClass} />
         <IsEventInput style={inputClass} isEventState={isEventState} datetimeEvent={datetimeEvent} setDatetimeEvent={setDatetimeEvent} knownLocationState={knownLocationState} isNewLocationState={isNewLocationState} newLocationStates={newLocationStates} knownLocalityState={knownLocalityState} isNewLocalityState={isNewLocalityState} newLocalityStates={newLocalityStates} />
 
-        <input type="submit" className="bg-blue-800 hover:bg-blue-400 hover:text-neutral-800 py-2 px-4 rounded-full" value={newsId ? 'Modifier' : 'Ajouter'} />
+        <input type="submit" className="bg-blue-800 hover:bg-blue-400 hover:text-neutral-800 py-2 px-4 rounded-full" value={newsToUpdate ? 'Modifier' : 'Ajouter'} />
       </form>
     
   </div>

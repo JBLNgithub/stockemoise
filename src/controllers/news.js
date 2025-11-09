@@ -6,6 +6,7 @@ import {
     postNewsAndEvent,
     postNewsAndEventAndLocation,
     postNewsAndEventAndLocationAndLocality,
+    patchNews,
     deleteNews as deleteN
 } from '../dataAcces/fetch/news'
 
@@ -73,6 +74,17 @@ export const addNewsAndEventAndLocationAndLocality = async(news) => {
     catch(err) {
         console.error(err)
         return false
+    }
+}
+
+export const updateNews = async(id, news) => {
+    try {
+        const res = await patchNews(id, news)
+        return res
+    }
+    catch(err) {
+        console.error(err)
+        return {success: false}
     }
 }
 

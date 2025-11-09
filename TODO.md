@@ -19,7 +19,6 @@
 
 ### before deploy
 
-- update news
 - implements image upload
 - track author of articles
 - complete initDatas

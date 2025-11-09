@@ -1,43 +1,36 @@
-import { getConcert } from "../controllers/concerts"
+const formatUpdatedNews = async(newsToUpdate, title, content, datetimeEvent, isNewLocation, knownLocation, locationName, locationStreet, locationNumber, locationAdditionalAddress, isNewLocality, knownLocality, localityCodePostal, localityCity, localityCountry) => {
+    const updatedNews = {}
 
-
-const formatUpdatedNews = async(concertId, title, isEvent, content, datetimeEvent, isNewLocation, knownLocation, locationName, locationStreet, locationNumber, locationAdditionalAddress, isNewLocality, knownLocality, localityCodePostal, localityCity, localityCountry) => {
-    const concert = await getConcert(concertId)
-
-    const updatedConcert = {}
-
-    
-    if(concert.title != title) updatedConcert.title = title
-    if(concert.content != content) updatedConcert.content = content
-    if(concert.dateEvent != datetimeEvent) updatedConcert.datetimeEvent = datetimeEvent
+    if(newsToUpdate.title != title) updatedNews.title = title
+    if(newsToUpdate.content != content) updatedNews.content = content
+    if(newsToUpdate.event.dateEvent != datetimeEvent) updatedNews.event = {datetimeEvent}
 
     if(!isNewLocation) {
-      if(concert.location != knownLocation) updatedConcert.location = knownLocation
+        if(newsToUpdate.event.locationId != knownLocation) updatedNews.location = knownLocation
     }
     else {
-      updatedConcert.location = {
+        updatedNews.location = {
         name: locationName,
         street: locationStreet,
         number: locationNumber,
         additionalAddress: locationAdditionalAddress
-      }
-      
-      updatedConcert.location.additionalAddress = locationAdditionalAddress === '' ? null : locationAdditionalAddress
-
-      if(!isNewLocality) {
-        updatedConcert.location.locality = knownLocality
-      }
-      else {
-        updatedConcert.location.locality = {
-          codePostal: localityCodePostal,
-          city: localityCity,
-          country: localityCountry
         }
-      }
+        
+        updatedNews.location.additionalAddress = locationAdditionalAddress === '' ? null : locationAdditionalAddress
+
+        if(!isNewLocality) {
+        updatedNews.location.locality = knownLocality
+        }
+        else {
+        updatedNews.location.locality = {
+            codePostal: localityCodePostal,
+            city: localityCity,
+            country: localityCountry
+        }
+        }
     }
 
-    // return updatedConcert
-    return 'TODO'
+    return updatedNews
 }
 
 

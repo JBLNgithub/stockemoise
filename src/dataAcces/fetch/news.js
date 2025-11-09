@@ -75,6 +75,21 @@ export const postNewsAndEventAndLocationAndLocality = async(news) => {
     return await res.json()
 }
 
+export const patchNews = async(id, news) => {
+    const requestOptions = {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        method: 'PATCH',
+        credentials: 'include',
+        body: JSON.stringify(news)
+    }
+    
+    const res = await fetch(`/api/news/${id}`, requestOptions)
+    return await res.json()
+}
+
 export const deleteNews = async(id) => {
     const requestOptions = {
         method: 'DELETE',

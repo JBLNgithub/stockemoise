@@ -25,7 +25,7 @@ const UpdateNewsPage = () => {
             {isLoading
                 ? <p>loading...</p>         /* TODO : loading spinner */
                 : news
-                    ? <InputNews />
+                    ? <InputNews id={id} newsToUpdate={news} />
                     : <NotFoundPage />
             }
         </>
