@@ -29,6 +29,7 @@ const SingleNewsControlPanel = () => {
   return (
     <>
       <RedirectButton label="modifier l'actualité" path={`/actualites/modifier/${id}`} />
+      <RedirectButton label="modifier l'image d'en-tête" path={`/actualites/modifier-image/${id}`} />
       <ActionButton label="supprimer l'actualité" action={deleteHandler} />
     </>
   )

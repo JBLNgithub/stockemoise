@@ -68,6 +68,21 @@ export const patchConcert = async(id, concert) => {
     return await res.json()
 }
 
+export const postNewCover = async(id, formData) => {
+    const requestOptions = {
+        headers: {
+            'Accept': 'application/json',
+            // 'Content-Type': 'multipart/form-data'        // WHY THE F DOES THIS NEED TO BE REMOVED ??????? // may be because it needs a boundary value with the header that is not added if I add header myself... maybe idk...
+        },
+        method: 'POST',
+        credentials: 'include',
+        body: formData
+    }
+    
+    const res = await fetch(`/api/concerts/cover/${id}`, requestOptions)
+    return await res.json()
+}
+
 export const deleteConcert = async(id) => {
     const requestOptions = {
         method: 'DELETE',

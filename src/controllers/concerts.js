@@ -5,6 +5,7 @@ import {
     postConcertAndLocation,
     postConcertAndLocationAndLocality,
     patchConcert,
+    postNewCover,
     deleteConcert as deleteC
 } from '../dataAcces/fetch/concerts'
 
@@ -72,6 +73,17 @@ export const addConcertAndLocationAndLocality = async(concert) => {
 export const setConcert = async(id, concert) => {
     try {
         const res = await patchConcert(id, concert)
+        return res
+    }
+    catch(err) {
+        console.error(err)
+        return {success: false}
+    }
+}
+
+export const setNewConcertCover = async(id, formData) => {
+    try {
+        const res = await postNewCover(id, formData)
         return res
     }
     catch(err) {

@@ -20,6 +20,7 @@ import AddConcertPage from './pages/edits/AddConcertPage'
 import UpdateConcertPage from './pages/edits/UpdateConcertPage'
 import AddNewsPage from './pages/edits/AddNewsPage'
 import UpdateNewsPage from './pages/edits/UpdateNewsPage'
+import UpdateCoverPage from './pages/edits/UpdateCoverPage'
 
 
 const App = () => {
@@ -47,8 +48,10 @@ const App = () => {
       {/* TODO : protect routes => only for Logged In users */}
       <Route path='/concerts/ajouter' element={<AddConcertPage />} />
       <Route path='/concerts/modifier/:id' element={<UpdateConcertPage />} />
+      <Route path='/concerts/modifier-image/:id' element={<UpdateCoverPage type='concert' />} />
       <Route path='/actualites/ajouter' element={<AddNewsPage />} />
       <Route path='/actualites/modifier/:id' element={<UpdateNewsPage />} />
+      <Route path='/actualites/modifier-image/:id' element={<UpdateCoverPage type='news' />} />
     </Route>
 
     {/*this is specifically for gh-pages*/}
