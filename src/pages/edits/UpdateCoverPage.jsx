@@ -1,19 +1,33 @@
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import {setNewConcertCover} from '../../controllers/concerts.js'
+import {setNewNewsCover} from '../../controllers/news.js'
+import { toast } from 'react-toastify'
 
 
 const UpdateCoverPage = ({type}) => {
+    const navigate = useNavigate()
+
     const submitHandler = async(e) => {
         e.preventDefault()
 
         const formData = new FormData()
         formData.append('cover', cover[0])
 
+        let res
+
         if(type === 'concert') {
-            await setNewConcertCover(id, formData)
+            res = await setNewConcertCover(id, formData)
         }
         else {
-            
+            res = await setNewNewsCover(id, formData)
+        }
+
+        if(res.success) {
+            toast.success("Nouvelle image ajoutée.")
+            navigate(`/${type === 'concert' ? 'concerts' : 'actualites'}/${id}`)
+        }
+        else {
+            toast.error("something's gone wrong")
         }
     }
 

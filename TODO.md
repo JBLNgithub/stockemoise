@@ -19,8 +19,8 @@
 
 ### before deploy
 
-- implements image upload
 - track author of articles
+- country table
 - complete initDatas
 - make a footer
   - links to youtube, facebook
@@ -78,7 +78,7 @@
 - implements transactions when location and locality are created aswell
 - make contact manageable by admin
 - feed facebook ?
-- make country a separate table
+- update cover to an already uploaded image
 - write tests (no pain no gain)
 - make planning page and actualités page show only 10, a navigate throw every 10
 - add concert form and add news form has an hard coded value for location, if the hard coded location is not in locatios anymore, then it desync (fixe it by fetching the default value if it's an new concert while allowing a setter for modify concert)
