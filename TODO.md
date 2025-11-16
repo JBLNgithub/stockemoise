@@ -3,6 +3,8 @@
 - write content of
   - harmonie ?
     - photos ?
+    - youtube ?
+    - historique ?
   - location salle ?
   - stock up ?
     - photo ?
@@ -26,6 +28,7 @@
   - links to youtube, facebook
   - connection for members
   - links to contact
+  - licence
 - manage images
 - limit homeCards scaling
 - change password

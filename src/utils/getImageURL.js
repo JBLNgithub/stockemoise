@@ -9,6 +9,7 @@ function getImageURL(name) {
     }
     else {
         imgPath = `http://localhost:3000/api/uploads/${name || default_img}`
+        // imgPath = `https://stockemoise.onrender.com/api/uploads/${name || default_img}`
     }
 
     console.log("image requested to :", imgPath)    // TODO : remove when tested on prod
