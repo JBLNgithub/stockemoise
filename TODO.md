@@ -1,43 +1,50 @@
 ### contents
 
 - write content of
-  - harmonie ?
-    - photos ?
-    - youtube ?
-    - historique ?
-  - location salle ?
-  - stock up ?
-    - photo ?
-  - cours de musique ?
-  - location instrument ?
-  - Homecards
+    - harmonie ?
+        - photos ?
+        - youtube ?
+        - historique ?
+    - location salle ?
+    - stock up ?
+        - photo ?
+    - cours de musique ?
+    - location instrument ?
+    - Homecards
 - main picture of stock up
 - default picture
-  - news
-  - concert
+    - news
+    - concert
 - affichage addresse additionel ??
-  - dans sideLink
-  - dans EventTile
+    - dans sideLink
+    - dans EventTile
 
 ### before deploy
 
 - track author of articles
 - country table
+        - backend
+                - db
+                - routes
+                - models
+        - frontend
+                - new concert/news
+                - update concert/news
 - complete initDatas
 - make a footer
-  - links to youtube, facebook
-  - connection for members
-  - links to contact
-  - licence
+    - links to youtube, facebook
+    - connection for members
+    - links to contact
+    - licence
 - manage images
 - limit homeCards scaling
 - change password
 - hide sidebar card if empty
 - update location & locality
-  - update from article
-    - may not be possible if no concert has a desired location (think about it)
-    - and allow delete for wrong entries
-      - but then deleting already linked location would cause some event without location which should not be permited
+    - update from article
+        - may not be possible if no concert has a desired location (think about it)
+        - and allow delete for wrong entries
+            - but then deleting already linked location would cause some event without location which should not be permited
 - make sideLink reload if same type of article (cause it's not accuratly loading when staying on the same type, possibly because article page is not unmounting, better fix may even be change state value without unmounting and remounting, wait isn't state remounting anyway ?)
 - make youtube videos responsive
 - put loader animation instead of instantly returning components when fetching datas (smoother and prevent undefined calls)
@@ -46,17 +53,17 @@
 ### after deploy
 
 - make route protection if logged compute after isLoggedIn is called to db (cos if you move to a protected route with link, even if logged in, it will navigate back coz, context is not loaded yet)
-  - maybe do it after refresh/access token
+    - maybe do it after refresh/access token
 - for protected route, replace useNavigate by <Navigate />
 - make protection for concert and news that does not exist outside of articlePage (articlePage should not have the logic for the not found page in it)
 - sidebar
-  - put sidelink into sidebar
-    - transfer the list as props
-  - hide sidebar element if empty
+    - put sidelink into sidebar
+        - transfer the list as props
+    - hide sidebar element if empty
 - make css in css file
-  - remove bg-color from index.html
+    - remove bg-color from index.html
 - make contact number not break
-  - group tiles with person tiles in it
+    - group tiles with person tiles in it
 - wrong password hard to read (change color)
 - UI/UX control panel
 - hover action : mouse not changing to the hand (which means it's a link)
@@ -68,7 +75,7 @@
 - merge templatePage into mainlayout
 - make proxy logic if dev or prod (and why is '/api' still in url when it should be replace...)
 - validate date : after 'now' (when inserting in db)
-  - dynamic date can be compute (see doc)
+    - dynamic date can be compute (see doc)
 - make 1st article larger on list pages
 - indicate when a concert is coming very soon in sidebar
 - allow concert to be visible 1 hour after start and write "started 1 hour ago" in red
@@ -98,8 +105,8 @@
 - pasts concerts page
 - custom form (inscription for new students or for the traditional flea market)
 - moderator features
-  - crud operator
-    - set opterator to either active or inactive but dont delete operator
+    - crud operator
+        - set opterator to either active or inactive but dont delete operator
 - admin features
-  - crud moderator
+    - crud moderator
 - email features (reset password, validate email, forgot password)
