@@ -62,7 +62,7 @@ const InputConcert = ({id, newsToUpdate}) => {
   }
 
   const sendUpdatedNews = async(newsToUpdate) => {
-    if((newsToUpdate.event && !isEventState[0]) || (!newsToUpdate.event && isEventState)) {   // XOR
+    if((newsToUpdate.event && !isEventState[0]) || (!newsToUpdate.event && isEventState[0])) {   // XOR
       console.log("can't modify event (non-)existance")
       // TODO : inform user of it
       return {success: false}

@@ -21,16 +21,7 @@
 
 ### before deploy
 
-- track author of articles
-- country table
-        - backend
-                - db
-                - routes
-                - models
-        - frontend
-                - new concert/news
-                - update concert/news
-- complete initDatas
+- make it impossible to interact isEvent when modifying news
 - make a footer
     - links to youtube, facebook
     - connection for members
@@ -48,7 +39,17 @@
 - make sideLink reload if same type of article (cause it's not accuratly loading when staying on the same type, possibly because article page is not unmounting, better fix may even be change state value without unmounting and remounting, wait isn't state remounting anyway ?)
 - make youtube videos responsive
 - put loader animation instead of instantly returning components when fetching datas (smoother and prevent undefined calls)
+- make news page paging
+	- most likely just limit number as temporary fixe, then later make it ask only part of news to the backend
 - responsive UI for every pages (except user UIs)
+- country table
+    - backend
+        - db
+        - routes
+        - models
+    - frontend
+        - new concert/news
+        - update concert/news
 
 ### after deploy
 
@@ -98,6 +99,7 @@
 
 ### more features that i'll most likely never do
 
+- make logged users see who wrote articles
 - make article.content support markdown syntax
 - allow admin to see as visitor
 - content support markdown syntaxe
@@ -109,4 +111,7 @@
         - set opterator to either active or inactive but dont delete operator
 - admin features
     - crud moderator
+- upload images and make albums section
+	- make images smaller (and in jpg to take less space ?)
+	- set maximum size
 - email features (reset password, validate email, forgot password)
