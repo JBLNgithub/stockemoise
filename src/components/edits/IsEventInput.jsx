@@ -3,7 +3,7 @@ import LocationInput from "./LocationInput"
 import DatetimeInput from "./DatetimeInput"
 
 
-const IsEventInput = ({style, isEventState, datetimeEvent, setDatetimeEvent, knownLocationState, isNewLocationState, newLocationStates, knownLocalityState, isNewLocalityState, newLocalityStates}) => {
+const IsEventInput = ({style, isUpdate, isEventState, datetimeEvent, setDatetimeEvent, knownLocationState, isNewLocationState, newLocationStates, knownLocalityState, isNewLocalityState, newLocalityStates}) => {
     const [isEvent, setIsEvent] = isEventState
 
     useEffect(() => {
@@ -12,7 +12,7 @@ const IsEventInput = ({style, isEventState, datetimeEvent, setDatetimeEvent, kno
 
     return (
         <>
-            <input type="checkbox" name="isEvent" id="isEvent" className="mr-2" value={isEvent} onChange={e => setIsEvent(e.target.checked)} />
+            <input type="checkbox" name="isEvent" id="isEvent" className="mr-2" value={isEvent} disabled={isUpdate} onChange={e => setIsEvent(e.target.checked)} />
             <label htmlFor="isEvent">Évènement</label>
             <br className='mb-4' />
 

@@ -158,7 +158,7 @@ const InputConcert = ({id, newsToUpdate}) => {
 
         <TitleInput title={title} setTitle={setTitle} style={inputClass} />
         <ContentInput content={content} setContent={setContent} style={inputClass} />
-        <IsEventInput style={inputClass} isEventState={isEventState} datetimeEvent={datetimeEvent} setDatetimeEvent={setDatetimeEvent} knownLocationState={knownLocationState} isNewLocationState={isNewLocationState} newLocationStates={newLocationStates} knownLocalityState={knownLocalityState} isNewLocalityState={isNewLocalityState} newLocalityStates={newLocalityStates} />
+        <IsEventInput style={inputClass} isUpdate={newsToUpdate ? true : false} isEventState={isEventState} datetimeEvent={datetimeEvent} setDatetimeEvent={setDatetimeEvent} knownLocationState={knownLocationState} isNewLocationState={isNewLocationState} newLocationStates={newLocationStates} knownLocalityState={knownLocalityState} isNewLocalityState={isNewLocalityState} newLocalityStates={newLocalityStates} />
 
         <input type="submit" className="bg-blue-800 hover:bg-blue-400 hover:text-neutral-800 py-2 px-4 rounded-full" value={newsToUpdate ? 'Modifier' : 'Ajouter'} />
       </form>

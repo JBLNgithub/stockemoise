@@ -21,7 +21,6 @@
 
 ### before deploy
 
-- make it impossible to interact isEvent when modifying news
 - make a footer
     - links to youtube, facebook
     - connection for members
