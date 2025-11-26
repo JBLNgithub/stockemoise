@@ -21,25 +21,16 @@
 
 ### before deploy
 
-- make a footer
-    - links to youtube, facebook
-    - connection for members
-    - links to contact
-    - licence
-- manage images
-- limit homeCards scaling
 - change password
-- hide sidebar card if empty
+- make sideLink reload if same type of article (cause it's not accuratly loading when staying on the same type, possibly because article page is not unmounting, better fix may even be change state value without unmounting and remounting, wait isn't state remounting anyway ?)
+- put loader animation instead of instantly returning components when fetching datas (smoother and prevent undefined calls)
 - update location & locality
     - update from article
         - may not be possible if no concert has a desired location (think about it)
         - and allow delete for wrong entries
             - but then deleting already linked location would cause some event without location which should not be permited
-- make sideLink reload if same type of article (cause it's not accuratly loading when staying on the same type, possibly because article page is not unmounting, better fix may even be change state value without unmounting and remounting, wait isn't state remounting anyway ?)
+- manage images
 - make youtube videos responsive
-- put loader animation instead of instantly returning components when fetching datas (smoother and prevent undefined calls)
-- make news page paging
-	- most likely just limit number as temporary fixe, then later make it ask only part of news to the backend
 - responsive UI for every pages (except user UIs)
 - country table
     - backend
@@ -52,10 +43,17 @@
 
 ### after deploy
 
+- make news page paging
+	- most likely just limit number as temporary fixe, then later make it ask only part of news to the backend
+- hide sidebar card if empty
+    - make actuality side card show every articles written up to 1 month ago
+- limit homeCards scaling
 - make route protection if logged compute after isLoggedIn is called to db (cos if you move to a protected route with link, even if logged in, it will navigate back coz, context is not loaded yet)
     - maybe do it after refresh/access token
 - for protected route, replace useNavigate by <Navigate />
 - make protection for concert and news that does not exist outside of articlePage (articlePage should not have the logic for the not found page in it)
+- footer links logo (yt, fb)
+    - reduce contact button wideness
 - sidebar
     - put sidelink into sidebar
         - transfer the list as props
