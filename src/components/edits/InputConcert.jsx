@@ -115,10 +115,10 @@ const InputConcert = ({concertId, id, concertToUpdate}) => {
   // new locality : {code postal : number, city : string, country : int}
   const newLocalityStates = [useState(''), useState(''), useState(1)]   // 1 is an hard coded id of a location, carefull if it's ever deleted from countries
 
-  const inputClass = 'bg-blue-400 rounded-sm text-neutral-800 px-2'
+  const inputClass = 'bg-blue-400 rounded-sm text-neutral-800 px-2 w-full'
     
   return (
-    <div className="bg-neutral-800 text-neutral-200 rounded-2xl p-5">
+    <div className="bg-neutral-800 text-neutral-200 rounded-2xl px-10 py-5">
       <h2 className="text-center font-bold text-3xl mb-8">{concertId ? 'Modifier le concert' : 'Ajouter un concert'}</h2>
 
       <form onSubmit={submitHandler}>

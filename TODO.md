@@ -20,7 +20,6 @@
 
 ### before deploy
 
-- make content textArea bigger
 - responsive UI for every pages (except user UIs)
 
 ### Docker
