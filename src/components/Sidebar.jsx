@@ -1,6 +1,5 @@
 import {useState, useEffect} from 'react'
 import SideCard from './SideCard'
-import SideLink from './SideLink'
 import {getNextConcerts} from '../controllers/concerts'
 import {getRecentNews, getNextNews} from '../controllers/news'
 import { isLoggedIn } from '../controllers/users'
@@ -28,7 +27,6 @@ const Sidebar = () => {
 		fetchSidebar()
 	}, [])
 
-
     return (
         <>
             {loading
@@ -36,11 +34,11 @@ const Sidebar = () => {
                 : <>
                     {isLog && <ControlPanel />}
 
-                    <SideCard title='Prochains concerts' buttonLabel='planning' buttonPath='/planning' articles={nextConcerts} baselink='/concerts/' />
+                    {nextConcerts.length > 0 && <SideCard title='Prochains concerts' buttonLabel='planning' buttonPath='/planning' articles={nextConcerts} baselink='/concerts/' />}
 
-                    <SideCard title='Autres dates' buttonLabel='planning' buttonPath='/planning' articles={nextNews} baselink='/actualites/' />
+                    {nextNews.length > 0 && <SideCard title='Autres dates' buttonLabel='planning' buttonPath='/planning' articles={nextNews} baselink='/actualites/' />}
 
-                    <SideCard title='Actualités' buttonLabel="plus d'actus" buttonPath='/actualites' articles={recentNews} baselink='/actualites/' />
+                    {recentNews.length > 0 && <SideCard title='Actualités' buttonLabel="plus d'actus" buttonPath='/actualites' articles={recentNews} baselink='/actualites/' />}
             </>}
         </>
     )

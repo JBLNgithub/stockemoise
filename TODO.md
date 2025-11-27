@@ -21,8 +21,7 @@
 
 ### before deploy
 
-- make sideLink reload if same type of article (cause it's not accuratly loading when staying on the same type, possibly because article page is not unmounting, better fix may even be change state value without unmounting and remounting, wait isn't state remounting anyway ?)
-- put loader animation instead of instantly returning components when fetching datas (smoother and prevent undefined calls)
+- render only after fetching
 - update location & locality
     - update from article
         - may not be possible if no concert has a desired location (think about it)
