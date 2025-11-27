@@ -17,7 +17,7 @@ const IsEventInput = ({style, isUpdate, isEventState, datetimeEvent, setDatetime
             <br className='mb-4' />
 
             {isEvent && <DatetimeInput datetimeEvent={datetimeEvent} setDatetimeEvent={setDatetimeEvent} style={style} />}
-            {isEvent && <LocationInput knownLocationState={knownLocationState} isNewLocationState={isNewLocationState} newLocationStates={newLocationStates} knownLocalityState={knownLocalityState} isNewLocalityState={isNewLocalityState} newLocalityStates={newLocalityStates} style={style} />
+            {isEvent && <LocationInput isUpdate={isUpdate} knownLocationState={knownLocationState} isNewLocationState={isNewLocationState} newLocationStates={newLocationStates} knownLocalityState={knownLocalityState} isNewLocalityState={isNewLocalityState} newLocalityStates={newLocalityStates} style={style} />
             }
         </>
     )
