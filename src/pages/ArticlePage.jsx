@@ -6,7 +6,6 @@ import datetimeToString from '../utils/datetimeToString'
 
 
 const ArticlePage = ({article}) => {
-
     return (
         <>
             {!article ? 

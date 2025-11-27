@@ -21,7 +21,7 @@ const ConcertPage = () => {
             setOnConcert(true)
             fetchConcert()
             return unmountCleanup
-        }, [])
+        }, [id])
 
     return (
         // TODO : make it returned only after it's loaded

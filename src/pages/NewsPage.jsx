@@ -22,7 +22,7 @@ const NewsPage = () => {
         setOnNews(true)
         fetchNews()
         return unmountCleanup
-    }, [])
+    }, [id])
 
     return (
         <ArticlePage article={news} />
