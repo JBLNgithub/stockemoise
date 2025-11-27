@@ -9,6 +9,7 @@ const NewsPage = () => {
     const {id} = useParams()
     const [news, setNews] = useState({})
     const [onNews, setOnNews] = useContext(OnNews)
+    const [isLoading, setIsLoading] = useState(true)
 
     const unmountCleanup = () => {
         setOnNews(false)
@@ -17,6 +18,7 @@ const NewsPage = () => {
     useEffect(() => {
         const fetchNews = async() => {
             setNews(await getNews(id))
+            setIsLoading(false)
         }
 
         setOnNews(true)
@@ -25,7 +27,11 @@ const NewsPage = () => {
     }, [id])
 
     return (
-        <ArticlePage article={news} />
+        <>
+            {isLoading
+                ? <p>loading...</p>
+                : <ArticlePage article={news} />}
+        </>
     )
 }
 

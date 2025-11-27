@@ -9,6 +9,7 @@ const ConcertPage = () => {
     const {id} = useParams()
     const [concert, setConcert] = useState({})
     const [onConcert, setOnConcert] = useContext(OnConcert)
+    const [isLoading, setIsLoading] = useState(true)
 
     const unmountCleanup = () => {
         setOnConcert(false)
@@ -17,6 +18,7 @@ const ConcertPage = () => {
     useEffect(() => {
             const fetchConcert = async() => {
                 setConcert(await getConcert(id))
+                setIsLoading(false)
             }
             setOnConcert(true)
             fetchConcert()
@@ -24,8 +26,12 @@ const ConcertPage = () => {
         }, [id])
 
     return (
-        // TODO : make it returned only after it's loaded
-        <ArticlePage article={concert} />       
+        <>
+            {isLoading
+                ? <p>loading...</p>
+                : <ArticlePage article={concert} />
+            }
+        </>
     )
 }
 

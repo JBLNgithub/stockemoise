@@ -7,6 +7,7 @@ import { OnAllNews } from '../contexts/controlPanelContexts'
 const ActualitesPage = () => {
   const [allNews, setAllNews] = useState([])
   const [onAllnews, setOnAllNews] = useContext(OnAllNews)
+  const [isLoading, setIsLoading] = useState(true)
 
   const unmountCleanup = () => {
     setOnAllNews(false)
@@ -15,6 +16,7 @@ const ActualitesPage = () => {
   useEffect(() => {
     const fetchAllNews = async() => {
       setAllNews(await getAllNews())
+      setIsLoading(false)
     }
     
     setOnAllNews(true)
@@ -24,19 +26,23 @@ const ActualitesPage = () => {
 
   return (
     <>
-      <h1 className='text-5xl font-bold mb-10'>Actualités</h1>
+      {isLoading
+      ? <p>loading...</p>
+      :<>
+        <h1 className='text-5xl font-bold mb-10'>Actualités</h1>
 
-      <section className='grid grid-cols-2 gap-5'>
+        <section className='grid grid-cols-2 gap-5'>
 
-        {allNews.map((n) => <ArticleTile 
-          type='news' 
-          key={n.id}
-          id={n.id} 
-          title={n.title} 
-          cover={n.cover} 
-          date={n.dateRedaction}
-        />)}
-      </section>
+          {allNews.map((n) => <ArticleTile 
+            type='news' 
+            key={n.id}
+            id={n.id} 
+            title={n.title} 
+            cover={n.cover} 
+            date={n.dateRedaction}
+          />)}
+        </section>
+      </>}
     </>
   )
 }

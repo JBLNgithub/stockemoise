@@ -4,7 +4,7 @@ const IsNewLocalityInput = ({isNewLocalityState}) => {
   const [isNewLocality, setIsNewLocality] = isNewLocalityState
 
   useEffect(() => {
-    setIsNewLocality(false)
+    setIsNewLocality(false)     // TODO : is useEffect truly necessary ?
   }, [])
 
   return (

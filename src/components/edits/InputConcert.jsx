@@ -1,6 +1,6 @@
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 import { useNavigate } from 'react-router-dom'
-import { addConcert, addConcertAndLocation, addConcertAndLocationAndLocality, getConcert, setConcert } from '../../controllers/concerts'
+import { addConcert, addConcertAndLocation, addConcertAndLocationAndLocality, setConcert } from '../../controllers/concerts'
 import TitleInput from './TitleInput'
 import ContentInput from './ContentInput'
 import DatetimeInput from './DatetimeInput'
@@ -10,15 +10,15 @@ import formatUpdatedConcert from '../../utils/formatUpdatedConcert'
 import { toast } from 'react-toastify'
 
 
-const InputConcert = ({concertId}) => {
+const InputConcert = ({concertId, id, concertToUpdate}) => {
   const submitHandler = async(e) => {
     e.preventDefault()
 
-    const res = concertId ? await sendUpdatedConcert(concertId) : await sendNewConcert()
+    const res = id ? await sendUpdatedConcert(id) : await sendNewConcert()
 
     if(res.success) {
-      toast.success(`Concert ${concertId ? 'modifié' : 'ajouté'}`)
-      navigate(`/concerts/${res.id || concertId}`)
+      toast.success(`Concert ${id ? 'modifié' : 'ajouté'}`)
+      navigate(`/concerts/${res.id || id}`)
     }
     else {
       // TODO : error message
@@ -58,9 +58,9 @@ const InputConcert = ({concertId}) => {
     }
   }
 
-  const sendUpdatedConcert = async(concertId) => {
+  const sendUpdatedConcert = async(id) => {
     const updatedConcert = await formatUpdatedConcert(
-      concertId,
+      id,
       title, 
       content, 
       datetimeEvent, 
@@ -81,7 +81,7 @@ const InputConcert = ({concertId}) => {
     console.log('updatedConcert :', updatedConcert )
 
     if(!isNewLocationState[0]) {
-      return await setConcert(concertId, updatedConcert)
+      return await setConcert(id, updatedConcert)
     }
     else if(!isNewLocalityState[0]) {
       // TODO
@@ -101,13 +101,13 @@ const InputConcert = ({concertId}) => {
   const navigate = useNavigate()
   
   // TODO : cover
-  const [title, setTitle] = useState('')
-  const [content, setContent] = useState('')
-  const [datetimeEvent, setDatetimeEvent] = useState('')
+  const [title, setTitle] = useState(concertToUpdate?.title || '')
+  const [content, setContent] = useState(concertToUpdate?.content || '')
+  const [datetimeEvent, setDatetimeEvent] = useState(concertToUpdate?.dateEvent || '')
   const isNewLocationState = useState(false)
   const isNewLocalityState = useState(false)
   // known location
-  const knownLocationState = useState('')
+  const knownLocationState = useState(concertToUpdate?.location || 1)   // 1 is an hard coded id of a location, carefull if it's ever deleted from locations
   // new location : {name :string, street: string, number: integer, additionalAddress: string}
   const newLocationStates = [useState(''), useState(''), useState(''), useState('')]
   // known locality
@@ -116,32 +116,12 @@ const InputConcert = ({concertId}) => {
   const newLocalityStates = [useState(''), useState(''), useState('')]
 
   const inputClass = 'bg-blue-400 rounded-sm text-neutral-800 px-2'
-
-  useEffect(() => {
-    const fetchConcert = async() => {
-      const concert = await getConcert(concertId)
-
-      setTitle(concert.title)
-      setContent(concert.content)
-      setDatetimeEvent(concert.dateEvent)
-      knownLocationState[1](concert.location)
-    }
-    
-    if(concertId) {
-      fetchConcert()
-    }
-    else {
-      knownLocationState[1](1)
-    }     // this might fail one day cause it's an hard coded value, if ever the id is not in locations (for exemple the location is deleted) then a desync occurs
-  }, [])
     
   return (
     <div className="bg-neutral-800 text-neutral-200 rounded-2xl p-5">
       <h2 className="text-center font-bold text-3xl mb-8">{concertId ? 'Modifier le concert' : 'Ajouter un concert'}</h2>
 
       <form onSubmit={submitHandler}>
-        <h4 className='text-center mb-4'>L'ajout de l'image d'en-tête arrivera prochainement</h4>
-
         <TitleInput title={title} setTitle={setTitle} style={inputClass} />
         <ContentInput content={content} setContent={setContent} style={inputClass} />
         <DatetimeInput datetimeEvent={datetimeEvent} setDatetimeEvent={setDatetimeEvent} style={inputClass} />
@@ -153,7 +133,6 @@ const InputConcert = ({concertId}) => {
   </div>
   )
 }
-
 
 
 export default InputConcert

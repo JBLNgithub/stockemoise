@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import {addNews, addNewsAndEvent, addNewsAndEventtAndLocation, addNewsAndEventAndLocationAndLocality, updateNews} from '../../controllers/news'
 import TitleInput from './TitleInput'
@@ -13,10 +13,10 @@ const InputConcert = ({id, newsToUpdate}) => {
   const submitHandler = async(e) => {
     e.preventDefault()
 
-    const res = newsToUpdate ? await sendUpdatedNews(newsToUpdate) : await sendNewNews()
+    const res = id ? await sendUpdatedNews(newsToUpdate) : await sendNewNews()
 
     if(res.success) {
-      toast.success(`Actualité ${newsToUpdate ? 'modifiée' : 'ajoutée'}`)
+      toast.success(`Actualité ${id ? 'modifiée' : 'ajoutée'}`)
       navigate(`/actualites/${id || res.id}`)
     }
     else {
@@ -109,14 +109,14 @@ const InputConcert = ({id, newsToUpdate}) => {
   const navigate = useNavigate()
   
   // TODO : cover
-  const [title, setTitle] = useState('')
-  const [content, setContent] = useState('')
-  const [datetimeEvent, setDatetimeEvent] = useState('')
-  const isEventState = useState(false)
+  const [title, setTitle] = useState(newsToUpdate?.title || '')
+  const [content, setContent] = useState(newsToUpdate?.content || '')
+  const [datetimeEvent, setDatetimeEvent] = useState(newsToUpdate?.event?.dateEvent || '')
+  const isEventState = useState(newsToUpdate?.event ? true : false)
   const isNewLocationState = useState(false)
   const isNewLocalityState = useState(false)
   // known location
-  const knownLocationState = useState('')
+  const knownLocationState = useState(newsToUpdate?.event?.locationId || 1)     // 1 is an hard coded id of a location, carefull if it's ever deleted from locations
   // new location : {name :string, street: string, number: integer, additionalAddress: string}
   const newLocationStates = [useState(''), useState(''), useState(''), useState('')]
   // known locality
@@ -125,48 +125,21 @@ const InputConcert = ({id, newsToUpdate}) => {
   const newLocalityStates = [useState(''), useState(''), useState('')]
 
   const inputClass = 'bg-blue-400 rounded-sm text-neutral-800 px-2'
-
-  useEffect(() => {
-    const fetchNews = async() => {
-      setTitle(newsToUpdate.title)
-      setContent(newsToUpdate.content)
-      if(newsToUpdate.event) {
-        isEventState[1](true)
-        setDatetimeEvent(newsToUpdate.event.dateEvent)    // TODO : make it states to pass as prop
-        // make checkbox checked
-        knownLocationState[1](newsToUpdate.event.locationId)
-
-      }
-      // setDatetimeEvent(singleNews.dateEvent)
-      // knownLocationState[1](singleNews.location)
-    }
-    
-    if(newsToUpdate) {
-      fetchNews()
-    }
-    else {
-      knownLocationState[1](1)
-    }     // TODO : this might fail one day cause it's an hard coded value, if ever the id is not in locations (for exemple the location is deleted) then a desync occurs
-  }, [])
     
   return (
     <div className="bg-neutral-800 text-neutral-200 rounded-2xl p-5">
       <h2 className="text-center font-bold text-3xl mb-8">{newsToUpdate ? "Modifier l'actualité" : "Ajouter une actualité"}</h2>
 
       <form onSubmit={submitHandler}>
-        <h4 className='text-center mb-4'>L'ajout de l'image d'en-tête arrivera prochainement</h4>
-
         <TitleInput title={title} setTitle={setTitle} style={inputClass} />
         <ContentInput content={content} setContent={setContent} style={inputClass} />
         <IsEventInput style={inputClass} isUpdate={newsToUpdate ? true : false} isEventState={isEventState} datetimeEvent={datetimeEvent} setDatetimeEvent={setDatetimeEvent} knownLocationState={knownLocationState} isNewLocationState={isNewLocationState} newLocationStates={newLocationStates} knownLocalityState={knownLocalityState} isNewLocalityState={isNewLocalityState} newLocalityStates={newLocalityStates} />
 
         <input type="submit" className="bg-blue-800 hover:bg-blue-400 hover:text-neutral-800 py-2 px-4 rounded-full" value={newsToUpdate ? 'Modifier' : 'Ajouter'} />
       </form>
-    
   </div>
   )
 }
-
 
 
 export default InputConcert

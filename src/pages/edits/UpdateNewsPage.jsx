@@ -18,12 +18,12 @@ const UpdateNewsPage = () => {
         }
 
         fetchNews()
-    }, [])
+    }, [id])
 
     return (
         <>
             {isLoading
-                ? <p>loading...</p>         /* TODO : loading spinner */
+                ? <p>loading...</p>
                 : news
                     ? <InputNews id={id} newsToUpdate={news} />
                     : <NotFoundPage />
