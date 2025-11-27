@@ -20,7 +20,7 @@ const KnownLocalityInput = ({style, knownLocalityState}) => {
 
   return (
     <>
-      {isLoading && <>
+      {!isLoading && <>
         <label htmlFor='locality'>Localité*</label>
         <br />
         <select className={style} name='locality' required onChange={(e) => setKnownLocality(e.target.value)}>
