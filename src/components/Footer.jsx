@@ -1,24 +1,37 @@
-import { Link } from "react-router-dom"
-import topThePage from '../utils/topThePage'
-import {logout} from '../controllers/users'
+import FooterLinkList from "./footer/FooterLinkList"
+import ContactButton from "./ContactButton"
 
 
-const Footer = () => {
-  const handleLogout = (e) => {
-    e.preventDefault()
-    logout()
-  }
+const Footer = () => {  
+  // linkList = [[<name>, <path>], ...]
+  const socials = [
+    ['facebook', 'https://www.facebook.com/groups/stockemoise'],
+    ['youtube', 'https://www.youtube.com/@harmonieroyalelastockemois7550']
+  ]
   
+  const members = [
+    ['connexion', '/connexion']
+  ]
+
+  const year = new Date().getFullYear()
+
   return (
-    <>
-      <Link
-        to='/connexion'
-        onClick={topThePage}
-        className="text-neutral-800 hover:text-sky-600 py-2 px-4 mt-4"
-        >
-        Se connecter
-      </Link>
-    </>
+    <footer className="bg-neutral-800 text-neutral-200 text-center grid grid-cols-3 pt-10">
+
+      <div className="col-span-3 md:col-span-1">
+        <FooterLinkList title="Suivez-nous !" links={socials} />
+      </div>
+
+      <div className="col-span-3 md:col-span-1">
+        <FooterLinkList title='Membres' links={members} />
+      </div>
+
+      <div className="col-span-3 md:col-span-1">
+        <ContactButton />
+      </div>
+
+      <div className="col-span-3 py-5"><p>Copyrights © {year} la Stockemoise. Tous droits réservés.</p></div>
+    </footer>
   )
 }
 
