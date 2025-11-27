@@ -16,7 +16,6 @@
     - news
     - concert
 - affichage addresse additionel ??
-    - dans sideLink
     - dans EventTile
 
 ### before deploy
@@ -39,8 +38,6 @@
 	- most likely just limit number as temporary fixe, then later make it ask only part of news to the backend
 - make actuality side card show every articles written up to 1 month ago
 - limit homeCards scaling
-    - maybe do it after refresh/access token
-- for protected route, replace useNavigate by <Navigate />
 - make protection for concert and news that does not exist outside of articlePage (articlePage should not have the logic for the not found page in it)
 - footer links logo (yt, fb)
     - reduce contact button wideness
@@ -51,8 +48,11 @@
 - wrong password hard to read (change color)
 - UI/UX control panel
 - hover action : mouse not changing to the hand (which means it's a link)
+    - for exemple : disconnect button
 - make article.content support markdown syntax
+- format updated concert fetch a concert instead of receiving it from the loaded form, make it so it is passed instead of calling backend again
 - simplify router by using BrowserRouter
+- for protected route, replace useNavigate by <Navigate />
 - rename "locality" files to "localities"
 - formate concertEvent in backend instead of frontend
 - make fetch await once in data Access, so controller can have logic with status code and return await json
@@ -70,20 +70,18 @@
     - change password feature
 - make route protection if logged compute after isLoggedIn is called to db (cos if you move to a protected route with link, even if logged in, it will navigate back coz, context is not loaded yet)
 - manage CORS (don't allow all..)
-- use correctly the business layer (mainly for transaction stuff)
 - implements transactions when location and locality are created aswell
-- make contact manageable by admin
+- use correctly the business layer (mainly for transaction stuff)
 - feed facebook ?
-- update cover to an already uploaded image
+- make contact manageable by admin
 - write tests (no pain no gain)
-- make planning page and actualités page show only 10, a navigate throw every 10
-- add concert form and add news form has an hard coded value for location, if the hard coded location is not in locatios anymore, then it desync (fixe it by fetching the default value if it's an new concert while allowing a setter for modify concert)
-- format updated concert fetch a concert instead of receiving it from the loaded form, make it so it is passed instead of calling backend again
-- make sidebar scrolling
 - make read event return locations row in an object ????????? (forgot why i wrote that)
 
 ### more features that i'll most likely never do
 
+- make sidebar scrolling
+- update cover to an already uploaded image
+- add concert form and add news form has an hard coded value for location, if the hard coded location is not in locatios anymore, then it desync (fixe it by fetching the default value if it's an new concert while allowing a setter for modify concert)
 - CRUD location & locality
     - from editor dashboard
         - may not be possible if no concert has a desired location (think about it)
