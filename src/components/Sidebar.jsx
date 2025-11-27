@@ -10,63 +10,40 @@ import { IsLoggedInContext } from "../contexts/controlPanelContexts"
 
 
 const Sidebar = () => {
-  const [nextConcerts, setNextConcerts] = useState([])
-  const [nextNews, setNextNews] = useState([])
-  const [recentNews, setRecentNews] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [isLog, setIsLog] = useContext(IsLoggedInContext)
+	const [nextConcerts, setNextConcerts] = useState([])
+	const [nextNews, setNextNews] = useState([])
+	const [recentNews, setRecentNews] = useState([])
+	const [loading, setLoading] = useState(true)
+	const [isLog, setIsLog] = useContext(IsLoggedInContext)
 
-  useEffect(() => {
-    const fetchSidebar = async() => {
-      setNextConcerts(await getNextConcerts())
-      setNextNews(await getNextNews())
-      setRecentNews(await getRecentNews())
-      setIsLog(await isLoggedIn())
-    }
+	useEffect(() => {
+		const fetchSidebar = async() => {
+		setNextConcerts(await getNextConcerts())
+		setNextNews(await getNextNews())
+		setRecentNews(await getRecentNews())
+		setIsLog(await isLoggedIn())
+		setLoading(false)
+		}
 
-    fetchSidebar()
-  }, [])
+		fetchSidebar()
+	}, [])
 
 
-  return (
-    <>
-      {isLog && <ControlPanel />}
+    return (
+        <>
+            {loading
+                ? <p>loading...</p>
+                : <>
+                    {isLog && <ControlPanel />}
 
-      <SideCard title='Prochains concerts' buttonLabel='planning' path='/planning'>
-        {nextConcerts.map((c) => 
-          <SideLink 
-            baselink='/concerts/'
-            key={c.id} 
-            id={c.id}
-            title={c.title} 
-            location={c.locationName}
-            dateEvent={c.dateEvent}
-          />
-        )}
-      </SideCard>
+                    <SideCard title='Prochains concerts' buttonLabel='planning' buttonPath='/planning' articles={nextConcerts} baselink='/concerts/' />
 
-      <SideCard title='Autres dates' buttonLabel='planning' path='/planning'>
-        {nextNews.map(c => <SideLink
-          baselink='/actualites/'
-          key={c.id}
-          id={c.id}
-          title={c.title}
-          location={c.locationName}
-          dateEvent={c.dateEvent}
-        />)}
-      </SideCard>
+                    <SideCard title='Autres dates' buttonLabel='planning' buttonPath='/planning' articles={nextNews} baselink='/actualites/' />
 
-      <SideCard title='Actualités' buttonLabel="plus d'actus" path='/actualites'>
-        {recentNews.map((n) => 
-          <SideLink
-            baselink='/actualites/'
-            key={n.id} 
-            id={n.id} 
-            title={n.title} />
-        )}
-      </SideCard>
-    </>
-  )
+                    <SideCard title='Actualités' buttonLabel="plus d'actus" buttonPath='/actualites' articles={recentNews} baselink='/actualites/' />
+            </>}
+        </>
+    )
 }
 
 export default Sidebar
