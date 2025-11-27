@@ -21,15 +21,6 @@
 
 ### before deploy
 
-- render only after fetching
-- update location & locality
-    - update from article
-        - may not be possible if no concert has a desired location (think about it)
-        - and allow delete for wrong entries
-            - but then deleting already linked location would cause some event without location which should not be permited
-- manage images
-- make youtube videos responsive
-- responsive UI for every pages (except user UIs)
 - country table
     - backend
         - db
@@ -38,15 +29,24 @@
     - frontend
         - new concert/news
         - update concert/news
+- make content textArea bigger
+- responsive UI for every pages (except user UIs)
+
+### Docker
+
+### postgreSQL
+
+### pre deploy
 
 ### after deploy
 
+- redo mobile navbar
+- manage images
+- make youtube videos responsive
 - make news page paging
 	- most likely just limit number as temporary fixe, then later make it ask only part of news to the backend
-- hide sidebar card if empty
-    - make actuality side card show every articles written up to 1 month ago
+- make actuality side card show every articles written up to 1 month ago
 - limit homeCards scaling
-- make route protection if logged compute after isLoggedIn is called to db (cos if you move to a protected route with link, even if logged in, it will navigate back coz, context is not loaded yet)
     - maybe do it after refresh/access token
 - for protected route, replace useNavigate by <Navigate />
 - make protection for concert and news that does not exist outside of articlePage (articlePage should not have the logic for the not found page in it)
@@ -63,6 +63,7 @@
 - wrong password hard to read (change color)
 - UI/UX control panel
 - hover action : mouse not changing to the hand (which means it's a link)
+- make article.content support markdown syntax
 - simplify router by using BrowserRouter
 - rename "locality" files to "localities"
 - formate concertEvent in backend instead of frontend
@@ -76,10 +77,10 @@
 - indicate when a concert is coming very soon in sidebar
 - allow concert to be visible 1 hour after start and write "started 1 hour ago" in red
 - make init news accurate dateRedaction
-- delete location and delete locality features
 - isCanceled feature
 - implements auth (refresh/access token)
     - change password feature
+- make route protection if logged compute after isLoggedIn is called to db (cos if you move to a protected route with link, even if logged in, it will navigate back coz, context is not loaded yet)
 - manage CORS (don't allow all..)
 - use correctly the business layer (mainly for transaction stuff)
 - implements transactions when location and locality are created aswell
@@ -95,8 +96,12 @@
 
 ### more features that i'll most likely never do
 
+- CRUD location & locality
+    - from editor dashboard
+        - may not be possible if no concert has a desired location (think about it)
+        - and allow delete for wrong entries
+            - but then deleting already linked location would cause some event without location which should not be permited
 - make logged users see who wrote articles
-- make article.content support markdown syntax
 - allow admin to see as visitor
 - content support markdown syntaxe
 - allow filter event being concert or not
