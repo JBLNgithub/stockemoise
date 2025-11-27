@@ -112,8 +112,8 @@ const InputConcert = ({concertId, id, concertToUpdate}) => {
   const newLocationStates = [useState(''), useState(''), useState(''), useState('')]
   // known locality
   const knownLocalityState = useState('')
-  // new locality : {code postal : number, city : string, country : string}
-  const newLocalityStates = [useState(''), useState(''), useState('')]
+  // new locality : {code postal : number, city : string, country : int}
+  const newLocalityStates = [useState(''), useState(''), useState(1)]   // 1 is an hard coded id of a location, carefull if it's ever deleted from countries
 
   const inputClass = 'bg-blue-400 rounded-sm text-neutral-800 px-2'
     
@@ -129,8 +129,7 @@ const InputConcert = ({concertId, id, concertToUpdate}) => {
 
         <input type="submit" className="bg-blue-800 hover:bg-blue-400 hover:text-neutral-800 py-2 px-4 rounded-full" value={concertId ? 'Modifier' : 'Ajouter'} />
       </form>
-    
-  </div>
+    </div>
   )
 }
 

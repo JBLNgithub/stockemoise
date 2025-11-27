@@ -21,14 +21,6 @@
 
 ### before deploy
 
-- country table
-    - backend
-        - db
-        - routes
-        - models
-    - frontend
-        - new concert/news
-        - update concert/news
 - make content textArea bigger
 - responsive UI for every pages (except user UIs)
 
@@ -52,10 +44,6 @@
 - make protection for concert and news that does not exist outside of articlePage (articlePage should not have the logic for the not found page in it)
 - footer links logo (yt, fb)
     - reduce contact button wideness
-- sidebar
-    - put sidelink into sidebar
-        - transfer the list as props
-    - hide sidebar element if empty
 - make css in css file
     - remove bg-color from index.html
 - make contact number not break
