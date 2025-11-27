@@ -19,7 +19,7 @@ const KnownLocationInput = ({knownLocationState, style}) => {
 
   return (
     <>
-      {isLoading && <>
+      {!isLoading && <>
         <label htmlFor='location'>Lieu*</label>
         <br />
         <select className={style} name='location' required onChange={(e) => setKnownLocation(e.target.value)} value={knownLocation} >
