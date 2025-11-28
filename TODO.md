@@ -18,10 +18,6 @@
 - affichage addresse additionel ??
     - dans EventTile
 
-### before deploy
-
-- responsive UI for every pages (except user UIs)
-
 ### Docker
 
 ### postgreSQL
@@ -30,9 +26,9 @@
 
 ### after deploy
 
+- make youtube videos responsive
 - redo mobile navbar
 - manage images
-- make youtube videos responsive
 - make news page paging
 	- most likely just limit number as temporary fixe, then later make it ask only part of news to the backend
 - make actuality side card show every articles written up to 1 month ago

@@ -18,15 +18,15 @@ const Footer = () => {
   return (
     <footer className="bg-neutral-800 text-neutral-200 text-center grid grid-cols-3 pt-10">
 
-      <div className="col-span-3 md:col-span-1">
+      <div className="col-span-3 md:col-span-1 my-3">
         <FooterLinkList title="Suivez-nous !" links={socials} />
       </div>
 
-      <div className="col-span-3 md:col-span-1">
+      <div className="col-span-3 md:col-span-1 my-3">
         <FooterLinkList title='Membres' links={members} />
       </div>
 
-      <div className="col-span-3 md:col-span-1">
+      <div className="col-span-3 md:col-span-1 my-3">
         <ContactButton />
       </div>
 
