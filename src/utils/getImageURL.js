@@ -1,6 +1,7 @@
 function getImageURL(name) {
     const loadProd_force = true
-    const default_img = 'placeHolder.png'
+    // const default_img = 'placeHolder.png'
+    const default_img = 'default-image.jpg'
 
     let imgPath
 

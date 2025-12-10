@@ -11,26 +11,25 @@
     - cours de musique ?
     - location instrument ?
     - Homecards
-- main picture of stock up
-- default picture
-    - news
-    - concert
+- main picture of Stock'Up
 - affichage addresse additionel ??
-    - dans EventTile
+    - dans EventTile ?
 
-### Docker
+### TODO
 
-### postgreSQL
+`TO DEPLOY : add an adapter (model router) in backend to easily request from postgresql or sqlite3`
 
-### pre deploy
-
-### after deploy
-
-- make youtube videos responsive
+- limit news page number of news shown (temporary fixe)
+- hide time on article writing
 - redo mobile navbar
-- manage images
+- make youtube videos responsive
+
+`-> Deploy on preprod here`
+
+- implements auth (refresh/access token)
+    - change password feature
 - make news page paging
-	- most likely just limit number as temporary fixe, then later make it ask only part of news to the backend
+- manage images
 - make actuality side card show every articles written up to 1 month ago
 - limit homeCards scaling
 - make protection for concert and news that does not exist outside of articlePage (articlePage should not have the logic for the not found page in it)
@@ -61,8 +60,6 @@
 - allow concert to be visible 1 hour after start and write "started 1 hour ago" in red
 - make init news accurate dateRedaction
 - isCanceled feature
-- implements auth (refresh/access token)
-    - change password feature
 - make route protection if logged compute after isLoggedIn is called to db (cos if you move to a protected route with link, even if logged in, it will navigate back coz, context is not loaded yet)
 - manage CORS (don't allow all..)
 - implements transactions when location and locality are created aswell
