@@ -18,7 +18,7 @@ const StockUpPage = () => {
 
       <section className='text-center my-20'>
         <div>
-          <iframe width="640" height="360" src="https://www.youtube.com/embed/LM9xqCxtcGE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe width="360" height="203" src="https://www.youtube.com/embed/LM9xqCxtcGE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
       </section>
     </>
