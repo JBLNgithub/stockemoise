@@ -2,7 +2,7 @@ import monthNames from "./monthNames"
 
 
 // format is either 'full' or 'short'
-const datetimeToString = (datetime, format='full') => {
+const datetimeToString = (datetime, format='full', withTime=true) => {
     const dt = String(datetime)
     let date, time
 
@@ -16,7 +16,9 @@ const datetimeToString = (datetime, format='full') => {
     const [year, month, day] = date.split('-')          // WHY ITS WORKING ??? LIKE I NEED TO STRING TIME BUT NOT DATE ????? WHYYYYYY ??????
     const [hour, minute] = String(time).split(':')
 
-    return `${day} ${monthNames[parseInt(month)][format]} ${year} à ${hour}:${minute}`
+    const dateString = `${day} ${monthNames[parseInt(month)][format]} ${year}${withTime ? ` à ${hour}:${minute}` : ''}`
+
+    return dateString
     // return datetime
 }
 

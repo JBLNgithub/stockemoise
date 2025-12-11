@@ -24,7 +24,7 @@ const ArticlePage = ({article}) => {
                             <h1 className='text-5xl font-bold mb-2'>{article.title}</h1>
                             <h5 className='text-base ml-3'>
                                 <TbWriting className='inline mr-1' />
-                                {article.dateRedaction && datetimeToString(article.dateRedaction)}
+                                {article.dateRedaction && datetimeToString(article.dateRedaction, 'full', false)}
                             </h5>
                         </div>
                         {/* TODO : compute content properly one day, and make it support markdown syntax */}
