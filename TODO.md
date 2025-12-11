@@ -19,7 +19,6 @@
 
 `TO DEPLOY : add an adapter (model router) in backend to easily request from postgresql or sqlite3`
 
-- hide time on article writing
 - redo mobile navbar
 - make youtube videos responsive
 - limit news page number of news shown (temporary fixe)
