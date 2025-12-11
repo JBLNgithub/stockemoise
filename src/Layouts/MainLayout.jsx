@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom'
 import Navbar from '../components/Navbar'
+import NavbarV2 from '../components/navbar/NavbarV2'
 import TemplatePage from '../pages/TemplatePage'
 import Footer from '../components/Footer'
 import { ToastContainer } from 'react-toastify'
@@ -10,7 +11,7 @@ const MainLayout = () => {
     return (
         <>
             <ToastContainer />
-            <Navbar />
+            <NavbarV2 />
 
             <TemplatePage>
                 <Outlet />
