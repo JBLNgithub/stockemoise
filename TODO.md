@@ -19,14 +19,11 @@
 
 `TO DEPLOY : add an adapter (model router) in backend to easily request from postgresql or sqlite3`
 
-- redo mobile navbar
-- make youtube videos responsive
-- limit news page number of news shown (temporary fixe)
-
 `-> Deploy on preprod here`
 
 - implements auth (refresh/access token)
     - change password feature
+- make youtube videos responsive
 - make news page paging
 - manage images
 - make actuality side card show every articles written up to 1 month ago
