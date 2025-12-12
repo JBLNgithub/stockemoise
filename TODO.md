@@ -19,10 +19,10 @@
 
 `TO DEPLOY : add an adapter (model router) in backend to easily request from postgresql or sqlite3`
 
-`-> Deploy on preprod here`
-
 - implements auth (refresh/access token)
     - change password feature
+- make article.content support markdown syntax
+- integrate google map to location in contact
 - make youtube videos responsive
 - make news page paging
 - manage images
@@ -37,9 +37,6 @@
     - group tiles with person tiles in it
 - wrong password hard to read (change color)
 - UI/UX control panel
-- hover action : mouse not changing to the hand (which means it's a link)
-    - for exemple : disconnect button
-- make article.content support markdown syntax
 - format updated concert fetch a concert instead of receiving it from the loaded form, make it so it is passed instead of calling backend again
 - simplify router by using BrowserRouter
 - for protected route, replace useNavigate by <Navigate />
