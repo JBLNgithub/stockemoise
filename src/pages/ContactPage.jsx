@@ -1,6 +1,6 @@
-import React from 'react'
 import imgLocation from '../assets/images/plan-stockemoise.png'
 import {FaEnvelope} from 'react-icons/fa'
+
 
 const ContactPage = () => {
   return (
@@ -45,6 +45,7 @@ const ContactPage = () => {
         <p className='my-2'>
           Laura Gosselin : 
           <span className='mx-3'>0494/49 76 94</span>
+          <span className='mx-3'>lauragosselin@hotmail.com</span>
         </p>
       </div>
 

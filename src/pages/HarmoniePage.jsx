@@ -12,7 +12,7 @@ const HarmoniePage = () => {
         cover={cover}
       >
         <section className='my-10'>
-          <p>L'Harmonie Royale la Stockemoise d'Arlon est un rassemblement de musiciens amateurs de tous âges dans le village de Stockem. Constiuée d'instruments à vent et de percussions, l'harmonie aborde un répertoire vaste allant de la musique classique jusqu'à la musique populaire en passant par le jazz et autres joyeusetés. Des concerts sont organisé régulièrement.<br className='mb-5' /> Les répétitions ont lieu chaque vendredi à Stockem. Pour rejoindre l'harmonie, il faut savoir jouer d'un instrument. N'hésitez pas à prendre contact pour plus d'informations !
+          <p>L'Harmonie Royale la Stockemoise d'Arlon est un rassemblement de musiciens amateurs de tous âges dans le village de Stockem. Constiuée principalement d'instruments à vent et de percussions, l'harmonie aborde un répertoire vaste allant de la musique classique jusqu'à la musique populaire en passant par le jazz et autres joyeusetés. Des concerts sont organisés régulièrement.<br className='mb-5' /> Les répétitions ont lieu chaque vendredi à Stockem.
           </p>
         </section>
       </CommonPageHeader>

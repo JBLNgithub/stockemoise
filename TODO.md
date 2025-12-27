@@ -1,19 +1,12 @@
 ### contents
 
-- write content of
+- photos
     - harmonie ?
-        - photos ?
-        - youtube ?
-        - historique ?
-    - location salle ?
-    - stock up ?
-        - photo ?
-    - cours de musique ?
-    - location instrument ?
-    - Homecards
-- main picture of Stock'Up
+    - location salle
+    - stock'Up
 - affichage addresse additionel ??
     - dans EventTile ?
+- numéro addresse Sacré-Coeur
 
 ### TODO
 
@@ -49,6 +42,7 @@
 - validate date : after 'now' (when inserting in db)
     - dynamic date can be compute (see doc)
 - make 1st article larger on list pages
+- use styled font for title
 - indicate when a concert is coming very soon in sidebar
 - allow concert to be visible 1 hour after start and write "started 1 hour ago" in red
 - make init news accurate dateRedaction

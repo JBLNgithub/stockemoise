@@ -1,6 +1,4 @@
-import React from 'react'
 import cover from '../assets/images/stockemoiseCoursMusique.jpg'
-import RedirectButton from '../components/RedirectButton'
 import CommonPageHeader from '../components/CommonPageHeader'
 
 const CoursDeMusiquePage = () => {
@@ -10,7 +8,7 @@ const CoursDeMusiquePage = () => {
       cover={cover}
     >
       <section className='my-10'>
-        <p>Parce que jouer nécessite au préalable d'apprendre un instrument, la stockemoise propose divers cours de musique pour permettre à toutes et tous d'apprendre. Aucun prérequis pour commencer, les cours de solfège sont inclus en parrallèle des cours d'instrument.</p>
+        <p>Parce que jouer nécessite au préalable d'apprendre un instrument, la stockemoise propose divers cours de musique pour permettre à toutes et tous d'apprendre. Aucun prérequis pour commencer, les cours de solfège sont inclus en parallèle des cours d'instrument.</p>
 
         <div className='my-10'>
           <h4 className='mb-2'>A partir de 4 ans :</h4>
