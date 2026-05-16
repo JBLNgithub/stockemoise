@@ -12,8 +12,8 @@ import {
 } from '../dataAcces/fetch/news'
 
 
-export const getAllNews = async() => {
-    return await getAllN()
+export const getAllNews = async(limit) => {
+    return await getAllN(limit)
 }
 
 export const getRecentNews = async() => {
