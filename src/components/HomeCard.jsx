@@ -1,6 +1,8 @@
 import React from 'react'
 import getImageURL from '../utils/getImageURL'
 import RedirectButton from './RedirectButton'
+import getLocalImageURL from '../utils/getLocalImageURL'
+
 
 const HomeCard = ({children, title='Title is Undifined', description1='description is Undifined', description2='', image='placeHolder.png', imageAlt='undifined', path}) => {
 
@@ -20,7 +22,7 @@ const HomeCard = ({children, title='Title is Undifined', description1='descripti
             <aside  className='col-span-3 md:col-span-2'>
                 <img
                     className='size-full object-cover rounded-b-2xl md:rounded-bl-none md:rounded-r-2xl'
-                    src={getImageURL(image)}
+                    src={getLocalImageURL(image)}
                     alt={imageAlt}
                     />
             </aside>
