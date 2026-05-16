@@ -15,7 +15,7 @@ const ActualitesPage = () => {
 
   useEffect(() => {
     const fetchAllNews = async() => {
-      setAllNews(await getAllNews())
+      setAllNews(await getAllNews(16))
       setIsLoading(false)
     }
     
