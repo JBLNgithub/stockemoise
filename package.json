@@ -1,5 +1,5 @@
 {
-  "name": "stockemoise-2",
+  "name": "stockemoise-frontend",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,6 +10,12 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
+  "author": "JBLN",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/JBLNgithub/stockemoise-backend/issues"
+  },
+  "homepage": "https://github.com/JBLNgithub/stockemoise-frontend#readme",
   "dependencies": {
     "@tailwindcss/vite": "^4.1.13",
     "react": "^19.1.1",
