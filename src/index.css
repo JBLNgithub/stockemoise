@@ -1,1 +1,46 @@
 @import "tailwindcss";
+
+/* temporary fixe it fast !! */
+
+.articleBody h1 {
+    font-size: 36px;
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+.articleBody h2 {
+    font-size: 32px;
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+.articleBody h3 {
+    font-size: 28px;
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+.articleBody * {
+    margin-bottom: 2px;
+}
+
+.articleBody ul {
+    margin-left: 16px;
+    list-style-type: circle;
+}
+
+.articleBody hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.articleBody p {
+    margin-bottom: 16px;
+}
+
+.articleBody a {
+    color: blue;
+}
+
+.articleBody a:hover {
+    color: red;
+}

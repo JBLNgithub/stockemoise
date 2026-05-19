@@ -3,6 +3,7 @@ import getImageURL from '../utils/getImageURL'
 import { TbWriting } from 'react-icons/tb'
 import EventTile from '../components/EventTile'
 import datetimeToString from '../utils/datetimeToString'
+import ArticleBodyRenderer from '../components/ArticleBodyRenderer'
 
 
 const ArticlePage = ({article}) => {
@@ -28,7 +29,8 @@ const ArticlePage = ({article}) => {
                             </h5>
                         </div>
                         {/* TODO : compute content properly one day, and make it support markdown syntax */}
-                        {article.content && String(article.content).split('\n').map((c, i) => <p key={i} className='mb-4'>{c}</p>)}
+                        {/* {article.content && String(article.content).split('\n').map((c, i) => <p key={i} className='mb-4'>{c}</p>)} */}
+                        <ArticleBodyRenderer content={article.content} />
                     </section>
                     
                     {/*if it's an event */}

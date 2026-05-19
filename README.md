@@ -1,15 +1,5 @@
-# ! Currently in developpement !
+# ! Currently in development !
 
-[preview App](https://jblngithub.github.io/stockemoise/)
+You can find more informations about this project [HERE](https://jblngithub.github.io/portfolio/).
 
-You can find more informations about this project [HERE](https://jblngithub.github.io/portfolio/) then in the "Stockemoise" tab.
-
-version : 0.4
-
-### Frontend
-
-React + Tailwind
-
-### Backend
-
-Currently saved in json file
+version : 0.4.1
