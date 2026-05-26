@@ -10,6 +10,8 @@ import { toast } from 'react-toastify'
 
 
 const InputConcert = ({id, newsToUpdate}) => {
+  console.log(`requested news : `, newsToUpdate)
+  console.log(`requested news.event.dateEvent : `, newsToUpdate?.event?.dateEvent)
   const submitHandler = async(e) => {
     e.preventDefault()
 
@@ -20,8 +22,7 @@ const InputConcert = ({id, newsToUpdate}) => {
       navigate(`/actualites/${id || res.id}`)
     }
     else {
-      // TODO : error message
-      toast.error("TODO : error message")
+      toast.error(`ERREUR : ${res.message}`)
     }
   }
   
@@ -44,8 +45,7 @@ const InputConcert = ({id, newsToUpdate}) => {
       newLocalityStates[2][0],
     )
 
-    // TODO : remove console log
-    console.log('new news :', newNews )
+    if (import.meta.env.DEV) console.log('new news :', newNews )
 
     if(!isEventState[0]) {
       return await addNews(newNews)
@@ -124,7 +124,7 @@ const InputConcert = ({id, newsToUpdate}) => {
   // new locality : {code postal : number, city : string, country : string}
   const newLocalityStates = [useState(''), useState(''), useState('')]
 
-  const inputClass = 'bg-blue-400 rounded-sm text-neutral-800 px-2'
+  const inputClass = 'bg-blue-400 rounded-sm text-neutral-800 px-2 w-full'
     
   return (
     <div className="bg-neutral-800 text-neutral-200 rounded-2xl p-5">

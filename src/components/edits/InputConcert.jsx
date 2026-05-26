@@ -21,8 +21,7 @@ const InputConcert = ({concertId, id, concertToUpdate}) => {
       navigate(`/concerts/${res.id || id}`)
     }
     else {
-      // TODO : error message
-      toast.error("TODO : error message")
+      toast.error(`ERREUR : ${res.message}`)
     }
   }
   
