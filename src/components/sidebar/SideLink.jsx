@@ -1,7 +1,7 @@
 import {FaMapMarker} from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import topThePage from '../utils/topThePage'
-import datetimeToString from '../utils/datetimeToString'
+import topThePage from '../../utils/topThePage'
+import datetimeToString from '../../utils/datetimeToString'
 
 
 const SideLink = ({baselink, id, title, location, dateEvent}) => {

@@ -1,11 +1,9 @@
 import {useState, useEffect} from 'react'
 import SideCard from './SideCard'
-import {getNextConcerts} from '../controllers/concerts'
-import {getRecentNews, getNextNews} from '../controllers/news'
-import { isLoggedIn } from '../controllers/users'
+import {getNextConcerts} from '../../controllers/concerts'
+import {getRecentNews, getNextNews} from '../../controllers/news'
 import ControlPanel from './control-panel/ControlPanel'
-import { useContext } from "react"
-import { IsLoggedInContext } from "../contexts/controlPanelContexts"
+import useAuth from '../../hooks/useAuth'
 
 
 const Sidebar = () => {
@@ -13,14 +11,13 @@ const Sidebar = () => {
 	const [nextNews, setNextNews] = useState([])
 	const [recentNews, setRecentNews] = useState([])
 	const [loading, setLoading] = useState(true)
-	const [isLog, setIsLog] = useContext(IsLoggedInContext)
+	const {auth} = useAuth()
 
 	useEffect(() => {
 		const fetchSidebar = async() => {
 		setNextConcerts(await getNextConcerts())
 		setNextNews(await getNextNews())
 		setRecentNews(await getRecentNews())
-		setIsLog(await isLoggedIn())
 		setLoading(false)
 		}
 
@@ -32,7 +29,7 @@ const Sidebar = () => {
             {loading
                 ? <p>loading...</p>
                 : <>
-                    {isLog && <ControlPanel />}
+                    {auth?.accessToken && <ControlPanel />}
 
                     {nextConcerts.length > 0 && <SideCard title='Prochains concerts' buttonLabel='planning' buttonPath='/planning' articles={nextConcerts} baselink='/concerts/' />}
 

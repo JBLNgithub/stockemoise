@@ -1,5 +1,5 @@
 import SideLink from './SideLink'
-import RedirectButton from './RedirectButton'
+import RedirectButton from '../RedirectButton'
 
 
 const SideCard = ({title, buttonLabel, buttonPath, articles, baselink}) => {

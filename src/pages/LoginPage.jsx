@@ -13,19 +13,19 @@ const LoginPage = () => {
 	const [password, setPassword] = useState("");
 	const [invalidCredentials, setInvalidCredentials] = useState("");
 	const [isLoggedIn, setIsLoggedIn] = useContext(IsLoggedInContext);
-	const {setAuth} = useAuth()
+	const {auth, setAuth} = useAuth()
 	const navigate = useNavigate();
 
-	const handleLogin = async (e) => {
+	const handleLogin = async(e) => {
 		e.preventDefault();
 		const res = await loginAPI(email, password);
 		if (res.success) {
 			const {accessToken} = res.response
-			setAuth({accessToken})
-			setIsLoggedIn(true)	// TODO : remove when auth context is supported
+			await setAuth({accessToken})
+			await setIsLoggedIn(true)	// TODO : remove when auth context is supported
 			navigate("/")	// TODO : navigate to previous
 		} else {
-			setInvalidCredentials(res.response.message || res.message);
+			setInvalidCredentials(res?.response?.message || res.message);
 		}
 	};
 

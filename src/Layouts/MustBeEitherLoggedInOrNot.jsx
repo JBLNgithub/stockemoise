@@ -14,7 +14,7 @@ const MustBeEitherLoggedInOrNot = ({mustBeLoggedIn}) => {
 
     return (
         <>
-            {isLoggedIn === mustBeLoggedIn 
+            {isLoggedIn === mustBeLoggedIn
             ? <Outlet />
             : <NotFoundPage />
         }

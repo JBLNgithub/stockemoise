@@ -2,10 +2,11 @@ import AllConcertsControlPanel from "./AllConcertsControlPanel"
 import AllNewsControlPanel from "./AllNewsControlPanel"
 import SingleConcertControlPanel from "./SingleConcertControlPanel"
 import SingleNewsControlPanel from "./SingleNewsControlPanel"
-import ActionButton from "../ActionButton"
+import ActionButton from "../../ActionButton"
 import { useContext } from "react"
-import { IsLoggedInContext, OnAllConcerts, OnAllNews, OnConcert, OnNews } from "../../contexts/controlPanelContexts"
-import {logout} from '../../controllers/users'
+import { IsLoggedInContext, OnAllConcerts, OnAllNews, OnConcert, OnNews } from "../../../contexts/controlPanelContexts"
+import logout from '../../../api/auth/logout'
+import useAuth from '../../../hooks/useAuth'
 
 
 const ControlPanel = () => {
@@ -14,10 +15,14 @@ const ControlPanel = () => {
   const [onAllnews, setOnAllNews] = useContext(OnAllNews)
   const [onConcert, setOnConcert] = useContext(OnConcert)
   const [onNews, setOnNews] = useContext(OnNews)
+  const {auth, setAuth} = useAuth()
 
-  const disconnect = () => {
-    logout()
-    setIsLoggedIn(false)
+  const disconnect = async() => {
+    const res = logout()
+    if(res) {
+   		await setAuth({})
+    	await setIsLoggedIn(false)
+    }
   }
 
   return (
@@ -32,5 +37,6 @@ const ControlPanel = () => {
     </div>
   )
 }
+
 
 export default ControlPanel

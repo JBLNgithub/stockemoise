@@ -1,8 +1,8 @@
 import { useParams, useNavigate } from 'react-router-dom'
-import RedirectButton from '../RedirectButton'
-import ActionButton from '../ActionButton'
-import { deleteConcert } from '../../controllers/concerts'
-import topThePage from '../../utils/topThePage'
+import RedirectButton from '../../RedirectButton'
+import ActionButton from '../../ActionButton'
+import { deleteConcert } from '../../../controllers/concerts'
+import topThePage from '../../../utils/topThePage'
 import { toast } from 'react-toastify'
 
 
@@ -14,11 +14,11 @@ const SingleConcertControlPanel = () => {
     e.preventDefault()
 
     const deleteConfirmation = window.confirm('Supprimer le concert définitivement ?')
-    
+
     let res
-    
+
     if(deleteConfirmation) res = deleteConcert(id)
-    
+
     if (res) {
       topThePage()
       toast.success('Concert supprimé')

@@ -1,24 +1,24 @@
-import RedirectButton from '../RedirectButton'
-import ActionButton from '../ActionButton'
+import RedirectButton from '../../RedirectButton'
+import ActionButton from '../../ActionButton'
 import { useParams, useNavigate } from 'react-router-dom'
-import { deleteNews } from '../../controllers/news'
-import topThePage from '../../utils/topThePage'
+import { deleteNews } from '../../../controllers/news'
+import topThePage from '../../../utils/topThePage'
 import { toast } from 'react-toastify'
 
 
 const SingleNewsControlPanel = () => {
   const {id} = useParams()
     const navigate = useNavigate()
-  
+
     const deleteHandler = (e) => {
       e.preventDefault()
 
       const deleteConfirmation = window.confirm("Supprimer l'actualité définitivement ?")
 
       let res
-      
+
       if(deleteConfirmation) res = deleteNews(id)
-      
+
       if (res) {
         topThePage()
         toast.success('Actualité supprimée')
