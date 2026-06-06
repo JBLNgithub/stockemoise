@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "backend": "cd ../stockemoise-backend && npm run dev",
+    "backend": "cd ../backend && npm run dev",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
