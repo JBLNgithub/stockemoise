@@ -1,24 +1,22 @@
-import { Outlet, useNavigate } from 'react-router-dom'
-import { useContext, useEffect } from 'react'
-import { IsLoggedInContext } from '../contexts/controlPanelContexts'
+import { Outlet, Navigate } from 'react-router-dom'
 import NotFoundPage from '../pages/NotFoundPage'
+import useAuth from '../hooks/useAuth'
 
 
 const MustBeEitherLoggedInOrNot = ({mustBeLoggedIn}) => {
-    const isLoggedIn = useContext(IsLoggedInContext)[0]
-    const navigate = useNavigate()
-
-    useEffect(() => {
-        if(isLoggedIn !== mustBeLoggedIn) navigate('/')
-    }, [])
+	const {auth} = useAuth()
 
     return (
-        <>
-            {isLoggedIn === mustBeLoggedIn
-            ? <Outlet />
-            : <NotFoundPage />
-        }
-        </>
+    	<>
+     		{mustBeLoggedIn
+       			? auth.accessToken
+          			? <Outlet />
+             		: <NotFoundPage />
+                : auth.accessToken
+                	? <Navigate to='/' />
+                 	: <Outlet />
+       		}
+     	</>
     )
 }
 

@@ -2,18 +2,16 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LoginInput from "../components/LoginInput";
 import { FaUser, FaLock } from "react-icons/fa";
-import { login } from "../controllers/users";
-import { useContext } from "react";
-import { IsLoggedInContext } from "../contexts/controlPanelContexts";
 import loginAPI from "../api/auth/login";
 import useAuth from "../hooks/useAuth";
+import getPayload from "../utils/JWT_getPayload";
+
 
 const LoginPage = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [invalidCredentials, setInvalidCredentials] = useState("");
-	const [isLoggedIn, setIsLoggedIn] = useContext(IsLoggedInContext);
-	const {auth, setAuth} = useAuth()
+	const {setAuth} = useAuth()
 	const navigate = useNavigate();
 
 	const handleLogin = async(e) => {
@@ -21,8 +19,8 @@ const LoginPage = () => {
 		const res = await loginAPI(email, password);
 		if (res.success) {
 			const {accessToken} = res.response
-			await setAuth({accessToken})
-			await setIsLoggedIn(true)	// TODO : remove when auth context is supported
+			const payload = getPayload(accessToken)
+			await setAuth({accessToken, payload})
 			navigate("/")	// TODO : navigate to previous
 		} else {
 			setInvalidCredentials(res?.response?.message || res.message);

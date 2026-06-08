@@ -1,6 +1,5 @@
 import { useState } from "react";
 import {
-	IsLoggedInContext,
 	OnAllConcerts,
 	OnAllNews,
 	OnConcert,
@@ -9,7 +8,6 @@ import {
 import {AuthProvider} from "../contexts/Auth";
 
 const ContextProvider = ({ children }) => {
-	const isLoggedIn = useState(false);
 	const onAllConcerts = useState(false);
 	const onAllNews = useState(false);
 	const onConcert = useState(false);
@@ -21,9 +19,7 @@ const ContextProvider = ({ children }) => {
 				<OnConcert.Provider value={onConcert}>
 					<OnAllNews.Provider value={onAllNews}>
 						<OnAllConcerts.Provider value={onAllConcerts}>
-							<IsLoggedInContext.Provider value={isLoggedIn}>
-								{children}
-							</IsLoggedInContext.Provider>
+							{children}
 						</OnAllConcerts.Provider>
 					</OnAllNews.Provider>
 				</OnConcert.Provider>
