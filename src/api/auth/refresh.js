@@ -5,9 +5,9 @@ export default async function refresh() {
     }
 
     const res = await fetch('/api/auth/refresh', requestOptions)
-    const datas = {success: res.status < 300}
-    if(datas.success) datas.accessToken = (await res.json()).accessToken
+    let data
+    if(res.ok) data = await res.json()
 
     console.log('access token refreshed')
-    return datas
+    return {res, data}
 }

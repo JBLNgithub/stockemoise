@@ -9,29 +9,23 @@ import formatUpdatedConcert from '../../utils/formatUpdatedConcert'
 import { toast } from 'react-toastify'
 import addConcert from '../../api/concert/add'
 import updateConcert from '../../api/concert/update'
-import useAuth from '../../hooks/useAuth'
+import usePrivateAPI from '../../hooks/usePrivateAPI'
 
 
 const InputConcert = ({concertId, id, concertToUpdate}) => {
-	const {auth, setAuth} = useAuth()
-	const {accessToken} = auth
+	const privateAPI = usePrivateAPI()
 
   	const submitHandler = async(e) => {
 	    e.preventDefault()
 
-	    const res = id ? await sendUpdatedConcert(id) : await sendNewConcert()
+	    const {res, data} = id ? await sendUpdatedConcert(id) : await sendNewConcert()
 
-	    if(res.success) {
-		    if(res.accessToken){
-				const refreshedAuth = auth
-		    	refreshedAuth.accessToken = res.accessToken
-		   		setAuth(refreshedAuth)
-			}
+	    if(res.ok) {
 			toast.success(`Concert ${id ? 'modifié' : 'ajouté'}`)
-			navigate(`/concerts/${res?.result?.id || id}`)
+			navigate(`/concerts/${data?.id || id}`)
 	    }
 	    else {
-		   	toast.error(`ERREUR : ${res?.result?.message || res.message}`)
+		   	toast.error(`ERREUR : ${data?.message || res.statusText}`)
 	    }
    	}
 
@@ -54,52 +48,52 @@ const InputConcert = ({concertId, id, concertToUpdate}) => {
 		)
 
 		if(!isNewLocationState[0]) {
-			return await addConcert(newConcert, accessToken)
+			return await privateAPI(addConcert, {concert: newConcert})
 		}
 		else if(!isNewLocalityState[0]) {
-			return await addConcert(newConcert, accessToken, 'location')
+			return await privateAPI(addConcert, {concert: newConcert, mode: 'location'})
 		}
 		else {
-			return await addConcert(newConcert, accessToken, 'locality')
+			return await privateAPI(addConcert, {concert: newConcert, mode: 'locality'})
 		}
 	}
 
-  const sendUpdatedConcert = async(id) => {
-    const updatedConcert = await formatUpdatedConcert(
-      id,
-      title,
-      content,
-      datetimeEvent,
-      isNewLocationState[0],
-      knownLocationState[0],
-      newLocationStates[0][0],
-      newLocationStates[1][0],
-      newLocationStates[2][0],
-      newLocationStates[3][0],
-      isNewLocalityState[0],
-      knownLocalityState[0],
-      newLocalityStates[0][0],
-      newLocalityStates[1][0],
-      newLocalityStates[2][0],
-    )
+	const sendUpdatedConcert = async(id) => {
+		const updatedConcert = await formatUpdatedConcert(
+		    id,
+		    title,
+		    content,
+		    datetimeEvent,
+		    isNewLocationState[0],
+		    knownLocationState[0],
+		    newLocationStates[0][0],
+		    newLocationStates[1][0],
+		    newLocationStates[2][0],
+		    newLocationStates[3][0],
+		    isNewLocalityState[0],
+		    knownLocalityState[0],
+		    newLocalityStates[0][0],
+		    newLocalityStates[1][0],
+		    newLocalityStates[2][0],
+		)
 
-    if(!isNewLocationState[0]) {
-      return await updateConcert(id, updatedConcert, accessToken)
-    }
-    else if(!isNewLocalityState[0]) {
-      // TODO
-      // return await setConcertAddLocation(newConcert)
-      alert("il n'est pas possible pour le moment d'ajouter un nouveau lieu en même temps que la modification d'un concert")
-      return {success: false}
-    }
-    else {
-      // TODO
-      // return await setConcertAddLocationAndLocality(newConcert)
-      alert("il n'est pas possible pour le moment d'ajouter un nouveau lieu en même temps que la modification d'un concert")
-      return {success: false}
-    }
+		if(!isNewLocationState[0]) {
+			return await privateAPI(updateConcert, {id, concert: updatedConcert})
+		}
+		else if(!isNewLocalityState[0]) {
+		    // TODO
+		    // return await setConcertAddLocation(newConcert)
+		    alert("il n'est pas possible pour le moment d'ajouter un nouveau lieu en même temps que la modification d'un concert")
+		    return {success: false}
+		}
+		else {
+		    // TODO
+		    // return await setConcertAddLocationAndLocality(newConcert)
+		    alert("il n'est pas possible pour le moment d'ajouter un nouveau lieu en même temps que la modification d'un concert")
+		    return {success: false}
+		}
 
-  }
+	}
 
   const navigate = useNavigate()
 

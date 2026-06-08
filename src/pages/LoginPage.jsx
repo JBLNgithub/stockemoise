@@ -2,25 +2,20 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LoginInput from "../components/LoginInput";
 import { FaUser, FaLock } from "react-icons/fa";
-import loginAPI from "../api/auth/login";
-import useAuth from "../hooks/useAuth";
-import getPayload from "../utils/JWT_getPayload";
+import useLogin from '../hooks/useLogin'
 
 
 const LoginPage = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [invalidCredentials, setInvalidCredentials] = useState("");
-	const {setAuth} = useAuth()
+	const login = useLogin()
 	const navigate = useNavigate();
 
 	const handleLogin = async(e) => {
 		e.preventDefault();
-		const res = await loginAPI(email, password);
-		if (res.success) {
-			const {accessToken} = res.response
-			const payload = getPayload(accessToken)
-			await setAuth({accessToken, payload})
+		const {res} = await login(email, password);
+		if (res.ok) {
 			navigate("/")	// TODO : navigate to previous
 		} else {
 			setInvalidCredentials(res?.response?.message || res.message);

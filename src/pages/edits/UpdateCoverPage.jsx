@@ -1,11 +1,15 @@
 import { useParams, useNavigate } from 'react-router-dom'
-import {setNewConcertCover} from '../../controllers/concerts.js'
-import {setNewNewsCover} from '../../controllers/news.js'
 import { toast } from 'react-toastify'
+import concertCover from '../../api/concert/cover.js'
+import newsCover from '../../api/news/cover.js'
+import usePrivateAPI from '../../hooks/usePrivateAPI.js'
 
 
 const UpdateCoverPage = ({type}) => {
+	const privateAPI = usePrivateAPI()
     const navigate = useNavigate()
+    const {id} = useParams()
+    let cover
 
     const submitHandler = async(e) => {
         e.preventDefault()
@@ -16,23 +20,21 @@ const UpdateCoverPage = ({type}) => {
         let res
 
         if(type === 'concert') {
-            res = await setNewConcertCover(id, formData)
+            res = (await privateAPI(concertCover, {id, formData})).res
         }
         else {
-            res = await setNewNewsCover(id, formData)
+            res = (await privateAPI(newsCover, {id, formData})).res
         }
 
-        if(res.success) {
+        if(res.ok) {
             toast.success("Nouvelle image ajoutée.")
             navigate(`/${type === 'concert' ? 'concerts' : 'actualites'}/${id}`)
         }
         else {
-            toast.error("something's gone wrong")
+            toast.error(`ERROR ${res.status} : ${res.statusText}`)
         }
     }
 
-    const {id} = useParams()
-    let cover
     const inputClass = 'bg-blue-400 rounded-sm text-neutral-800 px-2'
 
     return (

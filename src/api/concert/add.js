@@ -1,5 +1,3 @@
-import refresh from '../auth/refresh'
-
 const PATHS = {
 	default: '',
 	location: 'with-location',
@@ -7,7 +5,7 @@ const PATHS = {
 }
 
 
-export default async function addConcert(concert, accessToken, mode='default', isRefresh=false) {
+export default async function addConcert(accessToken, {concert, mode='default'}) {
 	const requestOptions = {
         headers: {
             Accept: 'application/json',
@@ -20,22 +18,12 @@ export default async function addConcert(concert, accessToken, mode='default', i
     }
 
 	const res = await fetch(`/api/concerts/${PATHS[mode]}`, requestOptions)
-	const datas = {}
+	let data
 
-	if(res.status === 401 && !isRefresh) {
-		const res2 = await refresh()
-		if(res2.success) return addConcert(concert, res2.accessToken, mode, true)
-	}
-
-	datas.success = res.status < 300
 	try {
-    	datas.result = await res.json()
+    	data = await res.json()
     }
-    catch {
-    	datas.message = res.statusText
-    }
+    catch {null}
 
-	if(isRefresh && datas.success) datas.accessToken = accessToken
-
-    return datas
+    return {res, data}
 }

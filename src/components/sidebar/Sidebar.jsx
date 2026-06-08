@@ -11,7 +11,7 @@ const Sidebar = () => {
 	const [nextNews, setNextNews] = useState([])
 	const [recentNews, setRecentNews] = useState([])
 	const [loading, setLoading] = useState(true)
-	const {auth} = useAuth()
+	const {accessToken} = useAuth()
 
 	useEffect(() => {
 		const fetchSidebar = async() => {
@@ -29,7 +29,7 @@ const Sidebar = () => {
             {loading
                 ? <p>loading...</p>
                 : <>
-                    {auth?.accessToken && <ControlPanel />}
+                    {accessToken && <ControlPanel />}
 
                     {nextConcerts.length > 0 && <SideCard title='Prochains concerts' buttonLabel='planning' buttonPath='/planning' articles={nextConcerts} baselink='/concerts/' />}
 

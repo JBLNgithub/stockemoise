@@ -8,16 +8,11 @@ export default async function login(email, password) {
     }
 
     const res = await fetch('/api/auth/login', requestOptions)
-    const datas = {}
-    datas.success = res.status < 300
+    let data
     try {
-    	datas.response = await res.json()
+    	data = await res.json()
     }
-    catch {
-    	datas.message = res.statusText
-    }
+    catch {null}
 
-    console.log('headers : ', res)
-    console.log('datas : ', datas)
-    return datas
+    return {res, data}
 }

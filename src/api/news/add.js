@@ -1,5 +1,3 @@
-import refresh from '../auth/refresh'
-
 const PATHS = {
 	default: '',
 	event: 'with-event',
@@ -8,7 +6,7 @@ const PATHS = {
 }
 
 
-export default async function addNews(news, accessToken, mode='default', isRefresh=false) {
+export default async function addNews(accessToken, {news, mode='default'}) {
 	const requestOptions = {
         headers: {
             Accept: 'application/json',
@@ -21,22 +19,12 @@ export default async function addNews(news, accessToken, mode='default', isRefre
     }
 
 	const res = await fetch(`/api/news/${PATHS[mode]}`, requestOptions)
-	const datas = {}
+	let data
 
-	if(res.status === 401 && !isRefresh) {
-		const res2 = await refresh()
-		if(res2.success) return addNews(news, res2.accessToken, mode, true)
-	}
-
-	datas.success = res.status < 300
 	try {
-    	datas.result = await res.json()
+    	data = await res.json()
     }
-    catch {
-    	datas.message = res.statusText
-    }
+    catch {null}
 
-	if(isRefresh && datas.success) datas.accessToken = accessToken
-
-    return datas
+	return {res, data}
 }

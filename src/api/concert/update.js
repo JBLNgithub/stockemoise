@@ -1,7 +1,4 @@
-import refresh from '../auth/refresh'
-
-
-export default async function updateConcert(id, concert, accessToken, isRefresh=false) {
+export default async function updateConcert(accessToken, {id, concert}) {
 	const requestOptions = {
         headers: {
             Accept: 'application/json',
@@ -14,22 +11,11 @@ export default async function updateConcert(id, concert, accessToken, isRefresh=
     }
 
 	const res = await fetch(`/api/concerts/${id}`, requestOptions)
-	const datas = {}
-
-	if(res.status === 401 && !isRefresh) {
-		const res2 = await refresh()
-		if(res2.success) return updateConcert(id, concert, res2.accessToken, true)
-	}
-
-	datas.success = res.status < 300
+	let data
 	try {
-    	datas.result = await res.json()
+    	data = await res.json()
     }
-    catch {
-    	datas.message = res.statusText
-    }
+    catch {null}
 
-	if(isRefresh && datas.success) datas.accessToken = accessToken
-
-    return datas
+    return {res, data}
 }

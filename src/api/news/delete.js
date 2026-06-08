@@ -1,7 +1,4 @@
-import refresh from '../auth/refresh'
-
-
-export default async function deleteNews(id, accessToken, isRefresh=false) {
+export default async function deleteNews(accessToken, {id}) {
 	const requestOptions = {
         headers: {
             Accept: 'application/json',
@@ -14,14 +11,7 @@ export default async function deleteNews(id, accessToken, isRefresh=false) {
 
 	const res = await fetch(`/api/news/${id}`, requestOptions)
 
-	if(res.status === 401 && !isRefresh) {
-		const res2 = await refresh()
-		if(res2.success) return deleteNews(id, res2.accessToken, true)
-	}
+	console.log(res)
 
-	const datas = {success: res.status < 300}
-	if(!datas.success) datas.message = res.statusText
-	if(isRefresh && datas.success) datas.accessToken = accessToken
-
-    return datas
+    return {res}
 }

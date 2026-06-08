@@ -8,29 +8,23 @@ import formatUpdatedNews from '../../utils/formatUpdatedNews'
 import { toast } from 'react-toastify'
 import addNews from '../../api/news/add'
 import updateNews from '../../api/news/update'
-import useAuth from '../../hooks/useAuth'
+import usePrivateAPI from '../../hooks/usePrivateAPI'
 
 
 const InputNews = ({id, newsToUpdate}) => {
-	const {auth, setAuth} = useAuth()
-	const {accessToken} = auth
+	const privateAPI = usePrivateAPI()
 
 	const submitHandler = async(e) => {
 		e.preventDefault()
 
-		const res = id ? await sendUpdatedNews(newsToUpdate) : await sendNewNews()
+		const {res, data} = id ? await sendUpdatedNews(newsToUpdate) : await sendNewNews()
 
-		if(res.success) {
-		   	if(res.accessToken){
-					const refreshedAuth = auth
-			    	refreshedAuth.accessToken = res.accessToken
-			   		setAuth(refreshedAuth)
-				}
+		if(res.ok) {
 		    toast.success(`Actualité ${id ? 'modifiée' : 'ajoutée'}`)
-		    navigate(`/actualites/${id || res?.result?.id}`)
+		    navigate(`/actualites/${id || data?.id}`)
 		}
 		else {
-		    toast.error(`ERREUR : ${res?.result?.message || res.message}`)
+		    toast.error(`ERREUR : ${data?.message}`)
 		}
 	}
 
@@ -54,16 +48,16 @@ const InputNews = ({id, newsToUpdate}) => {
 		)
 
 		if(!isEventState[0]) {
-		    return await addNews(newNews, accessToken)
+		    return await privateAPI(addNews, {news: newNews})
 		}
 		else if(!isNewLocationState[0]) {
-		    return await addNews(newNews, accessToken, 'event')
+		    return await privateAPI(addNews, {news: newNews, mode: 'event'})
 		}
 		else if(!isNewLocalityState[0]) {
-		    return await addNews(newNews, accessToken, 'location')
+		    return await privateAPI(addNews, {news: newNews, mode: 'location'})
 		}
 		else {
-		    return await addNews(newNews, accessToken, 'locality')
+		    return await privateAPI(addNews, {news: newNews, mode: 'locality'})
 		}
 	}
 
@@ -96,7 +90,7 @@ const InputNews = ({id, newsToUpdate}) => {
 		console.log('updated news :', updatedNews )
 
 		if(!isNewLocationState[0]) {
-		    return await updateNews(id, updatedNews)
+			return await privateAPI(updateNews, {id, news: updatedNews})
 		}
 		else if(!isNewLocalityState[0]) {
 		    // TODO

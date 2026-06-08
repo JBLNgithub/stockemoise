@@ -4,14 +4,14 @@ import ActionButton from '../../ActionButton'
 import topThePage from '../../../utils/topThePage'
 import { toast } from 'react-toastify'
 import deleteConcert from '../../../api/concert/delete'
-import useAuth from '../../../hooks/useAuth'
+import usePrivateAPI from '../../../hooks/usePrivateAPI'
+
 
 
 const SingleConcertControlPanel = () => {
   	const {id} = useParams()
    	const navigate = useNavigate()
-    const {auth, setAuth} = useAuth()
-    const {accessToken} = auth
+    const privateAPI = usePrivateAPI()
 
     const deleteHandler = async(e) => {
 	    e.preventDefault()
@@ -19,20 +19,15 @@ const SingleConcertControlPanel = () => {
 	    const deleteConfirmation = window.confirm('Supprimer le concert définitivement ?')
 
 	    let res
-	    if(deleteConfirmation) res = await deleteConcert(id, accessToken)
+	    if(deleteConfirmation) res = (await privateAPI(deleteConcert, {id})).res
 
-	    if (res.success) {
-	    	if(res.accessToken) {
-		    	const refreshedAuth = auth
-		    	refreshedAuth.accessToken = res.accessToken
-		   		setAuth(refreshedAuth)
-	     	}
+	    if (res.ok) {
 	      	topThePage()
 	       	toast.success('Concert supprimé')
 	        navigate('/planning')
 	    }
 	    else {
-	    	toast.error(`ERREUR : ${res?.result?.message || res.message}`)
+	    	toast.error(`ERREUR : ${res.statusText}`)
 	    }
 	}
 

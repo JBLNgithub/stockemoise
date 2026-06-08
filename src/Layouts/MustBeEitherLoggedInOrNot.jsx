@@ -4,15 +4,15 @@ import useAuth from '../hooks/useAuth'
 
 
 const MustBeEitherLoggedInOrNot = ({mustBeLoggedIn}) => {
-	const {auth} = useAuth()
+	const {accessToken} = useAuth()
 
     return (
     	<>
      		{mustBeLoggedIn
-       			? auth.accessToken
+       			? accessToken
           			? <Outlet />
              		: <NotFoundPage />
-                : auth.accessToken
+                : accessToken
                 	? <Navigate to='/' />
                  	: <Outlet />
        		}

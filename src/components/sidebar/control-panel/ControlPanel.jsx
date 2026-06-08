@@ -10,8 +10,7 @@ import {
 	OnConcert,
 	OnNews,
 } from "../../../contexts/controlPanelContexts";
-import logout from "../../../api/auth/logout";
-import useAuth from "../../../hooks/useAuth";
+import useLogout from '../../../hooks/useLogout'
 
 
 const ControlPanel = () => {
@@ -19,14 +18,7 @@ const ControlPanel = () => {
 	const [onAllnews, setOnAllNews] = useContext(OnAllNews);
 	const [onConcert, setOnConcert] = useContext(OnConcert);
 	const [onNews, setOnNews] = useContext(OnNews);
-	const { auth, setAuth } = useAuth();
-
-	const disconnect = async () => {
-		const res = logout();
-		if (res) {
-			await setAuth({});
-		}
-	};
+	const logout = useLogout()
 
 	return (
 		<div className="bg-neutral-800 text-neutral-200 mb-10 p-5 rounded-2xl">
@@ -36,7 +28,7 @@ const ControlPanel = () => {
 			{onAllnews && <AllNewsControlPanel />}
 			{onConcert && <SingleConcertControlPanel />}
 			{onNews && <SingleNewsControlPanel />}
-			<ActionButton label="se déconnecter" action={disconnect} />
+			<ActionButton label="se déconnecter" action={logout} />
 		</div>
 	);
 };
