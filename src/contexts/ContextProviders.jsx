@@ -4,10 +4,11 @@ import {
 	OnAllNews,
 	OnConcert,
 	OnNews,
-} from "../contexts/controlPanelContexts";
-import {AuthProvider} from "../contexts/Auth";
+} from "./controlPanelContexts";
+import {AuthProvider} from "./Auth";
 
-const ContextProvider = ({ children }) => {
+
+const ContextProvider = ({children}) => {
 	const onAllConcerts = useState(false);
 	const onAllNews = useState(false);
 	const onConcert = useState(false);
