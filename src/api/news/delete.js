@@ -11,7 +11,5 @@ export default async function deleteNews(accessToken, {id}) {
 
 	const res = await fetch(`/api/news/${id}`, requestOptions)
 
-	console.log(res)
-
     return {res}
 }

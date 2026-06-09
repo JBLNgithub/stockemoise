@@ -1,4 +1,4 @@
-export default async function updateNews(id, news, accessToken, isRefresh=false) {
+export default async function updateNews(accessToken, {id, news}) {
 	const requestOptions = {
         headers: {
             Accept: 'application/json',
