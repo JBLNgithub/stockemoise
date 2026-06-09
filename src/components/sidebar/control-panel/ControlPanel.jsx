@@ -1,23 +1,15 @@
-import AllConcertsControlPanel from "./AllConcertsControlPanel";
-import AllNewsControlPanel from "./AllNewsControlPanel";
-import SingleConcertControlPanel from "./SingleConcertControlPanel";
-import SingleNewsControlPanel from "./SingleNewsControlPanel";
-import ActionButton from "../../ActionButton";
-import { useContext } from "react";
-import {
-	OnAllConcerts,
-	OnAllNews,
-	OnConcert,
-	OnNews,
-} from "../../../contexts/controlPanelContexts";
+import AllConcertsControlPanel from "./AllConcertsControlPanel"
+import AllNewsControlPanel from "./AllNewsControlPanel"
+import SingleConcertControlPanel from "./SingleConcertControlPanel"
+import SingleNewsControlPanel from "./SingleNewsControlPanel"
+import OnHome from './OnHome'
+import ActionButton from "../../ActionButton"
 import useLogout from '../../../hooks/useLogout'
+import useControlPanel from '../../../hooks/useControlPanel'
 
 
 const ControlPanel = () => {
-	const [onAllConcerts, setOnAllConcerts] = useContext(OnAllConcerts);
-	const [onAllnews, setOnAllNews] = useContext(OnAllNews);
-	const [onConcert, setOnConcert] = useContext(OnConcert);
-	const [onNews, setOnNews] = useContext(OnNews);
+	const {onAllConcerts, onAllNews, onConcert, onNews, onHome} = useControlPanel()
 	const logout = useLogout()
 
 	return (
@@ -25,10 +17,11 @@ const ControlPanel = () => {
 			<h2 className="text-xl font-bold mb-4">Panneau de contrôle</h2>
 
 			{onAllConcerts && <AllConcertsControlPanel />}
-			{onAllnews && <AllNewsControlPanel />}
+			{onAllNews && <AllNewsControlPanel />}
 			{onConcert && <SingleConcertControlPanel />}
 			{onNews && <SingleNewsControlPanel />}
-			<ActionButton label="se déconnecter" action={logout} />
+			{onHome && <OnHome />}
+			<ActionButton label="Se déconnecter" action={logout} />
 		</div>
 	);
 };

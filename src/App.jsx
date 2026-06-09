@@ -1,4 +1,3 @@
-import React from 'react'
 import {Route, createBrowserRouter, createRoutesFromElements, RouterProvider, Navigate} from 'react-router-dom'
 import MainLayout from './Layouts/MainLayout'
 import MustBeEitherLoggedInOrNot from './Layouts/MustBeEitherLoggedInOrNot'
@@ -16,6 +15,7 @@ import ArticlePage from './pages/ArticlePage'
 import NewsPage from './pages/NewsPage'
 import ConcertPage from './pages/ConcertPage'
 import LoginPage from './pages/LoginPage'
+import ChangePassword from './pages/ChangePassword'
 import AddConcertPage from './pages/edits/AddConcertPage'
 import UpdateConcertPage from './pages/edits/UpdateConcertPage'
 import AddNewsPage from './pages/edits/AddNewsPage'
@@ -52,6 +52,7 @@ const App = () => {
       <Route path='/actualites/ajouter' element={<AddNewsPage />} />
       <Route path='/actualites/modifier/:id' element={<UpdateNewsPage />} />
       <Route path='/actualites/modifier-image/:id' element={<UpdateCoverPage type='news' />} />
+      <Route path='/changer-mot-de-passe' element={<ChangePassword />} />
     </Route>
 
     {/*this is specifically for gh-pages*/}

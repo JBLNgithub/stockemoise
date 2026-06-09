@@ -1,19 +1,15 @@
-import {useState, useEffect, useContext} from 'react'
+import {useState, useEffect} from 'react'
 import ArticlePage from './ArticlePage'
 import { useParams } from 'react-router-dom'
 import {getNews} from '../controllers/news'
-import { OnNews } from '../contexts/controlPanelContexts'
+import useControlPanel from '../hooks/useControlPanel'
 
 
 const NewsPage = () => {
     const {id} = useParams()
     const [news, setNews] = useState({})
-    const [onNews, setOnNews] = useContext(OnNews)
+    const {setOnNews} = useControlPanel()
     const [isLoading, setIsLoading] = useState(true)
-
-    const unmountCleanup = () => {
-        setOnNews(false)
-    }
 
     useEffect(() => {
         const fetchNews = async() => {
@@ -23,7 +19,7 @@ const NewsPage = () => {
 
         setOnNews(true)
         fetchNews()
-        return unmountCleanup
+        return () => setOnNews(false)
     }, [id])
 
     return (

@@ -1,19 +1,15 @@
-import {useState, useEffect, useContext} from 'react'
+import {useState, useEffect} from 'react'
 import ArticlePage from './ArticlePage'
 import { useParams } from 'react-router-dom'
 import {getConcert} from '../controllers/concerts'
-import { OnConcert } from '../contexts/controlPanelContexts'
+import useControlPanel from '../hooks/useControlPanel'
 
 
 const ConcertPage = () => {
     const {id} = useParams()
     const [concert, setConcert] = useState({})
-    const [onConcert, setOnConcert] = useContext(OnConcert)
+    const {setOnConcert} = useControlPanel()
     const [isLoading, setIsLoading] = useState(true)
-
-    const unmountCleanup = () => {
-        setOnConcert(false)
-    }
 
     useEffect(() => {
             const fetchConcert = async() => {
@@ -22,7 +18,7 @@ const ConcertPage = () => {
             }
             setOnConcert(true)
             fetchConcert()
-            return unmountCleanup
+            return () => setOnConcert(false)
         }, [id])
 
     return (

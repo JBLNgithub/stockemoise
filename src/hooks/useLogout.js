@@ -2,7 +2,7 @@ import useAuth from './useAuth'
 import logout from '../api/auth/logout'
 
 
-export default function useLogin() {
+export default function useLogout() {
 	const {setAccessToken, setPayload} = useAuth()
 
 	return async () => {

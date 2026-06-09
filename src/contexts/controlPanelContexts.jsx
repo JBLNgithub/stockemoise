@@ -1,10 +1,21 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
 
-export const OnAllConcerts = createContext(false)
+const ControlPanelContext = createContext({})
 
-export const OnAllNews = createContext(false)
+export function ControlPanelProvider({children}){
+	const [onAllConcerts, setOnAllConcerts] = useState(false)
+	const [onAllNews, setOnAllNews] = useState(false)
+	const [onConcert, setOnConcert] = useState(false)
+	const [onNews, setOnNews] = useState(false)
+	const [onHome, setOnHome] = useState(false)
 
-export const OnConcert = createContext(false)
+	return(
+		<ControlPanelContext.Provider value={{onAllConcerts, setOnAllConcerts, onAllNews, setOnAllNews, onConcert, setOnConcert, onNews, setOnNews, onHome, setOnHome}}>
+			{children}
+		</ControlPanelContext.Provider>
+	)
+}
 
-export const OnNews = createContext(false)
+
+export default ControlPanelContext

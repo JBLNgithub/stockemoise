@@ -14,11 +14,11 @@ const LoginPage = () => {
 
 	const handleLogin = async(e) => {
 		e.preventDefault();
-		const {res} = await login(email, password);
+		const {res, data} = await login(email, password);
 		if (res.ok) {
 			navigate("/")	// TODO : navigate to previous
 		} else {
-			setInvalidCredentials(res?.response?.message || res.message);
+			setInvalidCredentials(data?.message || res.statusText);
 		}
 	};
 

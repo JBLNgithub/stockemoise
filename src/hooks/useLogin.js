@@ -15,6 +15,6 @@ export default function useLogin() {
 			setAccessToken(accessToken)
 			setPayload(payload)
 		}
-		return {res}
+		return {res, data}
 	}
 }

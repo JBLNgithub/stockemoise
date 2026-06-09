@@ -1,20 +1,15 @@
-import { useEffect, useContext} from 'react'
-import { OnAllNews } from '../contexts/controlPanelContexts'
+import {useEffect} from 'react'
 import ActualitesList from '../components/actualites-pagination/ActualitesList'
+import useControlPanel from '../hooks/useControlPanel'
 
 
 const ActualitesPage = () => {
-    const [onAllnews, setOnAllNews] = useContext(OnAllNews)
-
-    const unmountCleanup = () => {
-        setOnAllNews(false)
-    }
+	const {setOnAllNews} = useControlPanel()
 
     useEffect(() => {
         setOnAllNews(true)
-        return unmountCleanup
+        return () => setOnAllNews(false)
     }, [])
-
 
     return (
         <>
