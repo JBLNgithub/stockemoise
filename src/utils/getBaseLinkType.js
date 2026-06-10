@@ -7,7 +7,8 @@ function getBaseLinkType(type) {
             return `/actualites/`
 
         default:
-        console.log('something went wrong with base link generation')
+        console.error('Error getBaseLinkType')
+        return '/'
     }
 }
 

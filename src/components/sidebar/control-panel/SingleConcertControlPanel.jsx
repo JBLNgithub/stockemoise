@@ -3,7 +3,7 @@ import RedirectButton from '../../RedirectButton'
 import ActionButton from '../../ActionButton'
 import topThePage from '../../../utils/topThePage'
 import { toast } from 'react-toastify'
-import deleteConcert from '../../../api/concert/delete'
+import deleteConcert from '../../../api/concerts/delete'
 import usePrivateAPI from '../../../hooks/usePrivateAPI'
 
 

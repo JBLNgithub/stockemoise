@@ -1,0 +1,62 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import FormTextInput from "../../components/FormTextInput";
+import { FaUser, FaLock } from "react-icons/fa";
+import useLogin from '../../hooks/useLogin'
+
+
+const Login = () => {
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [invalidCredentials, setInvalidCredentials] = useState("");
+	const login = useLogin()
+	const navigate = useNavigate();
+
+	const handleLogin = async(e) => {
+		e.preventDefault();
+		const {res, data} = await login(email, password);
+		if (res.ok) {
+			navigate("/")	// TODO : navigate to previous
+		} else {
+			setInvalidCredentials(data?.message || res.statusText);
+		}
+	};
+
+	return (
+		<div className="bg-blue-600 text-neutral-200 rounded-2xl p-5">
+			<h2 className="text-center font-bold text-3xl mb-8">Connexion</h2>
+
+			<form onSubmit={handleLogin}>
+				<FormTextInput
+					icon={FaUser}
+					type="email"
+					placeholder="email"
+					required
+					value={email}
+					onChange={(e) => setEmail(e.target.value)}
+				/>
+				<FormTextInput
+					icon={FaLock}
+					type="password"
+					placeholder="mot de passe"
+					required
+					value={password}
+					onChange={(e) => setPassword(e.target.value)}
+				/>
+				{invalidCredentials && (
+					<p className="text-red-400 text-center bg-neutral-800">	{/* TODO : IMPROVE QUALITY MESSAGE */}
+						{invalidCredentials}
+					</p>
+				)}
+				<button
+					type="submit"
+					className="bg-blue-800 hover:bg-blue-400 hover:text-neutral-800 py-2 px-4 rounded-full"
+				>
+					se connecter
+				</button>
+			</form>
+		</div>
+	);
+};
+
+export default Login;

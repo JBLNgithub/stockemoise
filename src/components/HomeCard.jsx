@@ -1,5 +1,3 @@
-import React from 'react'
-import getImageURL from '../utils/getImageURL'
 import RedirectButton from './RedirectButton'
 import getLocalImageURL from '../utils/getLocalImageURL'
 

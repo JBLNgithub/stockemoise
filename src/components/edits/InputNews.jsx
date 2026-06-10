@@ -62,10 +62,10 @@ const InputNews = ({id, newsToUpdate}) => {
 	}
 
 	const sendUpdatedNews = async(newsToUpdate) => {
-		if((newsToUpdate.event && !isEventState[0]) || (!newsToUpdate.event && isEventState[0])) {   // XOR
-		    console.log("can't modify event (non-)existance")
-		    // TODO : inform user of it
-		    return {success: false}
+		if((newsToUpdate.event === isEventState[0]) || (!newsToUpdate.event && isEventState[0])) {   // XOR
+			// TODO
+			toast.error("Il n'est pas possible de modfier le type d'évènement pour le moment.")
+		    return {res:{ok: false}}
 		}
 
 		const updatedNews = await formatUpdatedNews(
@@ -86,23 +86,18 @@ const InputNews = ({id, newsToUpdate}) => {
 		    newLocalityStates[2][0],
 		)
 
-		// TODO : remove console log
-		console.log('updated news :', updatedNews )
-
 		if(!isNewLocationState[0]) {
 			return await privateAPI(updateNews, {id, news: updatedNews})
 		}
 		else if(!isNewLocalityState[0]) {
 		    // TODO
-		    // return await setConcertAddLocation(newConcert)
-		    alert("il n'est pas possible pour le moment d'ajouter un nouveau lieu en même temps que la modification d'un concert")
-		    return {success: false}
+		    toast.error("Il n'est pas possible pour le moment d'ajouter un nouveau lieu en même temps que la modification d'un concert.")
+			return {res:{ok: false}}
 		}
 		else {
 		    // TODO
-		    // return await setConcertAddLocationAndLocality(newConcert)
-		    alert("il n'est pas possible pour le moment d'ajouter un nouveau lieu en même temps que la modification d'un concert")
-		    return {success: false}
+		    toast.error("Il n'est pas possible pour le moment d'ajouter un nouveau lieu en même temps que la modification d'un concert.")
+			return {res:{ok: false}}
 		}
 	}
 

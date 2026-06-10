@@ -7,8 +7,8 @@ import LocationInput from './LocationInput'
 import formatNewConcert from '../../utils/formatNewConcert'
 import formatUpdatedConcert from '../../utils/formatUpdatedConcert'
 import { toast } from 'react-toastify'
-import addConcert from '../../api/concert/add'
-import updateConcert from '../../api/concert/update'
+import addConcert from '../../api/concerts/add'
+import updateConcert from '../../api/concerts/update'
 import usePrivateAPI from '../../hooks/usePrivateAPI'
 
 

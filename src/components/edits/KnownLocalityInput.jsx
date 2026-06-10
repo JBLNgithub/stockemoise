@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react'
-import {getLocalities} from '../../controllers/localities'
+import getAllLocalities from '../../api/localities/getAll'
 
 
 const KnownLocalityInput = ({style, knownLocalityState}) => {
@@ -9,12 +9,12 @@ const KnownLocalityInput = ({style, knownLocalityState}) => {
 
   useEffect(() => {
       const fetchLocalities = async() => {
-        const res = await getLocalities()
-        setLocalities(res)
-        setKnownLocality(res[0].codePostal)
+      	const {data} = await getAllLocalities()
+      	setLocalities(data)
+        setKnownLocality(data[0].codePostal)
         setIsLoading(false)
       }
-      
+
       fetchLocalities()
     }, [])
 

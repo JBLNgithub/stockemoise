@@ -1,19 +1,18 @@
 import {useState, useEffect} from 'react'
-import {getLocations} from '../../controllers/locations'
+import getAllLocations from '../../api/locations/getAll'
 
 
 const KnownLocationInput = ({knownLocationState, style}) => {
   const [knownLocation, setKnownLocation] = knownLocationState
   const [locations, setLocations] = useState([])
   const [isLoading, setIsLoading] = useState(true)
-      
+
   useEffect(() => {
     const fetchLocations = async() => {
-      const res = await getLocations()
-      setLocations(res)
+    setLocations((await getAllLocations()).data)
       setIsLoading(false)
     }
-    
+
     fetchLocations()
   }, [])
 

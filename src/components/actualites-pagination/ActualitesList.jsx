@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react"
-import ArticleTile from "../ArticleTile"
-import { getAllNews } from "../../controllers/news"
+import getAllNews from '../../api/news/getAll'
 import ArticleTiles from "../article-tiles/ArticleTiles"
 import Pagination from "./Pagination"
 
@@ -16,10 +15,10 @@ const ActualitesList = () => {
 
     useEffect(() => {
         const fetchAllNews = async() => {
-        setAllNews(await getAllNews())
+        setAllNews((await getAllNews()).data)
         setIsLoading(false)
         }
-        
+
         fetchAllNews()
     }, [])
 

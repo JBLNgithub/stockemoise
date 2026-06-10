@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react"
-import {getLocations} from '../../controllers/locations'
 import IsNewLocationInput from "./IsNewLocationInput"
 import KnownLocationInput from "./knownLocationInput"
 import NewLocationInput from './NewLocationInput'

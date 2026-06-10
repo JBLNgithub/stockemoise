@@ -1,4 +1,4 @@
-import ArticleTile from "../ArticleTile"
+import ArticleTile from "./ArticleTile"
 
 
 const ArticleTiles = ({articles}) => {

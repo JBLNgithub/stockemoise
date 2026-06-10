@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react'
-import {getCountries} from '../../controllers/countries.js'
+import getAllCountries from '../../api/countries/getAll'
 
 
 const CountryInput = ({style, countryState}) => {
@@ -9,8 +9,7 @@ const CountryInput = ({style, countryState}) => {
 
     useEffect(() => {
         const fetchCountries = async() => {
-            const res = await getCountries()
-            setCountries(res)
+       		setCountries((await getAllCountries()).data)
             setIsLoading(false)
         }
 

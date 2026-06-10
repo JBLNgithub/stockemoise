@@ -1,12 +1,12 @@
-import { getConcert } from "../controllers/concerts"
+import getConcert from  '../api/concerts/get'
 
 
 const formatUpdatedConcert = async(concertId, title, content, datetimeEvent, isNewLocation, knownLocation, locationName, locationStreet, locationNumber, locationAdditionalAddress, isNewLocality, knownLocality, localityCodePostal, localityCity, localityCountry) => {
-    const concert = await getConcert(concertId)
+    const concert = (await getConcert(concertId)).data
 
     const updatedConcert = {}
 
-    
+
     if(concert.title != title) updatedConcert.title = title
     if(concert.content != content) updatedConcert.content = content
     if(concert.dateEvent != datetimeEvent) updatedConcert.datetimeEvent = datetimeEvent
@@ -21,7 +21,7 @@ const formatUpdatedConcert = async(concertId, title, content, datetimeEvent, isN
         number: locationNumber,
         additionalAddress: locationAdditionalAddress
       }
-      
+
       updatedConcert.location.additionalAddress = locationAdditionalAddress === '' ? null : locationAdditionalAddress
 
       if(!isNewLocality) {

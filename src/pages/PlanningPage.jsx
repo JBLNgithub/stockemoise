@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
-import ArticleTile from '../components/ArticleTile'
-import {getPlanning} from '../controllers/planning'
+import ArticleTile from '../components/article-tiles/ArticleTile'
+import getPlanning from '../api/planning/get'
 import useControlPanel from '../hooks/useControlPanel'
 
 
@@ -11,8 +11,8 @@ const PlanningPage = () => {
 
     useEffect(() => {
         const fetchPlanning = async() => {
-        setPlanning(await getPlanning())
-        setIsLoading(false)
+	        setPlanning((await getPlanning()).data)
+	        setIsLoading(false)
         }
 
         setOnAllConcerts(true)

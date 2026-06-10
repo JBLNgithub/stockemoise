@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import concertCover from '../../api/concert/cover.js'
+import concertCover from '../../api/concerts/cover.js'
 import newsCover from '../../api/news/cover.js'
 import usePrivateAPI from '../../hooks/usePrivateAPI.js'
 

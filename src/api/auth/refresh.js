@@ -8,6 +8,5 @@ export default async function refresh() {
     let data
     if(res.ok) data = await res.json()
 
-    console.log('access token refreshed')
     return {res, data}
 }

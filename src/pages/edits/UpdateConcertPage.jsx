@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import InputConcert from "../../components/edits/InputConcert"
-import { getConcert } from "../../controllers/concerts"
+import getConcert from '../../api/concerts/get'
 import NotFoundPage from "../NotFoundPage"
 
 
@@ -12,8 +12,7 @@ const UpdateConcertPage = () => {
 
     useEffect(()=> {
         const fetchConcert = async() => {
-            const res = await getConcert(id)
-            if(res) setConcert(res)
+        	setConcert((await getConcert(id)).data)
             setIsLoading(false)
         }
 

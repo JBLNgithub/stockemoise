@@ -1,7 +1,8 @@
 import {useState, useEffect} from 'react'
 import SideCard from './SideCard'
-import {getNextConcerts} from '../../controllers/concerts'
-import {getRecentNews, getNextNews} from '../../controllers/news'
+import getNextConcerts from '../../api/concerts/getNext'
+import getNextEventNews from '../../api/news/getNextEvents'
+import getAllNews from '../../api/news/getAll'
 import ControlPanel from './control-panel/ControlPanel'
 import useAuth from '../../hooks/useAuth'
 
@@ -15,9 +16,9 @@ const Sidebar = () => {
 
 	useEffect(() => {
 		const fetchSidebar = async() => {
-		setNextConcerts(await getNextConcerts())
-		setNextNews(await getNextNews())
-		setRecentNews(await getRecentNews())
+		setNextConcerts((await getNextConcerts()).data)
+		setNextNews((await getNextEventNews()).data)
+		setRecentNews((await getAllNews(3)).data)
 		setLoading(false)
 		}
 

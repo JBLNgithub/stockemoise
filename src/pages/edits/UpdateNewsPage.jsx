@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import InputNews from '../../components/edits/InputNews'
-import { getNews } from "../../controllers/news"
+import getNews from '../../api/news/get'
 import NotFoundPage from "../NotFoundPage"
 
 
@@ -12,8 +12,7 @@ const UpdateNewsPage = () => {
 
     useEffect(() => {
         const fetchNews = async() => {
-            const res = await getNews(id)
-            if(res) setNews(res)
+        setNews((await getNews(id)).data)
             setIsLoading(false)
         }
 
