@@ -31,6 +31,7 @@ const LoginPage = () => {
 					icon={FaUser}
 					type="email"
 					placeholder="email"
+					required
 					value={email}
 					onChange={(e) => setEmail(e.target.value)}
 				/>
@@ -38,6 +39,7 @@ const LoginPage = () => {
 					icon={FaLock}
 					type="password"
 					placeholder="mot de passe"
+					required
 					value={password}
 					onChange={(e) => setPassword(e.target.value)}
 				/>

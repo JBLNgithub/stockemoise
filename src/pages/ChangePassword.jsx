@@ -42,6 +42,7 @@ export default function ChangePassword(){
 					icon={FaLock}
 					type="password"
 					placeholder="mot de passe"
+					required
 					value={password}
 					onChange={(e) => setPassword(e.target.value)}
 				/>
@@ -49,6 +50,7 @@ export default function ChangePassword(){
 					icon={FaLock}
 					type="password"
 					placeholder="nouveau mot de passe"
+					required
 					value={newPassword}
 					onChange={(e) => setNewPassword(e.target.value)}
 				/>
@@ -56,6 +58,7 @@ export default function ChangePassword(){
 					icon={FaLock}
 					type="password"
 					placeholder="confirmer nouveau mot de passe"
+					required
 					value={newPassword_confirmation}
 					onChange={(e) => setNewPassword_confirmation(e.target.value)}
 				/>
