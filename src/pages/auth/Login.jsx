@@ -1,22 +1,24 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import FormTextInput from "../../components/FormTextInput";
 import { FaUser, FaLock } from "react-icons/fa";
 import useLogin from '../../hooks/useLogin'
 
 
 const Login = () => {
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
+	const [email, setEmail] = useState("")
+	const [password, setPassword] = useState("")
 	const [invalidCredentials, setInvalidCredentials] = useState("");
 	const login = useLogin()
-	const navigate = useNavigate();
+	const navigate = useNavigate()
+	const location = useLocation()
+	const from = location.state?.from?.pathname || "/"
 
 	const handleLogin = async(e) => {
 		e.preventDefault();
 		const {res, data} = await login(email, password);
 		if (res.ok) {
-			navigate("/")	// TODO : navigate to previous
+			navigate(from, {replace: true})
 		} else {
 			setInvalidCredentials(data?.message || res.statusText);
 		}

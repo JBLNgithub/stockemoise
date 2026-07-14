@@ -23,45 +23,46 @@ import UpdateCoverPage from './pages/edits/UpdateCoverPage'
 import NotFoundPage from './pages/NotFoundPage'
 
 
+
+const router = createBrowserRouter(
+	createRoutesFromElements(
+		<Route path='/' element={<MainLayout />}>
+		<Route index element={<HomePage />} />
+		<Route path='/actualites' element={<ActualitesPage />} />
+		<Route path='/actualites/:id' element={<NewsPage />} />
+		<Route path='/harmonie' element={<HarmoniePage />} />
+		<Route path='/location-salle' element={<LocationSallePage />} />
+		<Route path='/stock-up' element={<StockUpPage />} />
+		<Route path='/cours-de-musique' element={<CoursDeMusiquePage />} />
+		<Route path='/location-instrument' element={<LocationInstrumentPage />} />
+		<Route path='/planning' element={<PlanningPage />} />
+		<Route path='/concerts/:id' element={<ConcertPage />} />
+		<Route path='/contact' element={<ContactPage />} />
+		<Route path='/article/:id' element={<ArticlePage />} />
+
+		{/* Must not be logged in */}
+		<Route element={<MustBeEitherLoggedInOrNot mustBeLoggedIn={false} />}>
+		    <Route path='/connexion' element={<LoginPage />} />
+		</Route>
+
+		{/* Must be logged in */}
+		<Route element={<MustBeEitherLoggedInOrNot mustBeLoggedIn={true} />}>
+		    <Route path='/concerts/ajouter' element={<AddConcertPage />} />
+		    <Route path='/concerts/modifier/:id' element={<UpdateConcertPage />} />
+		    <Route path='/concerts/modifier-image/:id' element={<UpdateCoverPage type='concert' />} />
+		    <Route path='/actualites/ajouter' element={<AddNewsPage />} />
+		    <Route path='/actualites/modifier/:id' element={<UpdateNewsPage />} />
+		    <Route path='/actualites/modifier-image/:id' element={<UpdateCoverPage type='news' />} />
+		    <Route path='/changer-mot-de-passe' element={<ChangePassword />} />
+		</Route>
+
+		<Route path='/*' element={<NotFoundPage />} />
+	</Route>)
+)
+
 const App = () => {
-	const router = createBrowserRouter(
-		createRoutesFromElements(
-			<Route path='/' element={<MainLayout />}>
-			<Route index element={<HomePage />} />
-			<Route path='/actualites' element={<ActualitesPage />} />
-			<Route path='/actualites/:id' element={<NewsPage />} />
-			<Route path='/harmonie' element={<HarmoniePage />} />
-			<Route path='/location-salle' element={<LocationSallePage />} />
-			<Route path='/stock-up' element={<StockUpPage />} />
-			<Route path='/cours-de-musique' element={<CoursDeMusiquePage />} />
-			<Route path='/location-instrument' element={<LocationInstrumentPage />} />
-			<Route path='/planning' element={<PlanningPage />} />
-			<Route path='/concerts/:id' element={<ConcertPage />} />
-			<Route path='/contact' element={<ContactPage />} />
-			<Route path='/article/:id' element={<ArticlePage />} />
-
-			{/* Must not be logged in */}
-			<Route element={<MustBeEitherLoggedInOrNot mustBeLoggedIn={false} />}>
-			    <Route path='/connexion' element={<LoginPage />} />
-			</Route>
-
-			{/* Must be logged in */}
-			<Route element={<MustBeEitherLoggedInOrNot mustBeLoggedIn={true} />}>
-			    <Route path='/concerts/ajouter' element={<AddConcertPage />} />
-			    <Route path='/concerts/modifier/:id' element={<UpdateConcertPage />} />
-			    <Route path='/concerts/modifier-image/:id' element={<UpdateCoverPage type='concert' />} />
-			    <Route path='/actualites/ajouter' element={<AddNewsPage />} />
-			    <Route path='/actualites/modifier/:id' element={<UpdateNewsPage />} />
-			    <Route path='/actualites/modifier-image/:id' element={<UpdateCoverPage type='news' />} />
-			    <Route path='/changer-mot-de-passe' element={<ChangePassword />} />
-			</Route>
-
-			<Route path='/*' element={<NotFoundPage />} />
-		</Route>)
-	)
-
 	return (
-	<RouterProvider router={router} />
+		<RouterProvider router={router} />
 	)
 }
 
